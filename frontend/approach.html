@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Approach - RetinaCare AI</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ── NAV ── -->
+    <nav>
+        <div class="nav-logo">
+            <div class="nav-logo-icon">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <circle cx="10" cy="10" r="8" stroke="white" stroke-width="1.5" />
+                    <circle cx="10" cy="10" r="4" fill="white" opacity="0.9" />
+                    <circle cx="10" cy="10" r="1.5" fill="#16a34a" />
+                </svg>
+            </div>
+            <a href="index.html" style="text-decoration: none; color: inherit;"><span class="nav-logo-text">Retina<span>Care</span> AI</span></a>
+        </div>
+        <div class="nav-links">
+            <a href="about.html">About</a>
+            <a href="approach.html">Approach</a>
+            <a href="features.html">Features</a>
+            <a href="model.html">Model</a>
+            <a href="team.html">Team</a>
+            <a href="login.html" style="color: var(--green-main); font-weight: 700;">Login</a>
+        </div>
+        <button class="nav-pill" onclick="window.location.href='demo.html'">Live
+            Demo</button>
+    </nav>
+
+    <!-- ── HOW IT WORKS ── -->
+    <section class="sec sec-alt" id="pipeline" style="padding-top: 120px;">
+        <div class="max-w">
+            <div class="sec-center reveal">
+                <div class="sec-tag">Methodology</div>
+                <h2 class="sec-title">How Our <em>Pipeline</em> Works</h2>
+                <p class="sec-sub" style="margin:0 auto;">From a single retinal photo to a clinical-grade report — in
+                    under 2 seconds.</p>
+            </div>
+            <div class="pipeline reveal">
+                <div class="pipe-step">
+                    <div class="pipe-num">01</div>
+                    <div class="pipe-icon">📸</div>
+                    <h3>Image Upload</h3>
+                    <p>Fundus photo captured via camera or uploaded via phone.</p>
+                </div>
+                <div class="pipe-step">
+                    <div class="pipe-num">02</div>
+                    <div class="pipe-icon">🔧</div>
+                    <h3>Preprocessing</h3>
+                    <p>CLAHE enhancement, resize to 224×224, normalise pixel values.</p>
+                </div>
+                <div class="pipe-step">
+                    <div class="pipe-num">03</div>
+                    <div class="pipe-icon">🧠</div>
+                    <h3>CNN Inference</h3>
+                    <p>ResNet-50 model classifies DR stage with confidence score.</p>
+                </div>
+                <div class="pipe-step">
+                    <div class="pipe-num">04</div>
+                    <div class="pipe-icon">📄</div>
+                    <h3>Report Generated</h3>
+                    <p>Plain-language PDF report + Grad-CAM heatmap for the doctor.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── DR STAGES ── -->
+    <section class="sec" id="stages">
+        <div class="max-w">
+            <div class="reveal">
+                <div class="sec-tag">Disease Grading · ETDRS Scale</div>
+                <h2 class="sec-title">5 Stages of <em>Diabetic Retinopathy</em></h2>
+                <p class="sec-sub">Our model classifies each retinal image into one of these internationally recognised
+                    severity grades.</p>
+            </div>
+            <div class="stages-horizontal-wrapper reveal">
+                <div class="stages-row-horizontal">
+                    <div class="stage-h-card stage-h-0">
+                        <div class="stage-em">🟢</div>
+                        <h4>Stage 0</h4>
+                        <p>No DR — normal retinal vasculature, no lesions detected.</p>
+                        <span class="st-badge badge-0">No Risk</span>
+                    </div>
+                    <div class="stage-h-card stage-h-1">
+                        <div class="stage-em">🟡</div>
+                        <h4>Stage 1 · Mild</h4>
+                        <p>Microaneurysms only — tiny balloon-like vessel swellings.</p>
+                        <span class="st-badge badge-1">Low Risk</span>
+                    </div>
+                    <div class="stage-h-card stage-h-2">
+                        <div class="stage-em">🟠</div>
+                        <h4>Stage 2 · Moderate</h4>
+                        <p>Haemorrhages, exudates, cotton-wool spots visible.</p>
+                        <span class="st-badge badge-2">Moderate</span>
+                    </div>
+                    <div class="stage-h-card stage-h-3">
+                        <div class="stage-em">🔴</div>
+                        <h4>Stage 3 · Severe</h4>
+                        <p>Many blocked vessels, early new vessel growth triggered.</p>
+                        <span class="st-badge badge-3">High Risk</span>
+                    </div>
+                    <div class="stage-h-card stage-h-4">
+                        <div class="stage-em">⛔</div>
+                        <h4>Stage 4 · PDR</h4>
+                        <p>Proliferative DR — vitreous bleed, retinal detachment risk.</p>
+                        <span class="st-badge badge-4">Critical</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── FOOTER ── -->
+    <footer>
+        <div class="footer-inner">
+            <div>
+                <div class="footer-brand-name">RetinaCare AI</div>
+                <p class="footer-brand-desc">AI-powered early detection of Diabetic Retinopathy and multi-eye disease
+                    screening — built to make specialist-grade care accessible to every patient, everywhere.</p>
+                <div class="footer-tech" style="margin-top:1rem;">
+                    <span class="ftag">Python</span>
+                    <span class="ftag">TensorFlow</span>
+                    <span class="ftag">ResNet-50</span>
+                    <span class="ftag">Flask</span>
+                    <span class="ftag">OpenCV</span>
+                    <span class="ftag">Grad-CAM</span>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Project</h4>
+                <a href="about.html">About DR</a>
+                <a href="approach.html">Methodology</a>
+                <a href="features.html">Features</a>
+                <a href="model.html">AI Model</a>
+            </div>
+            <div class="footer-col">
+                <h4>Features</h4>
+                <a href="features.html">Multi-Disease</a>
+                <a href="features.html">Grad-CAM</a>
+                <a href="model.html">Risk Score</a>
+                <a href="features.html">Telemedicine</a>
+            </div>
+            <div class="footer-col">
+                <h4>Team</h4>
+                <a href="team.html">Developers</a>
+                <a href="demo.html">Live Demo</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            🎓 Project Expo 2025 &nbsp;·&nbsp; RetinaCare AI &nbsp;·&nbsp; Made for better, accessible eye healthcare
+            &nbsp;·&nbsp; All rights reserved
+        </div>
+    </footer>
+
+    <script src="auth.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

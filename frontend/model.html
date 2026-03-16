@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model - RetinaCare AI</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ── NAV ── -->
+    <nav>
+        <div class="nav-logo">
+            <div class="nav-logo-icon">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <circle cx="10" cy="10" r="8" stroke="white" stroke-width="1.5" />
+                    <circle cx="10" cy="10" r="4" fill="white" opacity="0.9" />
+                    <circle cx="10" cy="10" r="1.5" fill="#16a34a" />
+                </svg>
+            </div>
+            <a href="index.html" style="text-decoration: none; color: inherit;"><span class="nav-logo-text">Retina<span>Care</span> AI</span></a>
+        </div>
+        <div class="nav-links">
+            <a href="about.html">About</a>
+            <a href="approach.html">Approach</a>
+            <a href="features.html">Features</a>
+            <a href="patient-history.html">Patient History</a>
+            <a href="team.html">Team</a>
+            <a href="login.html" style="color: var(--green-main); font-weight: 700;">Login</a>
+        </div>
+        <button class="nav-pill" onclick="window.location.href='demo.html'">Live
+            Demo</button>
+    </nav>
+
+    <!-- ── GRADCAM + RISK SCORE ── -->
+    <section class="sec" id="model" style="padding-top: 120px;">
+        <div class="max-w gradcam-grid">
+            <div class="gradcam-visual reveal">
+                <div class="gradcam-label">Grad-CAM · Explainable AI Output</div>
+                <!-- Heatmap SVG -->
+                <svg class="heatmap-svg" viewBox="0 0 360 220" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <radialGradient id="heat1" cx="45%" cy="50%" r="30%">
+                            <stop offset="0%" stop-color="#ef4444" stop-opacity="0.85" />
+                            <stop offset="40%" stop-color="#f97316" stop-opacity="0.6" />
+                            <stop offset="100%" stop-color="#22c55e" stop-opacity="0" />
+                        </radialGradient>
+                        <radialGradient id="heat2" cx="60%" cy="55%" r="20%">
+                            <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.7" />
+                            <stop offset="100%" stop-color="#22c55e" stop-opacity="0" />
+                        </radialGradient>
+                    </defs>
+                    <rect width="360" height="220" fill="#0a2e1a" rx="10" />
+                    <!-- Simulated retinal base -->
+                    <ellipse cx="180" cy="110" rx="95" ry="80" fill="#0f3d22" opacity="0.8" />
+                    <ellipse cx="180" cy="110" rx="70" ry="58" fill="#1a5c32" opacity="0.6" />
+                    <!-- Optic disc bright spot -->
+                    <ellipse cx="210" cy="108" rx="14" ry="15" fill="#4ade80" opacity="0.25" />
+                    <!-- Vessels faint -->
+                    <path d="M210 100 Q192 92 175 99 Q158 106 150 120" fill="none" stroke="#4ade80" stroke-width="0.8"
+                        opacity="0.3" />
+                    <path d="M210 116 Q196 124 184 132" fill="none" stroke="#4ade80" stroke-width="0.8" opacity="0.3" />
+                    <!-- Colour scale bar base (Empty track) -->
+                    <rect x="270" y="90" width="8" height="80" rx="4" fill="rgba(255,255,255,0.1)" />
+                    <!-- Dynamic Liquid Fill (Animated via CSS along with the stage) -->
+                    <defs>
+                        <linearGradient id="scale" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stop-color="#ef4444" />
+                            <stop offset="50%" stop-color="#f59e0b" />
+                            <stop offset="100%" stop-color="#22c55e" />
+                        </linearGradient>
+                    </defs>
+                    <rect class="scale-liquid" x="270" y="90" width="8" height="80" rx="4" fill="url(#scale)" />
+                    
+                    <!-- Scale Labels -->
+                    <text x="284" y="96" font-family="'Plus Jakarta Sans',sans-serif" font-size="7.5" fill="rgba(255,255,255,0.6)">High</text>
+                    <text x="284" y="174" font-family="'Plus Jakarta Sans',sans-serif" font-size="7.5" fill="rgba(255,255,255,0.6)">Low</text>
+
+                    <!-- STAGE 0 ANIMATION -->
+                    <g class="anim-stage anim-stage-0">
+                        <!-- badge -->
+                        <rect x="44" y="180" width="168" height="22" rx="6" fill="rgba(34,197,94,0.15)" stroke="#22c55e" stroke-width="0.8" />
+                        <text x="128" y="194.5" font-family="'Plus Jakarta Sans',sans-serif" font-size="8.5" fill="#4ade80" text-anchor="middle" font-weight="600">Stage 0 · Normal · Conf. 98.2%</text>
+                        <!-- Top liquid mask for Stage 0 (Hides top 80%) -->
+                        <rect x="268" y="88" width="12" height="64" fill="#0a2e1a" />
+                        <!-- scale indicator (bottom) -->
+                        <polygon points="266,165 269,162 269,168" fill="white" />
+                    </g>
+                    
+                    <!-- STAGE 2 ANIMATION -->
+                    <g class="anim-stage anim-stage-2">
+                        <!-- Heatmap overlays -->
+                        <ellipse cx="162" cy="112" rx="40" ry="36" fill="url(#heat1)" />
+                        <ellipse cx="195" cy="122" rx="26" ry="22" fill="url(#heat2)" />
+                        <!-- Highlight box -->
+                        <rect x="138" y="88" width="52" height="52" fill="none" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="4 3" />
+                        <text x="138" y="84" font-family="'Plus Jakarta Sans',sans-serif" font-size="7.5" fill="#fcd34d">Microaneurysms Detected</text>
+                        <!-- badge -->
+                        <rect x="44" y="180" width="168" height="22" rx="6" fill="rgba(245,158,11,0.15)" stroke="#f59e0b" stroke-width="0.8" />
+                        <text x="128" y="194.5" font-family="'Plus Jakarta Sans',sans-serif" font-size="8.5" fill="#fbbf24" text-anchor="middle" font-weight="600">Stage 2 · Moderate DR · Conf. 94.2%</text>
+                        <!-- Top liquid mask for Stage 2 (Hides top 40%) -->
+                        <rect x="268" y="88" width="12" height="32" fill="#0a2e1a" />
+                        <!-- scale indicator (middle) -->
+                        <polygon points="266,126 269,123 269,129" fill="white" />
+                    </g>
+
+                    <!-- STAGE 4 ANIMATION -->
+                    <g class="anim-stage anim-stage-4">
+                        <!-- Heatmap overlays -->
+                        <ellipse cx="170" cy="110" rx="65" ry="55" fill="url(#heat1)" />
+                        <ellipse cx="210" cy="95" rx="35" ry="30" fill="url(#heat2)" />
+                        <ellipse cx="145" cy="135" rx="30" ry="25" fill="url(#heat1)" />
+                        <!-- Highlight box -->
+                        <rect x="110" y="65" width="120" height="90" fill="none" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="4 3" />
+                        <text x="110" y="61" font-family="'Plus Jakarta Sans',sans-serif" font-size="7.5" fill="#fca5a5" font-weight="bold">Severe Neovascularization</text>
+                        <!-- badge -->
+                        <rect x="44" y="180" width="168" height="22" rx="6" fill="rgba(239,68,68,0.15)" stroke="#ef4444" stroke-width="0.8" />
+                        <text x="128" y="194.5" font-family="'Plus Jakarta Sans',sans-serif" font-size="8.5" fill="#f87171" text-anchor="middle" font-weight="600">Stage 4 · PDR · Conf. 99.1%</text>
+                        <!-- Top liquid mask for Stage 4 (Hides 0%) -->
+                        <!-- scale indicator (top) -->
+                        <polygon points="266,95 269,92 269,98" fill="white" />
+                    </g>
+                </svg>
+                <p style="font-size:0.75rem;color:rgba(255,255,255,0.45);text-align:center;max-width:300px;margin:0.8rem auto 0;line-height:1.6;">Live demonstration cycling through various severity stages with matched heatmap attention and dynamic risk scaling.</p>
+            </div>
+
+            <div class="reveal">
+                <div class="sec-tag">AI Model</div>
+                <h2 class="sec-title">ResNet-50<br><em>Architecture</em></h2>
+                <p class="sec-sub">Transfer-learned on the APTOS 2019 Blindness Detection dataset (35,000+ images).</p>
+
+                <div class="arch-card" style="margin-top:1.5rem;">
+                    <div class="arch-head">Network Layers</div>
+                    <div class="arch-layer">
+                        <div class="al-dot" style="background:#6ee7b7"></div><span class="al-name">Input</span><span
+                            class="al-detail">224 × 224 × 3</span>
+                    </div>
+                    <div class="arch-arrow">↓</div>
+                    <div class="arch-layer">
+                        <div class="al-dot" style="background:#16a34a"></div><span class="al-name">ResNet-50
+                            Backbone</span><span class="al-detail">Pre-trained ImageNet</span>
+                    </div>
+                    <div class="arch-arrow">↓</div>
+                    <div class="arch-layer">
+                        <div class="al-dot" style="background:#22c55e"></div><span class="al-name">Global Avg
+                            Pooling</span><span class="al-detail">2048-dim</span>
+                    </div>
+                    <div class="arch-arrow">↓</div>
+                    <div class="arch-layer">
+                        <div class="al-dot" style="background:#f59e0b"></div><span class="al-name">Dropout 0.5 +
+                            Dense</span><span class="al-detail">512 neurons</span>
+                    </div>
+                    <div class="arch-arrow">↓</div>
+                    <div class="arch-layer">
+                        <div class="al-dot" style="background:#ef4444"></div><span class="al-name">Softmax
+                            Output</span><span class="al-detail">5 Classes</span>
+                    </div>
+                </div>
+
+                <div class="metrics-grid">
+                    <div class="metric">
+                        <div class="metric-num">93.7%</div>
+                        <div class="metric-lbl">Accuracy</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-num">0.91</div>
+                        <div class="metric-lbl">F1 Score</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-num">0.89</div>
+                        <div class="metric-lbl">Precision</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-num">0.93</div>
+                        <div class="metric-lbl">Recall</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── RISK SCORE FEATURE ── -->
+    <section class="sec sec-alt">
+        <div class="max-w" style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;">
+            <div class="reveal">
+                <div class="sec-tag">Clinical Intelligence</div>
+                <h2 class="sec-title">Personalised<br><em>Risk Score</em></h2>
+                <p class="sec-sub">More than a scan — we combine clinical data with AI to predict a patient's 5-year
+                    risk of vision loss.</p>
+                <div style="margin-top:1.5rem;display:flex;flex-direction:column;gap:0.8rem;">
+                    <div class="wpt">
+                        <div class="wpt-icon">🩸</div>
+                        <div>
+                            <h4>HbA1c Level</h4>
+                            <p>Long-term blood sugar control directly correlates with DR severity progression.</p>
+                        </div>
+                    </div>
+                    <div class="wpt">
+                        <div class="wpt-icon">💊</div>
+                        <div>
+                            <h4>Diabetes Duration</h4>
+                            <p>Patients with 10+ years of diabetes have significantly elevated retinopathy risk.</p>
+                        </div>
+                    </div>
+                    <div class="wpt">
+                        <div class="wpt-icon">❤️</div>
+                        <div>
+                            <h4>Blood Pressure</h4>
+                            <p>Hypertension accelerates retinal vessel damage in diabetic patients.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="reveal">
+                <div class="risk-visual">
+                    <div class="risk-title">Risk Factor Analysis · Patient Profile</div>
+                    <div class="risk-factor">
+                        <span class="rf-label">HbA1c (8.2%)</span>
+                        <div class="rf-bar-track">
+                            <div class="rf-bar-fill"
+                                style="width:72%;background:linear-gradient(90deg,#16a34a,#f59e0b)"></div>
+                        </div>
+                        <span class="rf-val">High</span>
+                    </div>
+                    <div class="risk-factor">
+                        <span class="rf-label">BP (140/90)</span>
+                        <div class="rf-bar-track">
+                            <div class="rf-bar-fill"
+                                style="width:65%;background:linear-gradient(90deg,#16a34a,#f97316)"></div>
+                        </div>
+                        <span class="rf-val">Mod.</span>
+                    </div>
+                    <div class="risk-factor">
+                        <span class="rf-label">Diabetes (9yr)</span>
+                        <div class="rf-bar-track">
+                            <div class="rf-bar-fill"
+                                style="width:58%;background:linear-gradient(90deg,#16a34a,#22c55e)"></div>
+                        </div>
+                        <span class="rf-val">Med.</span>
+                    </div>
+                    <div class="risk-factor">
+                        <span class="rf-label">DR Stage (1)</span>
+                        <div class="rf-bar-track">
+                            <div class="rf-bar-fill" style="width:28%;background:#16a34a"></div>
+                        </div>
+                        <span class="rf-val">Low</span>
+                    </div>
+                    <div class="risk-score-box">
+                        <div>
+                            <div class="rs-label">5-Year Vision Loss Risk</div>
+                            <div class="rs-sub">Based on ETDRS + clinical data</div>
+                        </div>
+                        <div class="rs-value">34%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── FOOTER ── -->
+    <footer>
+        <div class="footer-inner">
+            <div>
+                <div class="footer-brand-name">RetinaCare AI</div>
+                <p class="footer-brand-desc">AI-powered early detection of Diabetic Retinopathy and multi-eye disease
+                    screening — built to make specialist-grade care accessible to every patient, everywhere.</p>
+                <div class="footer-tech" style="margin-top:1rem;">
+                    <span class="ftag">Python</span>
+                    <span class="ftag">TensorFlow</span>
+                    <span class="ftag">ResNet-50</span>
+                    <span class="ftag">Flask</span>
+                    <span class="ftag">OpenCV</span>
+                    <span class="ftag">Grad-CAM</span>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Project</h4>
+                <a href="about.html">About DR</a>
+                <a href="approach.html">Methodology</a>
+                <a href="features.html">Features</a>
+                <a href="model.html">AI Model</a>
+            </div>
+            <div class="footer-col">
+                <h4>Features</h4>
+                <a href="features.html">Multi-Disease</a>
+                <a href="features.html">Grad-CAM</a>
+                <a href="model.html">Risk Score</a>
+                <a href="features.html">Telemedicine</a>
+            </div>
+            <div class="footer-col">
+                <h4>Team</h4>
+                <a href="team.html">Developers</a>
+                <a href="demo.html">Live Demo</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            🎓 Project Expo 2025 &nbsp;·&nbsp; RetinaCare AI &nbsp;·&nbsp; Made for better, accessible eye healthcare
+            &nbsp;·&nbsp; All rights reserved
+        </div>
+    </footer>
+
+    <script src="auth.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

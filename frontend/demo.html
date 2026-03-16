@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Demo - RetinaCare AI</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ── NAV ── -->
+    <nav>
+        <div class="nav-logo">
+            <div class="nav-logo-icon">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <circle cx="10" cy="10" r="8" stroke="white" stroke-width="1.5" />
+                    <circle cx="10" cy="10" r="4" fill="white" opacity="0.9" />
+                    <circle cx="10" cy="10" r="1.5" fill="#16a34a" />
+                </svg>
+            </div>
+            <a href="index.html" style="text-decoration: none; color: inherit;"><span class="nav-logo-text">Retina<span>Care</span> AI</span></a>
+        </div>
+        <div class="nav-links">
+            <a href="about.html">About</a>
+            <a href="approach.html">Approach</a>
+            <a href="features.html">Features</a>
+            <a href="model.html">Model</a>
+            <a href="patient-history.html">Patient History</a>
+            <a href="team.html">Team</a>
+            <a href="login.html" style="color: var(--green-main); font-weight: 700;">Login</a>
+        </div>
+        <button class="nav-pill" onclick="window.location.href='demo.html'">Live
+            Demo</button>
+    </nav>
+
+    <!-- ── DEMO ── -->
+    <section class="sec sec-alt" id="demo" style="padding-top: 120px;">
+        <div class="max-w sec-center">
+            <div class="reveal">
+                <div class="sec-tag">Live Demo</div>
+                <h2 class="sec-title">Try the <em>Scanner</em></h2>
+                <p class="sec-sub" style="margin:0 auto;">Upload a retinal image and watch the AI classify severity in
+                    real time.</p>
+            </div>
+            <div id="diet-section" style="margin-top:20px;">
+<h3>Recommended Diet Plan</h3>
+<div id="diet-advice"></div>
+</div>
+            <div class="demo-tabs reveal">
+                <button class="demo-tab active" onclick="switchMode('upload')">📁 Upload Image</button>
+                <button class="demo-tab" onclick="switchMode('camera')">📸 Live Capture</button>
+            </div>
+
+            <!-- Validation / Error Banner -->
+            <div id="validation-banner" style="display:none; margin-bottom:16px; padding:14px 22px; border-radius:14px; background:#fff1f2; border:1.5px solid #fca5a5; color:#b91c1c; font-weight:600; font-size:0.95rem; display:flex; align-items:center; gap:10px;">
+                <span style="font-size:1.4rem;">❌</span>
+                <span id="validation-msg">Please upload a valid retinal fundus image.</span>
+            </div>
+
+            <div class="demo-box reveal">
+                <!-- Upload Mode -->
+                <div id="upload-mode" class="demo-content active">
+                    <div style="font-size:2.5rem;margin-bottom:0.8rem;">🔬</div>
+                    <h3>Upload Retinal Fundus Image</h3>
+                    <p>JPEG / PNG · Recommended: 512×512 or higher</p>
+                    <label for="image-upload" class="btn-primary" style="cursor:pointer; display:inline-block; margin-bottom:12px;">📁 Choose Image</label>
+                    <input type="file" id="image-upload" accept="image/*" style="display:none;" onchange="previewUpload(this)">
+                    <div id="upload-preview-wrap" style="display:none; margin: 16px 0;">
+                        <img id="upload-preview-img" src="" alt="Preview" style="max-height:220px; border-radius:14px; border:2px solid var(--green-soft); object-fit:cover;">
+                    </div>
+                    <button class="btn-primary" id="upload-analyse-btn" onclick="runDemo(this)" style="display:none;">📤 Analyse Image</button>
+                </div>
+
+                <!-- Camera Mode -->
+                <div id="camera-mode" class="demo-content">
+                    <div class="camera-box">
+                        <div class="video-container" id="video-wrapper">
+                            <video id="camera-video" autoplay playsinline></video>
+                            <div class="camera-overlay">
+                                <div class="scan-bar"></div>
+                            </div>
+                            <div class="processing-overlay" id="processing-ui">
+                                <div class="loader"></div>
+                                <p>AI is analyzing retinal patterns...</p>
+                            </div>
+                        </div>
+                        <div class="preview-container" id="photo-wrapper">
+                            <img id="photo-preview" src="" alt="Captured Retina">
+                        </div>
+                        <div class="camera-controls">
+                            <button class="btn-capture" id="capture-btn" onclick="capturePhoto()" title="Capture Photo">
+                                <div class="capture-inner"></div>
+                            </button>
+                            <button class="btn-ghost" id="retake-btn" onclick="retakePhoto()" style="display:none;">🔄 Retake</button>
+                        </div>
+                    </div>
+                    <canvas id="capture-canvas"></canvas>
+                    <div class="demo-status" id="camera-status">Position your eye within the frame</div>
+                    <button class="btn-primary" id="analyse-btn" onclick="runDemo(this)" style="margin-top:20px; display:none;">🔍 Analyse Captured Image</button>
+                </div>
+
+                <!-- Shared Result Section -->
+                <div class="demo-result" id="demo-res" style="display:none;">
+                    <span class="chip chip-green" id="res-stage">✅ Stage 0 — No DR</span>
+                    <span class="chip chip-blue" id="res-conf">Confidence: 96.3%</span>
+                    <span class="chip chip-gold" id="res-inf">Inference: 1.1s</span>
+                    <span class="chip" style="background:#f0fdf4;color:#15803d;">📄 Report Generated</span>
+                    <button class="btn-download-report" onclick="downloadReport()">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+                        </svg>
+                        Download Report
+                    </button>
+                </div>
+                <div class="medical-info">
+
+<h3>Risk Level</h3>
+<p id="risk-level"></p>
+
+<h3>Recommended Diet</h3>
+<div id="diet-advice"></div>
+
+<h3>Doctor Recommendation</h3>
+<div id="doctor-advice"></div>
+
+</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── FOOTER ── -->
+    <footer>
+        <div class="footer-inner">
+            <div>
+                <div class="footer-brand-name">RetinaCare AI</div>
+                <p class="footer-brand-desc">AI-powered early detection of Diabetic Retinopathy and multi-eye disease
+                    screening — built to make specialist-grade care accessible to every patient, everywhere.</p>
+                <div class="footer-tech" style="margin-top:1rem;">
+                    <span class="ftag">Python</span>
+                    <span class="ftag">TensorFlow</span>
+                    <span class="ftag">ResNet-50</span>
+                    <span class="ftag">Flask</span>
+                    <span class="ftag">OpenCV</span>
+                    <span class="ftag">Grad-CAM</span>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Project</h4>
+                <a href="about.html">About DR</a>
+                <a href="approach.html">Methodology</a>
+                <a href="features.html">Features</a>
+                <a href="model.html">AI Model</a>
+            </div>
+            <div class="footer-col">
+                <h4>Features</h4>
+                <a href="features.html">Multi-Disease</a>
+                <a href="features.html">Grad-CAM</a>
+                <a href="model.html">Risk Score</a>
+                <a href="features.html">Telemedicine</a>
+            </div>
+            <div class="footer-col">
+                <h4>Team</h4>
+                <a href="team.html">Developers</a>
+                <a href="demo.html">Live Demo</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            🎓 Project Expo 2025 &nbsp;·&nbsp; RetinaCare AI &nbsp;·&nbsp; Made for better, accessible eye healthcare
+            &nbsp;·&nbsp; All rights reserved
+        </div>
+    </footer>
+
+    <script src="auth.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

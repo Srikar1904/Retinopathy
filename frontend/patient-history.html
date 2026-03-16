@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<title>Patient History - RetinaCare AI</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+.history-container{
+max-width:900px;
+margin:60px auto;
+font-family:Arial;
+}
+
+.history-title{
+text-align:center;
+margin-bottom:30px;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+}
+
+th,td{
+padding:12px;
+border-bottom:1px solid #ddd;
+text-align:center;
+}
+
+th{
+background:#16a34a;
+color:white;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="history-container">
+
+<h1 class="history-title">Patient Scan History</h1>
+
+<table id="historyTable">
+
+<thead>
+<tr>
+<th>Stage</th>
+<th>Confidence</th>
+<th>Date</th>
+</tr>
+</thead>
+
+<tbody>
+</tbody>
+
+</table>
+
+</div>
+
+<script>
+
+const user = JSON.parse(sessionStorage.getItem("rc_user"));
+
+if(!user){
+alert("Please login first");
+window.location.href="login.html";
+}
+
+fetch("http://localhost:5000/history/" + user.email)
+
+.then(res => res.json())
+
+.then(data => {
+
+const tableBody = document.querySelector("#historyTable tbody");
+
+if(data.length === 0){
+
+tableBody.innerHTML =
+"<tr><td colspan='3'>No reports found</td></tr>";
+
+return;
+
+}
+
+data.forEach(row => {
+
+const tr = document.createElement("tr");
+
+tr.innerHTML = `
+<td>${row.stage}</td>
+<td>${row.confidence}</td>
+<td>${new Date(row.scan_date).toLocaleString()}</td>
+`;
+
+tableBody.appendChild(tr);
+
+});
+
+})
+
+.catch(err => {
+
+console.error(err);
+alert("Failed to load history");
+
+});
+
+</script>
+
+</body>
+
+</html>

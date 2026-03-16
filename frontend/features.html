@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Features - RetinaCare AI</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ── NAV ── -->
+    <nav>
+        <div class="nav-logo">
+            <div class="nav-logo-icon">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <circle cx="10" cy="10" r="8" stroke="white" stroke-width="1.5" />
+                    <circle cx="10" cy="10" r="4" fill="white" opacity="0.9" />
+                    <circle cx="10" cy="10" r="1.5" fill="#16a34a" />
+                </svg>
+            </div>
+            <a href="index.html" style="text-decoration: none; color: inherit;"><span class="nav-logo-text">Retina<span>Care</span> AI</span></a>
+        </div>
+        <div class="nav-links">
+            <a href="about.html">About</a>
+            <a href="approach.html">Approach</a>
+            
+            <a href="model.html">Model</a>
+            <a href="patient-history.html">Patient History</a>
+            <a href="team.html">Team</a>
+            <a href="login.html" style="color: var(--green-main); font-weight: 700;">Login</a>
+        </div>
+        <button class="nav-pill" onclick="window.location.href='demo.html'">Live
+            Demo</button>
+    </nav>
+
+    <!-- ── AI FEATURES ── -->
+    <section class="sec sec-alt" id="features" style="padding-top: 120px;">
+        <div class="max-w">
+            <div class="sec-center reveal">
+                <div class="sec-tag">Platform Features</div>
+                <h2 class="sec-title">Beyond <em>Just</em> Retinopathy</h2>
+                <p class="sec-sub" style="margin:0 auto;">A full-stack eye health intelligence system — not just a
+                    classifier.</p>
+            </div>
+            <div class="features-grid reveal">
+                <div class="feat-card">
+                    <div class="feat-icon">👁️</div>
+                    <h3>Multi-Disease Detection</h3>
+                    <p>Detects Diabetic Retinopathy, Glaucoma, AMD, and Cataracts from a single scan — one model, four
+                        conditions.</p>
+                    <span class="feat-tag">AI / ML</span>
+                </div>
+                <div class="feat-card">
+                    <div class="feat-icon">🔬</div>
+                    <h3>Grad-CAM Explainability</h3>
+                    <p>Highlights the exact retinal region that triggered the prediction — making the AI transparent and
+                        trustworthy for clinicians.</p>
+                    <span class="feat-tag">Explainable AI</span>
+                </div>
+                <div class="feat-card">
+                    <div class="feat-icon">📊</div>
+                    <h3>Patient Risk Score</h3>
+                    <p>Combines HbA1c, blood pressure, and diabetes duration with the scan result to produce a
+                        personalised 5-year risk score.</p>
+                    <span class="feat-tag">Clinical</span>
+                </div>
+                <div class="feat-card">
+                    <div class="feat-icon">📱</div>
+                    <h3>Telemedicine Integration</h3>
+                    <p>Rural patients upload photos via smartphone. AI triages severity so doctors only review flagged
+                        cases — saving time.</p>
+                    <span class="feat-tag">Healthcare Access</span>
+                </div>
+                <div class="feat-card">
+                    <div class="feat-icon">📋</div>
+                    <h3>Auto Report Generator</h3>
+                    <p>Generates a clean, plain-language PDF report for patients — no medical jargon — so they
+                        understand their diagnosis.</p>
+                    <span class="feat-tag">UX</span>
+                </div>
+                <div class="feat-card">
+                    <div class="feat-icon">🗺️</div>
+                    <h3>Epidemiology Heatmap</h3>
+                    <p>Visualises DR prevalence across districts using anonymous aggregated data — helping health
+                        officials prioritise resources.</p>
+                    <span class="feat-tag">Public Health</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ── TELEMEDICINE ── -->
+    <section class="sec sec-dark">
+        <div class="max-w">
+            <div class="sec-center reveal">
+                <div class="sec-tag-white">Rural Healthcare</div>
+                <h2 class="sec-title sec-title-white">Telemedicine for <em style="color:#4ade80;">Rural India</em></h2>
+                <p class="sec-sub-white">Bringing specialist-level eye care to patients in areas with no
+                    ophthalmologists — via a smartphone.</p>
+            </div>
+            <div class="tele-grid reveal">
+                <div class="tele-step">
+                    <div class="tele-num">01</div>
+                    <div class="tele-icon">📱</div>
+                    <h3>Patient Uploads Photo</h3>
+                    <p>Rural patient photographs their eye using a low-cost smartphone adapter and uploads via the app.
+                    </p>
+                </div>
+                <div class="tele-step">
+                    <div class="tele-num">02</div>
+                    <div class="tele-icon">🤖</div>
+                    <h3>AI Triages Instantly</h3>
+                    <p>Model runs in under 2 seconds, flags urgent cases (Stage 3–4) and marks safe cases (Stage 0–1)
+                        for routine review.</p>
+                </div>
+                <div class="tele-step">
+                    <div class="tele-num">03</div>
+                    <div class="tele-icon">👨‍⚕️</div>
+                    <h3>Doctor Reviews Flagged</h3>
+                    <p>Ophthalmologist only reviews high-priority cases — 10× more patients screened per hour.</p>
+                </div>
+            </div>
+
+            <!-- India heatmap -->
+            <div style="margin-top:3rem;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;"
+                class="reveal">
+                <div>
+                    <h3 style="font-family:var(--font-display);font-size:1.4rem;color:white;margin-bottom:0.7rem;">DR
+                        Prevalence Heatmap</h3>
+                    <p style="font-size:0.85rem;color:rgba(255,255,255,0.55);line-height:1.7;margin-bottom:1.2rem;">
+                        Anonymous aggregated patient data reveals high-risk zones — helping health authorities deploy
+                        mobile screening units.</p>
+                    <div style="display:flex;flex-direction:column;gap:0.6rem;">
+                        <div
+                            style="display:flex;align-items:center;gap:0.8rem;font-size:0.8rem;color:rgba(255,255,255,0.65);">
+                            <div style="width:12px;height:12px;border-radius:50%;background:#ef4444;"></div> High
+                            prevalence (&gt;25%)
+                        </div>
+                        <div
+                            style="display:flex;align-items:center;gap:0.8rem;font-size:0.8rem;color:rgba(255,255,255,0.65);">
+                            <div style="width:12px;height:12px;border-radius:50%;background:#f59e0b;"></div> Moderate
+                            (15–25%)
+                        </div>
+                        <div
+                            style="display:flex;align-items:center;gap:0.8rem;font-size:0.8rem;color:rgba(255,255,255,0.65);">
+                            <div style="width:12px;height:12px;border-radius:50%;background:#22c55e;"></div> Low
+                            (&lt;15%)
+                        </div>
+                    </div>
+                </div>
+                <!-- Simplified India map SVG -->
+                <div>
+                    <svg viewBox="0 0 280 320" xmlns="http://www.w3.org/2000/svg"
+                        style="width:100%;max-width:280px;margin:0 auto;display:block;">
+                        <rect width="280" height="320" fill="#0f3d22" rx="12" />
+                        <!-- Simplified India silhouette as region blocks -->
+                        <path
+                            d="M80 30 L200 30 L220 60 L230 100 L220 140 L200 170 L195 210 L175 260 L160 290 L145 290 L135 265 L115 220 L90 190 L70 170 L60 140 L55 100 L60 60 Z"
+                            fill="#166534" stroke="#15803d" stroke-width="1" />
+                        <!-- State regions (rough) -->
+                        <ellipse cx="148" cy="75" rx="18" ry="14" fill="#ef4444" opacity="0.6" />
+                        <text x="148" y="79" font-family="'Plus Jakarta Sans',sans-serif" font-size="7" fill="white"
+                            text-anchor="middle">Punjab</text>
+                        <ellipse cx="170" cy="110" rx="22" ry="15" fill="#f59e0b" opacity="0.6" />
+                        <text x="170" y="114" font-family="'Plus Jakarta Sans',sans-serif" font-size="7" fill="white"
+                            text-anchor="middle">UP / Bihar</text>
+                        <ellipse cx="100" cy="140" rx="18" ry="14" fill="#f59e0b" opacity="0.5" />
+                        <text x="100" y="144" font-family="'Plus Jakarta Sans',sans-serif" font-size="7" fill="white"
+                            text-anchor="middle">Rajasthan</text>
+                        <ellipse cx="155" cy="155" rx="16" ry="14" fill="#ef4444" opacity="0.55" />
+                        <text x="155" y="159" font-family="'Plus Jakarta Sans',sans-serif" font-size="7" fill="white"
+                            text-anchor="middle">Maharashtra</text>
+                        <ellipse cx="160" cy="200" rx="14" ry="12" fill="#22c55e" opacity="0.5" />
+                        <text x="160" y="204" font-family="'Plus Jakarta Sans',sans-serif" font-size="7" fill="white"
+                            text-anchor="middle">Karnataka</text>
+                        <ellipse cx="152" cy="245" rx="12" ry="10" fill="#22c55e" opacity="0.5" />
+                        <text x="152" y="249" font-family="'Plus Jakarta Sans',sans-serif" font-size="7" fill="white"
+                            text-anchor="middle">Tamil Nadu</text>
+                        <!-- Telangana highlight -->
+                        <ellipse cx="170" cy="180" rx="14" ry="11" fill="#ef4444" opacity="0.7" />
+                        <text x="170" y="184" font-family="'Plus Jakarta Sans',sans-serif" font-size="7" fill="white"
+                            text-anchor="middle" font-weight="700">Telangana</text>
+                        <!-- Title -->
+                        <text x="140" y="310" font-family="'Plus Jakarta Sans',sans-serif" font-size="8"
+                            fill="rgba(255,255,255,0.4)" text-anchor="middle">DR Prevalence — India
+                            (Illustrative)</text>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── REPORT PREVIEW ── -->
+    <section class="sec">
+        <div class="max-w" style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;">
+            <div class="reveal">
+                <div class="sec-tag">Patient Reports</div>
+                <h2 class="sec-title">Reports Patients<br>Can <em>Actually Read</em></h2>
+                <p class="sec-sub">Auto-generated plain-language PDF reports — no medical jargon. The patient
+                    understands their condition and next steps.</p>
+                <div class="what-points" style="margin-top:1.5rem;">
+                    <div class="wpt">
+                        <div class="wpt-icon">📋</div>
+                        <div>
+                            <h4>Diagnosis + Stage</h4>
+                            <p>Clear severity grade with a simple colour-coded risk indicator.</p>
+                        </div>
+                    </div>
+                    <div class="wpt">
+                        <div class="wpt-icon">🗓️</div>
+                        <div>
+                            <h4>Next Steps & Timeline</h4>
+                            <p>When to return, what tests to do, which specialist to see.</p>
+                        </div>
+                    </div>
+                    <div class="wpt">
+                        <div class="wpt-icon">📈</div>
+                        <div>
+                            <h4>Trend Over Time</h4>
+                            <p>Progress chart showing how the patient's condition has changed across visits.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="reveal">
+                <div class="report-card">
+                    <div class="rc-head">
+                        <div class="rc-head-title">RetinaCare AI Report</div>
+                        <div class="rc-head-logo">retinacareai.health</div>
+                    </div>
+                    <div class="rc-body">
+                        <div class="rc-patient">
+                            <div class="rc-avatar">RK</div>
+                            <div>
+                                <div class="rc-name">Ramesh Kumar</div>
+                                <div class="rc-id">Patient ID: RC-2025-0472 · Age 54</div>
+                            </div>
+                        </div>
+                        <div class="rc-row"><span class="rc-key">Scan Date</span><span class="rc-val">14 March
+                                2025</span></div>
+                        <div class="rc-row"><span class="rc-key">Right Eye</span><span class="rc-val"
+                                style="color:#f59e0b;">Stage 1 — Mild NPDR</span></div>
+                        <div class="rc-row"><span class="rc-key">Left Eye</span><span class="rc-val"
+                                style="color:#16a34a;">Stage 0 — No DR</span></div>
+                        <div class="rc-row"><span class="rc-key">HbA1c</span><span class="rc-val">8.2%</span></div>
+                        <div class="rc-row"><span class="rc-key">Next Visit</span><span class="rc-val">September
+                                2025</span></div>
+                        <div class="rc-result">
+                            <div class="rc-result-dot"></div>
+                            <div class="rc-result-text">Annual monitoring recommended — vision currently stable.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── FOOTER ── -->
+    <footer>
+        <div class="footer-inner">
+            <div>
+                <div class="footer-brand-name">RetinaCare AI</div>
+                <p class="footer-brand-desc">AI-powered early detection of Diabetic Retinopathy and multi-eye disease
+                    screening — built to make specialist-grade care accessible to every patient, everywhere.</p>
+                <div class="footer-tech" style="margin-top:1rem;">
+                    <span class="ftag">Python</span>
+                    <span class="ftag">TensorFlow</span>
+                    <span class="ftag">ResNet-50</span>
+                    <span class="ftag">Flask</span>
+                    <span class="ftag">OpenCV</span>
+                    <span class="ftag">Grad-CAM</span>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Project</h4>
+                <a href="about.html">About DR</a>
+                <a href="approach.html">Methodology</a>
+                <a href="features.html">Features</a>
+                <a href="model.html">AI Model</a>
+            </div>
+            <div class="footer-col">
+                <h4>Features</h4>
+                <a href="features.html">Multi-Disease</a>
+                <a href="features.html">Grad-CAM</a>
+                <a href="model.html">Risk Score</a>
+                <a href="features.html">Telemedicine</a>
+            </div>
+            <div class="footer-col">
+                <h4>Team</h4>
+                <a href="team.html">Developers</a>
+                <a href="demo.html">Live Demo</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            🎓 Project Expo 2025 &nbsp;·&nbsp; RetinaCare AI &nbsp;·&nbsp; Made for better, accessible eye healthcare
+            &nbsp;·&nbsp; All rights reserved
+        </div>
+    </footer>
+
+    <script src="auth.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login - RetinaCare AI</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body class="login-body">
+
+
+    <div class="login-wrapper">
+
+        <!-- LEFT VISUAL -->
+        <div class="login-visual">
+            <div class="login-visual-text">
+                <h2>Advanced Diagnostics for Every Patient.</h2>
+                <p>Join thousands of healthcare professionals using RetinaCare AI to prevent blindness worldwide.</p>
+            </div>
+        </div>
+
+
+        <!-- RIGHT CONTENT -->
+        <div class="login-content">
+            <div class="login-card">
+
+                <!-- LOGIN FORM -->
+
+                <div id="login-form-container">
+
+                    <div class="login-header">
+
+                        <div class="logo-small">
+
+                            <svg width="60" height="35" viewBox="0 0 680 390">
+                                <ellipse cx="340" cy="185" rx="145" ry="85" fill="#ffffff" stroke="#16a34a"
+                                    stroke-width="20" />
+                                <circle cx="340" cy="185" r="50" fill="#16a34a" />
+                                <circle cx="340" cy="185" r="24" fill="#0d1a18" />
+                            </svg>
+
+                        </div>
+
+                        <h1>Welcome Back</h1>
+                        <p>Enter your credentials to access the platform</p>
+
+                    </div>
+
+
+                    <form class="login-form" onsubmit="loginUser(event)">
+
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" id="login-email" placeholder="doctor@hospital.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" id="login-password" placeholder="••••••••" required>
+                        </div>
+
+                        <div class="login-options">
+                            <label style="display:flex;align-items:center;gap:8px;">
+                                <input type="checkbox" style="width:auto;"> Remember me
+                            </label>
+                            <a href="#">Forgot Password?</a>
+                        </div>
+
+                        <button type="submit" class="btn-login">Sign In</button>
+
+                    </form>
+
+
+                    <div class="login-footer">
+
+                        Don't have an account?
+
+                        <a href="#" onclick="toggleAuthMode('register'); return false;">
+                            Register Now
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- REGISTER FORM -->
+
+                <div id="register-form-container" style="display:none;">
+
+                    <div class="login-header">
+
+                        <div class="logo-small">
+
+                            <svg width="60" height="35" viewBox="0 0 680 390">
+                                <ellipse cx="340" cy="185" rx="145" ry="85" fill="#ffffff" stroke="#16a34a"
+                                    stroke-width="20" />
+                                <circle cx="340" cy="185" r="50" fill="#16a34a" />
+                                <circle cx="340" cy="185" r="24" fill="#0d1a18" />
+                            </svg>
+
+                        </div>
+
+                        <h1>Create Account</h1>
+                        <p>Join RetinaCare AI for advanced eye screening</p>
+
+                    </div>
+
+
+                    <form class="login-form" onsubmit="registerUser(event)">
+
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" id="reg-name" placeholder="Dr. John Doe" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" id="reg-email" placeholder="doctor@hospital.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="tel" id="reg-phone" placeholder="9876543210" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" id="reg-password" placeholder="Create password" required>
+                        </div>
+
+                        <button type="submit" class="btn-login">Register</button>
+
+                    </form>
+
+
+                    <div class="login-footer">
+
+                        Already have an account?
+
+                        <a href="#" onclick="toggleAuthMode('login'); return false;">
+                            Login
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+    <script src="auth.js"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>
