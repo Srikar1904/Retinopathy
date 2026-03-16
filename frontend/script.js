@@ -200,7 +200,7 @@ const user=JSON.parse(sessionStorage.getItem("rc_user"))
 
 if(!user) return
 
-await fetch("http://localhost:5000/saveReport",{
+await fetch("/.netlify/functions/saveReport",{
 
 method:"POST",
 

@@ -59,7 +59,7 @@ const password=document.getElementById("reg-password").value;
 
 try{
 
-const res=await fetch("http://localhost:5000/register",{
+const res=await fetch("/.netlify/functions/register",{
 
 method:"POST",
 headers:{
@@ -102,7 +102,7 @@ const password=document.getElementById("login-password").value;
 
 try{
 
-const res=await fetch("http://localhost:5000/login",{
+const res=await fetch("/.netlify/functions/login",{
 
 method:"POST",
 headers:{
@@ -120,7 +120,7 @@ const data=await res.json();
 
 if(data.status==="success"){
 
-setUser({email});
+setUser({email,name:data.name||email});
 
 window.location.href="index.html";
 
