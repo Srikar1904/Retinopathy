@@ -70,7 +70,29 @@ res.json({status:"fail"})
 })
 
 })
+// UPDATE PASSWORD (Forgot Password)
 
+app.post("/updatePassword",(req,res)=>{
+
+const {email,newPassword}=req.body;
+
+const sql="UPDATE users SET password=? WHERE email=?";
+
+db.query(sql,[newPassword,email],(err,result)=>{
+
+if(err){
+res.json({status:"error"});
+}
+else if(result.affectedRows>0){
+res.json({status:"success"});
+}
+else{
+res.json({status:"user_not_found"});
+}
+
+});
+
+});
 /* SAVE REPORT */
 app.post("/saveReport",(req,res)=>{
 

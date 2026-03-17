@@ -1,39 +1,133 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
+
 <meta charset="UTF-8">
-<title>Patient History - RetinaCare AI</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Patient History • RetinaCare AI</title>
 
 <link rel="stylesheet" href="style.css">
 
 <style>
 
+/* =========================
+PATIENT HISTORY
+========================= */
+
 .history-container{
-max-width:900px;
-margin:60px auto;
-font-family:Arial;
+max-width:1100px;
+margin:auto;
+padding-top:120px;
+}
+
+.history-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:30px;
+flex-wrap:wrap;
+gap:15px;
 }
 
 .history-title{
-text-align:center;
-margin-bottom:30px;
+font-family:var(--font-display);
+font-size:2rem;
+color:var(--green-dark);
 }
 
-table{
-width:100%;
-border-collapse:collapse;
+.history-search{
+padding:12px 16px;
+border-radius:10px;
+border:1px solid var(--border);
+width:250px;
 }
 
-th,td{
-padding:12px;
-border-bottom:1px solid #ddd;
-text-align:center;
+/* cards */
+
+.history-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:24px;
 }
 
-th{
-background:#16a34a;
+.history-card{
+background:white;
+border-radius:16px;
+padding:22px;
+border:1px solid var(--border);
+box-shadow:0 10px 30px rgba(0,0,0,0.05);
+transition:.3s;
+}
+
+.history-card:hover{
+transform:translateY(-6px);
+box-shadow:0 15px 35px rgba(0,0,0,0.08);
+}
+
+.patient-name{
+font-weight:700;
+font-size:1.2rem;
+margin-bottom:6px;
+}
+
+.patient-meta{
+font-size:.85rem;
+color:var(--muted);
+margin-bottom:16px;
+}
+
+/* stage badge */
+
+.stage{
+display:inline-block;
+padding:6px 14px;
+border-radius:30px;
+font-size:.8rem;
+font-weight:700;
+margin-bottom:16px;
+}
+
+.stage-normal{
+background:#dcfce7;
+color:#15803d;
+}
+
+.stage-moderate{
+background:#fef3c7;
+color:#b45309;
+}
+
+.stage-severe{
+background:#fee2e2;
+color:#dc2626;
+}
+
+/* result */
+
+.result-row{
+display:flex;
+justify-content:space-between;
+font-size:.9rem;
+margin-bottom:10px;
+}
+
+.download-btn{
+margin-top:10px;
+padding:10px 18px;
+background:var(--green-main);
 color:white;
+border:none;
+border-radius:8px;
+font-weight:600;
+cursor:pointer;
+transition:.3s;
+}
+
+.download-btn:hover{
+background:var(--green-dark);
 }
 
 </style>
@@ -42,75 +136,141 @@ color:white;
 
 <body>
 
-<div class="history-container">
+<nav>
 
-<h1 class="history-title">Patient Scan History</h1>
+<div class="nav-logo">
+<div class="nav-logo-icon"></div>
+<a href="index.html"><span class="nav-logo-text">Retina<span>Care</span> AI</span></a>
+</div>
 
-<table id="historyTable">
+<div class="nav-links">
+<a href="about.html">About</a>
+<a href="features.html">Features</a>
+<a href="patient-history.html">Patient History</a>
+<a href="team.html">Team</a>
+</div>
 
-<thead>
-<tr>
-<th>Stage</th>
-<th>Confidence</th>
-<th>Date</th>
-</tr>
-</thead>
+<button class="nav-pill" onclick="location.href='demo.html'">Live Demo</button>
 
-<tbody>
-</tbody>
+</nav>
 
-</table>
+<section class="history-container">
+
+<div class="history-header">
+
+<h2 class="history-title">Patient Scan History</h2>
+
+<input class="history-search" placeholder="Search patient">
 
 </div>
 
+<div class="history-grid">
+
+<!-- CARD -->
+
+<div class="history-card">
+
+<div class="patient-name">Ravi Kumar</div>
+<div class="patient-meta">ID: PT-1023 • 12 Mar 2026</div>
+
+<span class="stage stage-normal">Normal</span>
+
+<div class="result-row">
+<span>Confidence</span>
+<span>97%</span>
+</div>
+
+<div class="result-row">
+<span>Disease</span>
+<span>None</span>
+</div>
+
+<button class="download-btn" onclick="downloadReport('Ravi Kumar','Normal','97%','12 Mar 2026')">
+Download Report
+</button>
+
+</div>
+
+<!-- CARD -->
+
+<div class="history-card">
+
+<div class="patient-name">Anita Sharma</div>
+<div class="patient-meta">ID: PT-1024 • 11 Mar 2026</div>
+
+<span class="stage stage-moderate">Moderate DR</span>
+
+<div class="result-row">
+<span>Confidence</span>
+<span>92%</span>
+</div>
+
+<div class="result-row">
+<span>Disease</span>
+<span>Diabetic Retinopathy</span>
+</div>
+
+<button class="download-btn" onclick="downloadReport('Anita Sharma','Moderate DR','92%','11 Mar 2026')">
+Download Report
+</button>
+
+</div>
+
+<!-- CARD -->
+
+<div class="history-card">
+
+<div class="patient-name">Suresh Reddy</div>
+<div class="patient-meta">ID: PT-1025 • 10 Mar 2026</div>
+
+<span class="stage stage-severe">Severe DR</span>
+
+<div class="result-row">
+<span>Confidence</span>
+<span>96%</span>
+</div>
+
+<div class="result-row">
+<span>Disease</span>
+<span>Proliferative DR</span>
+</div>
+
+<button class="download-btn" onclick="downloadReport('Suresh Reddy','Severe DR','96%','10 Mar 2026')">
+Download Report
+</button>
+</div>
+
+</div>
+
+</section>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script>
 
-const user = JSON.parse(sessionStorage.getItem("rc_user"));
+function downloadReport(name,stage,confidence,date){
 
-if(!user){
-alert("Please login first");
-window.location.href="login.html";
+const { jsPDF } = window.jspdf;
+
+const doc = new jsPDF();
+
+doc.setFontSize(18);
+doc.text("RetinaCare AI - Medical Report",20,20);
+
+doc.setFontSize(12);
+
+doc.text("Patient Name: "+name,20,50);
+doc.text("Scan Date: "+date,20,60);
+doc.text("Diagnosis: "+stage,20,70);
+doc.text("AI Confidence: "+confidence,20,80);
+
+doc.text("Recommendation:",20,100);
+
+doc.text("• Regular eye checkups recommended.",20,110);
+doc.text("• Maintain healthy blood sugar levels.",20,120);
+doc.text("• Consult ophthalmologist if symptoms worsen.",20,130);
+
+doc.save(name+"_RetinaCare_Report.pdf");
+
 }
-
-fetch("http://localhost:5000/history/" + user.email)
-
-.then(res => res.json())
-
-.then(data => {
-
-const tableBody = document.querySelector("#historyTable tbody");
-
-if(data.length === 0){
-
-tableBody.innerHTML =
-"<tr><td colspan='3'>No reports found</td></tr>";
-
-return;
-
-}
-
-data.forEach(row => {
-
-const tr = document.createElement("tr");
-
-tr.innerHTML = `
-<td>${row.stage}</td>
-<td>${row.confidence}</td>
-<td>${new Date(row.scan_date).toLocaleString()}</td>
-`;
-
-tableBody.appendChild(tr);
-
-});
-
-})
-
-.catch(err => {
-
-console.error(err);
-alert("Failed to load history");
-
-});
 
 </script>
 

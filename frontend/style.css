@@ -1759,3 +1759,289 @@ LOGIN PAGE
 .btn-download-report svg {
     flex-shrink: 0;
 }
+/* MODEL PAGE */
+
+.model-section{
+padding-top:120px;
+}
+
+.model-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:60px;
+align-items:center;
+max-width:1200px;
+margin:auto;
+}
+
+.heatmap-container{
+max-width:340px;
+margin:auto;
+border-radius:16px;
+overflow:hidden;
+box-shadow:0 20px 50px rgba(0,0,0,0.15);
+border:1px solid var(--border);
+}
+
+.heatmap-svg{
+width:100%;
+}
+
+.gradcam-label{
+text-align:center;
+font-size:0.85rem;
+font-weight:700;
+color:var(--green-main);
+letter-spacing:1px;
+margin-bottom:10px;
+}
+
+.heatmap-desc{
+font-size:0.8rem;
+text-align:center;
+color:var(--muted);
+margin-top:12px;
+max-width:300px;
+margin-left:auto;
+margin-right:auto;
+}
+
+.arch-card{
+background:white;
+border-radius:16px;
+padding:24px;
+border:1px solid var(--border);
+box-shadow:0 10px 30px rgba(0,0,0,0.06);
+margin-top:20px;
+}
+
+.arch-head{
+font-weight:700;
+margin-bottom:14px;
+color:var(--green-dark);
+}
+
+.arch-layer{
+display:flex;
+justify-content:space-between;
+padding:10px 0;
+border-bottom:1px solid var(--border);
+font-size:0.9rem;
+}
+
+.arch-layer:last-child{
+border:none;
+}
+
+.metrics-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:16px;
+margin-top:20px;
+}
+
+.metric{
+background:var(--green-bg);
+padding:18px;
+border-radius:12px;
+text-align:center;
+border:1px solid var(--green-soft);
+}
+
+.metric-num{
+font-size:1.6rem;
+font-weight:800;
+color:var(--green-main);
+}
+
+.metric-lbl{
+font-size:0.85rem;
+color:var(--muted);
+margin-top:4px;
+}
+
+@media(max-width:900px){
+
+.model-grid{
+grid-template-columns:1fr;
+gap:40px;
+}
+
+.heatmap-container{
+max-width:300px;
+}
+
+}
+/* ===== GRAD-CAM STAGE ANIMATION ===== */
+
+.anim-stage{
+opacity:0;
+animation:stageCycle 12s infinite;
+}
+
+.anim-stage-0{
+animation-delay:0s;
+}
+
+.anim-stage-2{
+animation-delay:4s;
+}
+
+.anim-stage-4{
+animation-delay:8s;
+}
+
+@keyframes stageCycle{
+
+0%{
+opacity:0;
+transform:translateY(5px);
+}
+
+5%,28%{
+opacity:1;
+transform:translateY(0);
+}
+
+33%,100%{
+opacity:0;
+transform:translateY(-5px);
+}
+
+}
+/* =========================
+FORGOT PASSWORD PAGE
+========================= */
+
+.forgot-body{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+background:linear-gradient(180deg,var(--green-bg),white);
+padding:40px;
+}
+
+/* card */
+
+.forgot-card{
+width:100%;
+max-width:420px;
+background:white;
+padding:40px;
+border-radius:20px;
+border:1px solid var(--border);
+box-shadow:0 20px 50px rgba(0,0,0,0.08);
+text-align:center;
+}
+
+/* icon */
+
+.forgot-icon{
+width:60px;
+height:60px;
+border-radius:50%;
+background:var(--green-soft);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:26px;
+margin:0 auto 18px auto;
+color:var(--green-dark);
+}
+
+/* heading */
+
+.forgot-title{
+font-family:var(--font-display);
+font-size:1.8rem;
+color:var(--green-dark);
+margin-bottom:8px;
+}
+
+.forgot-sub{
+font-size:0.9rem;
+color:var(--muted);
+margin-bottom:25px;
+}
+
+/* input */
+
+.forgot-form input{
+width:100%;
+padding:14px 18px;
+border-radius:12px;
+border:1px solid var(--border);
+background:#f9fafb;
+font-size:0.95rem;
+margin-bottom:18px;
+transition:all .3s ease;
+}
+
+.forgot-form input:focus{
+outline:none;
+border-color:var(--green-main);
+background:white;
+box-shadow:0 0 0 4px var(--green-soft);
+}
+
+/* button */
+
+.btn-reset{
+width:100%;
+padding:14px;
+border:none;
+border-radius:12px;
+background:linear-gradient(135deg,var(--green-main),var(--green-dark));
+color:white;
+font-weight:700;
+font-size:1rem;
+cursor:pointer;
+transition:all .3s ease;
+box-shadow:0 6px 16px rgba(22,163,74,0.25);
+}
+
+.btn-reset:hover{
+transform:translateY(-2px);
+box-shadow:0 10px 25px rgba(22,163,74,0.35);
+}
+
+/* success message */
+
+.reset-success{
+margin-top:15px;
+font-size:0.9rem;
+color:var(--green-dark);
+font-weight:600;
+}
+
+/* back to login */
+
+.forgot-back{
+margin-top:20px;
+font-size:0.85rem;
+}
+
+.forgot-back a{
+color:var(--green-main);
+text-decoration:none;
+font-weight:600;
+}
+
+.forgot-back a:hover{
+text-decoration:underline;
+}
+.forgot-card{
+animation:fadeUp .6s ease;
+}
+
+@keyframes fadeUp{
+from{
+opacity:0;
+transform:translateY(20px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
