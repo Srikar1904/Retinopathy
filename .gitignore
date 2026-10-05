@@ -1,0 +1,47 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# Environment variables / secrets
+.env
+.env.*
+!.env.example
+
+# ML datasets
+ml/dataset/
+ml/datasets/
+
+# Trained model files
+ml/models/*.keras
+ml/models/*.h5
+ml/models/*.hdf5
+ml/models/*.ckpt*
+
+# Generated ML outputs
+ml/outputs/
+ml/evaluation/
+
+# Temporary / backup files
+*_backup.html
+*_backup.css
+*.bak
+*.tmp
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/

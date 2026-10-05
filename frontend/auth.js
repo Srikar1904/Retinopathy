@@ -88,6 +88,19 @@ alert("Server connection error");
 }
 
 };
+/* ─────────────────────────────
+   OPEN REGISTER MODE FROM POPUP
+───────────────────────────── */
+
+document.addEventListener("DOMContentLoaded", function(){
+
+    const params = new URLSearchParams(window.location.search);
+
+    if(params.get("mode") === "register"){
+        toggleAuthMode("register");
+    }
+
+});
 
 /* ─────────────────────────────
 LOGIN USER

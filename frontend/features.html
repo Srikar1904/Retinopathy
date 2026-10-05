@@ -4,306 +4,1902 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Features - RetinaCare AI</title>
+
+    <title>Features | RetinaCare AI</title>
+
     <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
         rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* =====================================================
+           RETINACARE AI — FEATURES PAGE
+        ===================================================== */
+
+        .features-hero {
+            padding: 110px 7% 90px;
+            background:
+                radial-gradient(circle at 85% 20%, rgba(34,197,94,.13), transparent 30%),
+                linear-gradient(135deg, #f0fdf4, #ffffff 60%, #ecfdf5);
+            text-align: center;
+        }
+
+        .feature-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 15px;
+            border-radius: 100px;
+            background: rgba(255,255,255,.9);
+            border: 1px solid #bbf7d0;
+            color: #15803d;
+            font-size: .75rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+
+        .feature-kicker span {
+            width: 7px;
+            height: 7px;
+            background: #22c55e;
+            border-radius: 50%;
+            box-shadow: 0 0 0 5px rgba(34,197,94,.10);
+        }
+
+        .features-hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(3rem, 6vw, 5.2rem);
+            line-height: 1.02;
+            letter-spacing: -2px;
+            color: #064e3b;
+            margin-bottom: 22px;
+        }
+
+        .features-hero h1 em {
+            color: var(--green-main);
+        }
+
+        .features-hero p {
+            max-width: 720px;
+            margin: auto;
+            color: #64748b;
+            font-size: 1.02rem;
+            line-height: 1.8;
+        }
+
+        /* =====================================================
+           CORE FEATURES
+        ===================================================== */
+
+        .features-section {
+            padding: 95px 7%;
+        }
+
+        .features-section.soft {
+            background: #f8fffa;
+        }
+
+        .features-heading {
+            max-width: 720px;
+            margin-bottom: 50px;
+        }
+
+        .features-tag {
+            color: var(--green-main);
+            font-size: .75rem;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .features-heading h2 {
+            font-family: var(--font-display);
+            color: #064e3b;
+            font-size: clamp(2.2rem, 4vw, 3.5rem);
+            line-height: 1.12;
+            margin-bottom: 15px;
+        }
+
+        .features-heading h2 em {
+            color: var(--green-main);
+        }
+
+        .features-heading p {
+            color: var(--muted);
+            line-height: 1.8;
+        }
+
+        .feature-grid {
+            max-width: 1200px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .feature-card {
+            min-height: 300px;
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 25px;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+            transition: .35s ease;
+        }
+
+        .feature-card::after {
+            content: "";
+            position: absolute;
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            background: #f0fdf4;
+            right: -55px;
+            top: -55px;
+            z-index: 0;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            border-color: #86efac;
+            box-shadow: 0 22px 50px rgba(6,78,59,.09);
+        }
+
+        .feature-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 17px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #dcfce7;
+            font-size: 25px;
+            margin-bottom: 25px;
+        }
+
+        .feature-number {
+            position: absolute;
+            right: 25px;
+            top: 23px;
+            color: #bbf7d0;
+            font-size: .75rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .feature-card h3 {
+            color: #064e3b;
+            font-size: 1.15rem;
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
+            color: var(--muted);
+            font-size: .87rem;
+            line-height: 1.75;
+        }
+
+        .feature-pill {
+            display: inline-block;
+            margin-top: 22px;
+            padding: 7px 12px;
+            border-radius: 100px;
+            background: #f0fdf4;
+            color: #15803d;
+            font-size: .67rem;
+            font-weight: 800;
+            letter-spacing: .5px;
+        }
+
+        /* =====================================================
+           SCREENING EXPERIENCE
+        ===================================================== */
+
+        .screening-layout {
+            max-width: 1200px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: .9fr 1.1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .screening-copy h2 {
+            font-family: var(--font-display);
+            color: #064e3b;
+            font-size: clamp(2.3rem, 4vw, 3.5rem);
+            line-height: 1.1;
+            margin-bottom: 18px;
+        }
+
+        .screening-copy h2 em {
+            color: var(--green-main);
+        }
+
+        .screening-copy > p {
+            color: var(--muted);
+            line-height: 1.8;
+            margin-bottom: 28px;
+        }
+
+        .screening-list {
+            display: flex;
+            flex-direction: column;
+            gap: 13px;
+        }
+
+        .screening-item {
+            display: flex;
+            gap: 13px;
+            align-items: flex-start;
+        }
+
+        .screening-check {
+            flex: 0 0 30px;
+            height: 30px;
+            border-radius: 10px;
+            background: #dcfce7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #15803d;
+            font-weight: 900;
+        }
+
+        .screening-item strong {
+            display: block;
+            color: #334155;
+            font-size: .88rem;
+            margin-bottom: 3px;
+        }
+
+        .screening-item span {
+            color: #64748b;
+            font-size: .78rem;
+            line-height: 1.5;
+        }
+
+        /* =====================================================
+           RESULT MOCKUP
+        ===================================================== */
+
+        .result-panel {
+            background: white;
+            border: 1px solid #dcefe1;
+            border-radius: 28px;
+            padding: 25px;
+            box-shadow: 0 30px 70px rgba(6,78,59,.10);
+        }
+
+        .result-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 18px;
+            border-bottom: 1px solid #edf2f7;
+        }
+
+        .result-brand {
+            font-family: var(--font-display);
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #064e3b;
+        }
+
+        .result-status {
+            padding: 6px 11px;
+            border-radius: 100px;
+            background: #dcfce7;
+            color: #15803d;
+            font-size: .65rem;
+            font-weight: 800;
+        }
+
+        .result-main {
+            padding: 28px 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .result-stage {
+            padding: 25px;
+            border-radius: 20px;
+            background: #f8fffa;
+            border: 1px solid #dcfce7;
+        }
+
+        .result-label {
+            color: #94a3b8;
+            font-size: .68rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .8px;
+            margin-bottom: 8px;
+        }
+
+        .result-value {
+            color: #064e3b;
+            font-family: var(--font-display);
+            font-size: 1.9rem;
+            font-weight: 700;
+        }
+
+        .result-confidence {
+            padding: 25px;
+            border-radius: 20px;
+            background: #064e3b;
+            color: white;
+        }
+
+        .result-confidence .result-label {
+            color: rgba(255,255,255,.6);
+        }
+
+        .confidence-number {
+            font-size: 2rem;
+            font-weight: 800;
+        }
+
+        .confidence-bar {
+            height: 7px;
+            border-radius: 10px;
+            background: rgba(255,255,255,.15);
+            margin-top: 13px;
+            overflow: hidden;
+        }
+
+        .confidence-fill {
+            width: 76%;
+            height: 100%;
+            border-radius: inherit;
+            background: #4ade80;
+        }
+
+        .result-bottom {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .result-action {
+            padding: 13px;
+            border-radius: 13px;
+            text-align: center;
+            background: #f8fafc;
+            border: 1px solid #e5e7eb;
+            color: #475569;
+            font-size: .75rem;
+            font-weight: 700;
+        }
+
+        /* =====================================================
+           GRAD CAM
+        ===================================================== */
+
+        .gradcam-section {
+            max-width: 1200px;
+            margin: auto;
+            background: linear-gradient(135deg, #064e3b, #065f46);
+            border-radius: 30px;
+            padding: 55px;
+            color: white;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 55px;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .gradcam-section::after {
+            content: "";
+            position: absolute;
+            width: 420px;
+            height: 420px;
+            border: 1px solid rgba(255,255,255,.10);
+            border-radius: 50%;
+            right: -190px;
+            top: -180px;
+        }
+
+        .gradcam-copy {
+            position: relative;
+            z-index: 1;
+        }
+
+        .gradcam-copy h2 {
+            font-family: var(--font-display);
+            font-size: 2.8rem;
+            line-height: 1.1;
+            margin-bottom: 18px;
+        }
+
+        .gradcam-copy h2 em {
+            color: #86efac;
+        }
+
+        .gradcam-copy p {
+            color: rgba(255,255,255,.75);
+            line-height: 1.8;
+            font-size: .9rem;
+        }
+
+        .gradcam-points {
+            margin-top: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .gradcam-point {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            color: rgba(255,255,255,.85);
+            font-size: .78rem;
+        }
+
+        .gradcam-point span {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #4ade80;
+        }
+
+        .heatmap-demo {
+            height: 300px;
+            border-radius: 24px;
+            position: relative;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at 48% 50%, #fef3c7 0 4%, transparent 5%),
+                radial-gradient(circle at 50% 50%, #ef4444 0 18%, #991b1b 45%, #450a0a 72%);
+            box-shadow: inset 0 0 80px rgba(0,0,0,.45);
+        }
+
+        .heatmap-demo::before,
+        .heatmap-demo::after {
+            content: "";
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: radial-gradient(
+                circle,
+                rgba(250,204,21,.9),
+                rgba(239,68,68,.35),
+                transparent 70%
+            );
+            filter: blur(3px);
+            animation: featureHeat 3s ease-in-out infinite;
+        }
+
+        .heatmap-demo::before {
+            left: 17%;
+            top: 25%;
+        }
+
+        .heatmap-demo::after {
+            right: 14%;
+            bottom: 20%;
+            animation-delay: 1.2s;
+        }
+
+        @keyframes featureHeat {
+            0%,100% {
+                transform: scale(.85);
+                opacity: .65;
+            }
+            50% {
+                transform: scale(1.15);
+                opacity: 1;
+            }
+        }
+
+        .heatmap-label {
+            position: absolute;
+            left: 18px;
+            bottom: 15px;
+            color: rgba(255,255,255,.7);
+            font-size: .65rem;
+            letter-spacing: .7px;
+            z-index: 2;
+        }
+
+        /* =====================================================
+           HISTORY + REPORT
+        ===================================================== */
+
+        .utility-grid {
+            max-width: 1200px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 22px;
+        }
+
+        .utility-card {
+            padding: 32px;
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 23px;
+            transition: .3s ease;
+        }
+
+        .utility-card:hover {
+            transform: translateY(-6px);
+            border-color: #86efac;
+            box-shadow: 0 18px 45px rgba(6,78,59,.08);
+        }
+
+        .utility-icon {
+            width: 55px;
+            height: 55px;
+            border-radius: 17px;
+            background: #dcfce7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 23px;
+            margin-bottom: 20px;
+        }
+
+        .utility-card h3 {
+            color: #064e3b;
+            margin-bottom: 9px;
+        }
+
+        .utility-card p {
+            color: var(--muted);
+            font-size: .85rem;
+            line-height: 1.7;
+        }
+
+        /* =====================================================
+           DISCLAIMER
+        ===================================================== */
+
+        .feature-disclaimer {
+            max-width: 1200px;
+            margin: 35px auto 0;
+            padding: 18px 20px;
+            background: #fffbeb;
+            border: 1px solid #fde68a;
+            border-radius: 15px;
+            color: #92400e;
+            font-size: .78rem;
+            line-height: 1.7;
+        }
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media(max-width:1000px) {
+
+            .feature-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .screening-layout,
+            .gradcam-section {
+                grid-template-columns: 1fr;
+            }
+
+            .utility-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media(max-width:700px) {
+
+            .features-hero,
+            .features-section {
+                padding-left: 5%;
+                padding-right: 5%;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .result-main,
+            .result-bottom {
+                grid-template-columns: 1fr;
+            }
+
+            .gradcam-section {
+                padding: 32px 24px;
+            }
+
+            .gradcam-copy h2 {
+                font-size: 2.2rem;
+            }
+        }
+/* =====================================================
+   FEATURES — DARK PREMIUM CARDS
+===================================================== */
+
+/* Feature cards */
+.feature-card,
+.features-card,
+.capability-card,
+.tool-card,
+.patient-card,
+.screening-card {
+    background: linear-gradient(
+        145deg,
+        #10251a 0%,
+        #0b1912 100%
+    ) !important;
+
+    border: 1px solid rgba(134, 239, 172, 0.16) !important;
+    color: #e5f7eb !important;
+
+    box-shadow:
+        0 18px 45px rgba(0, 0, 0, 0.22),
+        inset 0 1px 0 rgba(255,255,255,0.025) !important;
+}
+
+/* Card hover */
+.feature-card:hover,
+.features-card:hover,
+.capability-card:hover,
+.tool-card:hover,
+.patient-card:hover,
+.screening-card:hover {
+    border-color: rgba(134, 239, 172, 0.38) !important;
+
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 25px 55px rgba(0,0,0,0.30),
+        0 0 30px rgba(34,197,94,0.06) !important;
+}
+
+/* Card headings */
+.feature-card h3,
+.feature-card h4,
+.features-card h3,
+.features-card h4,
+.capability-card h3,
+.capability-card h4,
+.tool-card h3,
+.tool-card h4,
+.patient-card h3,
+.patient-card h4,
+.screening-card h3,
+.screening-card h4 {
+    color: #f1f5f9 !important;
+}
+
+/* Card descriptions */
+.feature-card p,
+.features-card p,
+.capability-card p,
+.tool-card p,
+.patient-card p,
+.screening-card p {
+    color: #94a3b8 !important;
+}
+
+/* Icons */
+.feature-icon,
+.features-icon,
+.capability-icon,
+.tool-icon {
+    background: linear-gradient(
+        145deg,
+        rgba(34,197,94,0.18),
+        rgba(16,185,129,0.08)
+    ) !important;
+
+    border: 1px solid rgba(134,239,172,0.15) !important;
+}
+
+/* =====================================================
+   LARGE "ONE SCAN. CLEAR OUTPUT." PREVIEW
+===================================================== */
+
+.output-preview,
+.screening-preview,
+.demo-preview,
+.result-preview,
+.preview-card {
+    background: linear-gradient(
+        145deg,
+        #10251a 0%,
+        #09150f 100%
+    ) !important;
+
+    border: 1px solid rgba(134,239,172,0.18) !important;
+
+    box-shadow:
+        0 25px 60px rgba(0,0,0,0.28),
+        inset 0 1px 0 rgba(255,255,255,0.03) !important;
+}
+
+/* Preview text */
+.output-preview h3,
+.output-preview h4,
+.screening-preview h3,
+.screening-preview h4,
+.demo-preview h3,
+.demo-preview h4,
+.result-preview h3,
+.result-preview h4,
+.preview-card h3,
+.preview-card h4 {
+    color: #f1f5f9 !important;
+}
+
+.output-preview p,
+.screening-preview p,
+.demo-preview p,
+.result-preview p,
+.preview-card p {
+    color: #94a3b8 !important;
+}
+
+/* Preview internal white panels */
+.output-preview > div,
+.screening-preview > div,
+.demo-preview > div,
+.result-preview > div,
+.preview-card > div {
+    border-color: rgba(134,239,172,0.12);
+}
+
+/* =====================================================
+   FORCE WHITE CARD BACKGROUNDS DARK
+===================================================== */
+
+.feature-card[style],
+.features-card[style],
+.capability-card[style],
+.tool-card[style],
+.patient-card[style],
+.screening-card[style],
+.output-preview[style],
+.screening-preview[style],
+.demo-preview[style],
+.result-preview[style],
+.preview-card[style] {
+    background: linear-gradient(
+        145deg,
+        #10251a,
+        #0b1912
+    ) !important;
+}
+/* =====================================================
+   FEATURES PAGE — COMPLETE DARK THEME
+===================================================== */
+
+/* Main page sections */
+body.dark-theme section,
+body.dark-theme .features-section {
+    background: #07110d !important;
+    color: #e2e8f0 !important;
+}
+
+/* Hero */
+body.dark-theme section:first-of-type {
+    background:
+        radial-gradient(
+            circle at 80% 35%,
+            rgba(34,197,94,.10),
+            transparent 35%
+        ),
+        #07110d !important;
+}
+
+/* Hero headings */
+body.dark-theme section:first-of-type h1,
+body.dark-theme section:first-of-type h2 {
+    color: #f8fafc !important;
+}
+
+body.dark-theme section:first-of-type p {
+    color: #94a3b8 !important;
+}
+
+/* Green italic words */
+body.dark-theme h1 em,
+body.dark-theme h2 em {
+    color: #22c55e !important;
+}
+
+/* Section headings */
+body.dark-theme .features-heading h2,
+body.dark-theme .features-heading h1 {
+    color: #f8fafc !important;
+}
+
+body.dark-theme .features-heading p {
+    color: #94a3b8 !important;
+}
+
+body.dark-theme .features-tag {
+    color: #4ade80 !important;
+}
+
+/* =====================================================
+   ALL FEATURE / UTILITY CARDS
+===================================================== */
+
+body.dark-theme .utility-card,
+body.dark-theme .feature-card,
+body.dark-theme .feature-box,
+body.dark-theme .capability-card {
+    background:
+        linear-gradient(
+            145deg,
+            #10251a,
+            #091710
+        ) !important;
+
+    border: 1px solid rgba(74,222,128,.18) !important;
+
+    color: #e2e8f0 !important;
+
+    box-shadow:
+        0 18px 45px rgba(0,0,0,.28),
+        inset 0 1px 0 rgba(255,255,255,.025);
+}
+
+body.dark-theme .utility-card h3,
+body.dark-theme .feature-card h3,
+body.dark-theme .feature-box h3,
+body.dark-theme .capability-card h3 {
+    color: #f8fafc !important;
+}
+
+body.dark-theme .utility-card p,
+body.dark-theme .feature-card p,
+body.dark-theme .feature-box p,
+body.dark-theme .capability-card p {
+    color: #94a3b8 !important;
+}
+
+/* Icons */
+body.dark-theme .utility-icon,
+body.dark-theme .feature-icon {
+    background: rgba(34,197,94,.12) !important;
+    border-color: rgba(74,222,128,.18) !important;
+}
+
+/* =====================================================
+   FORCE REMAINING WHITE PANELS DARK
+===================================================== */
+
+body.dark-theme section div[style*="background:white"],
+body.dark-theme section div[style*="background: white"],
+body.dark-theme section div[style*="background:#fff"],
+body.dark-theme section div[style*="background: #fff"] {
+    background: #0d1f16 !important;
+    color: #e2e8f0 !important;
+}
+
+/* Any white card/panel */
+body.dark-theme .white-card,
+body.dark-theme .demo-card,
+body.dark-theme .result-card,
+body.dark-theme .screening-card,
+body.dark-theme .preview-card {
+    background:
+        linear-gradient(
+            145deg,
+            #10251a,
+            #091710
+        ) !important;
+
+    border-color: rgba(74,222,128,.18) !important;
+}
+
+/* =====================================================
+   "ONE SCAN. CLEAR OUTPUT." SECTION
+===================================================== */
+
+body.dark-theme .screening-section,
+body.dark-theme .live-screening,
+body.dark-theme .screening-preview {
+    background: #07110d !important;
+    color: #e2e8f0 !important;
+}
+
+body.dark-theme .screening-section h2,
+body.dark-theme .live-screening h2 {
+    color: #f8fafc !important;
+}
+
+body.dark-theme .screening-section p,
+body.dark-theme .live-screening p {
+    color: #94a3b8 !important;
+}
+
+/* =====================================================
+   INTERNAL RESULT PREVIEW
+===================================================== */
+
+body.dark-theme .screening-preview,
+body.dark-theme .result-preview,
+body.dark-theme .output-preview {
+    background:
+        linear-gradient(
+            145deg,
+            #10251a,
+            #091710
+        ) !important;
+
+    border: 1px solid rgba(74,222,128,.18) !important;
+
+    box-shadow:
+        0 25px 60px rgba(0,0,0,.30) !important;
+}
+
+/* Result preview headings */
+body.dark-theme .screening-preview h3,
+body.dark-theme .result-preview h3,
+body.dark-theme .output-preview h3 {
+    color: #f8fafc !important;
+}
+
+/* Result preview text */
+body.dark-theme .screening-preview p,
+body.dark-theme .result-preview p,
+body.dark-theme .output-preview p {
+    color: #94a3b8 !important;
+}
+
+/* =====================================================
+   CHECKLIST ITEMS
+===================================================== */
+
+body.dark-theme .screening-check {
+    background: rgba(34,197,94,.15) !important;
+    color: #4ade80 !important;
+}
+
+body.dark-theme .screening-check + div strong {
+    color: #f1f5f9 !important;
+}
+
+body.dark-theme .screening-check + div span {
+    color: #94a3b8 !important;
+}
+
+/* =====================================================
+   DARK MODE CARD HOVER
+===================================================== */
+
+body.dark-theme .utility-card:hover,
+body.dark-theme .feature-card:hover,
+body.dark-theme .feature-box:hover {
+    transform: translateY(-5px);
+
+    border-color: rgba(74,222,128,.40) !important;
+
+    box-shadow:
+        0 25px 55px rgba(0,0,0,.35),
+        0 0 30px rgba(34,197,94,.06);
+}
+/* =====================================================
+   FEATURES PAGE — PREMIUM CARD REVEAL
+===================================================== */
+
+.utility-card,
+.feature-card,
+.feature-box,
+.capability-card {
+    opacity: 0;
+    transform: translateY(28px);
+    animation: featureCardReveal .7s ease forwards;
+}
+
+.utility-card:nth-child(1),
+.feature-card:nth-child(1),
+.feature-box:nth-child(1),
+.capability-card:nth-child(1) {
+    animation-delay: .1s;
+}
+
+.utility-card:nth-child(2),
+.feature-card:nth-child(2),
+.feature-box:nth-child(2),
+.capability-card:nth-child(2) {
+    animation-delay: .2s;
+}
+
+.utility-card:nth-child(3),
+.feature-card:nth-child(3),
+.feature-box:nth-child(3),
+.capability-card:nth-child(3) {
+    animation-delay: .3s;
+}
+
+.utility-card:nth-child(4),
+.feature-card:nth-child(4),
+.feature-box:nth-child(4),
+.capability-card:nth-child(4) {
+    animation-delay: .4s;
+}
+
+.utility-card:nth-child(5),
+.feature-card:nth-child(5),
+.feature-box:nth-child(5),
+.capability-card:nth-child(5) {
+    animation-delay: .5s;
+}
+
+.utility-card:nth-child(6),
+.feature-card:nth-child(6),
+.feature-box:nth-child(6),
+.capability-card:nth-child(6) {
+    animation-delay: .6s;
+}
+
+@keyframes featureCardReveal {
+
+    from {
+        opacity: 0;
+        transform: translateY(28px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* Premium hover glow */
+
+.utility-card,
+.feature-card,
+.feature-box,
+.capability-card {
+    transition:
+        transform .35s ease,
+        border-color .35s ease,
+        box-shadow .35s ease;
+}
+
+.utility-card:hover,
+.feature-card:hover,
+.feature-box:hover,
+.capability-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(74,222,128,.38) !important;
+    box-shadow:
+        0 22px 50px rgba(0,0,0,.35),
+        0 0 25px rgba(34,197,94,.07);
+}
+
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .utility-card,
+    .feature-card,
+    .feature-box,
+    .capability-card {
+        opacity: 1;
+        transform: none;
+        animation: none;
+    }
+
+}
+    </style>
 </head>
+
 
 <body>
 
-    <!-- ── NAV ── -->
+    <!-- =====================================================
+         NAVBAR
+    ====================================================== -->
+
     <nav>
-        <div class="nav-logo">
-            <div class="nav-logo-icon">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                    <circle cx="10" cy="10" r="8" stroke="white" stroke-width="1.5" />
-                    <circle cx="10" cy="10" r="4" fill="white" opacity="0.9" />
-                    <circle cx="10" cy="10" r="1.5" fill="#16a34a" />
-                </svg>
+
+        <a href="index.html" style="text-decoration:none;">
+
+            <div class="nav-logo nav-logo--index">
+
+                <img class="nav-logo-svg" src="retinacare-logo.svg" alt="">
+
+                <span class="nav-logo-text">
+                    Retina<span>Care</span> AI
+                </span>
+
             </div>
-            <a href="index.html" style="text-decoration: none; color: inherit;"><span class="nav-logo-text">Retina<span>Care</span> AI</span></a>
-        </div>
+
+        </a>
+
+
         <div class="nav-links">
-            <a href="about.html">About</a>
-            <a href="approach.html">Approach</a>
-            
-            <a href="model.html">Model</a>
-            <a href="patient-history.html">Patient History</a>
-            <a href="team.html">Team</a>
-            <a href="login.html" style="color: var(--green-main); font-weight: 700;">Login</a>
+
+            <a href="about.html">
+                About
+            </a>
+
+            <a href="approach.html">
+                Approach
+            </a>
+
+            <a href="features.html"
+               style="color:var(--green-main);font-weight:700;">
+                Features
+            </a>
+
+            <a href="model.html">
+                Model
+            </a>
+
+            <a href="patient-history.html">
+                Patient History
+            </a>
+
+            <a href="team.html">
+                Team
+            </a>
+
+            <a href="login.html">
+                Login
+            </a>
+
         </div>
-        <button class="nav-pill" onclick="window.location.href='demo.html'">Live
-            Demo</button>
+<button
+    class="theme-toggle"
+    id="theme-toggle"
+    type="button"
+    aria-label="Toggle dark mode"
+    title="Toggle dark mode">
+    🌙
+</button>
+
+        <button class="nav-pill"
+            onclick="window.location.href='demo.html'">
+            Live Demo
+        </button>
+
     </nav>
 
-    <!-- ── AI FEATURES ── -->
-    <section class="sec sec-alt" id="features" style="padding-top: 120px;">
-        <div class="max-w">
-            <div class="sec-center reveal">
-                <div class="sec-tag">Platform Features</div>
-                <h2 class="sec-title">Beyond <em>Just</em> Retinopathy</h2>
-                <p class="sec-sub" style="margin:0 auto;">A full-stack eye health intelligence system — not just a
-                    classifier.</p>
-            </div>
-            <div class="features-grid reveal">
-                <div class="feat-card">
-                    <div class="feat-icon">👁️</div>
-                    <h3>Multi-Disease Detection</h3>
-                    <p>Detects Diabetic Retinopathy, Glaucoma, AMD, and Cataracts from a single scan — one model, four
-                        conditions.</p>
-                    <span class="feat-tag">AI / ML</span>
-                </div>
-                <div class="feat-card">
-                    <div class="feat-icon">🔬</div>
-                    <h3>Grad-CAM Explainability</h3>
-                    <p>Highlights the exact retinal region that triggered the prediction — making the AI transparent and
-                        trustworthy for clinicians.</p>
-                    <span class="feat-tag">Explainable AI</span>
-                </div>
-                <div class="feat-card">
-                    <div class="feat-icon">📊</div>
-                    <h3>Patient Risk Score</h3>
-                    <p>Combines HbA1c, blood pressure, and diabetes duration with the scan result to produce a
-                        personalised 5-year risk score.</p>
-                    <span class="feat-tag">Clinical</span>
-                </div>
-                <div class="feat-card">
-                    <div class="feat-icon">📱</div>
-                    <h3>Telemedicine Integration</h3>
-                    <p>Rural patients upload photos via smartphone. AI triages severity so doctors only review flagged
-                        cases — saving time.</p>
-                    <span class="feat-tag">Healthcare Access</span>
-                </div>
-                <div class="feat-card">
-                    <div class="feat-icon">📋</div>
-                    <h3>Auto Report Generator</h3>
-                    <p>Generates a clean, plain-language PDF report for patients — no medical jargon — so they
-                        understand their diagnosis.</p>
-                    <span class="feat-tag">UX</span>
-                </div>
-                <div class="feat-card">
-                    <div class="feat-icon">🗺️</div>
-                    <h3>Epidemiology Heatmap</h3>
-                    <p>Visualises DR prevalence across districts using anonymous aggregated data — helping health
-                        officials prioritise resources.</p>
-                    <span class="feat-tag">Public Health</span>
-                </div>
-            </div>
+
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
+
+    <section class="features-hero">
+
+        <div class="feature-kicker">
+            <span></span>
+            RetinaCare AI Capabilities
         </div>
+
+
+        <h1>
+            More than a
+            <em>prediction.</em>
+        </h1>
+
+
+        <p>
+            RetinaCare AI combines deep-learning classification,
+            explainable AI, screening results and patient-facing tools
+            into one integrated diabetic retinopathy screening prototype.
+        </p>
+
     </section>
-    
-    <!-- ── TELEMEDICINE ── -->
-    <section class="sec sec-dark">
-        <div class="max-w">
-            <div class="sec-center reveal">
-                <div class="sec-tag-white">Rural Healthcare</div>
-                <h2 class="sec-title sec-title-white">Telemedicine for <em style="color:#4ade80;">Rural India</em></h2>
-                <p class="sec-sub-white">Bringing specialist-level eye care to patients in areas with no
-                    ophthalmologists — via a smartphone.</p>
+
+
+    <!-- =====================================================
+         CORE FEATURES
+    ====================================================== -->
+
+    <section class="features-section soft">
+
+        <div class="features-heading">
+
+            <div class="features-tag">
+                Core capabilities
             </div>
-            <div class="tele-grid reveal">
-                <div class="tele-step">
-                    <div class="tele-num">01</div>
-                    <div class="tele-icon">📱</div>
-                    <h3>Patient Uploads Photo</h3>
-                    <p>Rural patient photographs their eye using a low-cost smartphone adapter and uploads via the app.
+
+            <h2>
+                Built around the
+                <em>complete screening experience.</em>
+            </h2>
+
+            <p>
+                From uploading a retinal image to reviewing the prediction,
+                RetinaCare AI connects the machine-learning model with
+                practical web application features.
+            </p>
+
+        </div>
+
+
+        <div class="feature-grid">
+
+
+            <!-- 01 -->
+
+            <div class="feature-card">
+
+                <div class="feature-number">
+                    01
+                </div>
+
+                <div class="feature-content">
+
+                    <div class="feature-icon">
+                        👁️
+                    </div>
+
+                    <h3>
+                        5-Stage DR Classification
+                    </h3>
+
+                    <p>
+                        Classifies a retinal image into No DR, Mild,
+                        Moderate, Severe or Proliferative diabetic
+                        retinopathy.
                     </p>
+
+                    <span class="feature-pill">
+                        RESNET-50
+                    </span>
+
                 </div>
-                <div class="tele-step">
-                    <div class="tele-num">02</div>
-                    <div class="tele-icon">🤖</div>
-                    <h3>AI Triages Instantly</h3>
-                    <p>Model runs in under 2 seconds, flags urgent cases (Stage 3–4) and marks safe cases (Stage 0–1)
-                        for routine review.</p>
-                </div>
-                <div class="tele-step">
-                    <div class="tele-num">03</div>
-                    <div class="tele-icon">👨‍⚕️</div>
-                    <h3>Doctor Reviews Flagged</h3>
-                    <p>Ophthalmologist only reviews high-priority cases — 10× more patients screened per hour.</p>
-                </div>
+
             </div>
 
-            <!-- India heatmap -->
-            <div style="margin-top:3rem;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;"
-                class="reveal">
-                <div>
-                    <h3 style="font-family:var(--font-display);font-size:1.4rem;color:white;margin-bottom:0.7rem;">DR
-                        Prevalence Heatmap</h3>
-                    <p style="font-size:0.85rem;color:rgba(255,255,255,0.55);line-height:1.7;margin-bottom:1.2rem;">
-                        Anonymous aggregated patient data reveals high-risk zones — helping health authorities deploy
-                        mobile screening units.</p>
-                    <div style="display:flex;flex-direction:column;gap:0.6rem;">
-                        <div
-                            style="display:flex;align-items:center;gap:0.8rem;font-size:0.8rem;color:rgba(255,255,255,0.65);">
-                            <div style="width:12px;height:12px;border-radius:50%;background:#ef4444;"></div> High
-                            prevalence (&gt;25%)
-                        </div>
-                        <div
-                            style="display:flex;align-items:center;gap:0.8rem;font-size:0.8rem;color:rgba(255,255,255,0.65);">
-                            <div style="width:12px;height:12px;border-radius:50%;background:#f59e0b;"></div> Moderate
-                            (15–25%)
-                        </div>
-                        <div
-                            style="display:flex;align-items:center;gap:0.8rem;font-size:0.8rem;color:rgba(255,255,255,0.65);">
-                            <div style="width:12px;height:12px;border-radius:50%;background:#22c55e;"></div> Low
-                            (&lt;15%)
-                        </div>
+
+            <!-- 02 -->
+
+            <div class="feature-card">
+
+                <div class="feature-number">
+                    02
+                </div>
+
+                <div class="feature-content">
+
+                    <div class="feature-icon">
+                        🧠
                     </div>
+
+                    <h3>
+                        Deep Learning Inference
+                    </h3>
+
+                    <p>
+                        A trained ResNet-50 model processes the retinal
+                        image and produces class probabilities for the
+                        five DR stages.
+                    </p>
+
+                    <span class="feature-pill">
+                        TENSORFLOW
+                    </span>
+
                 </div>
-                <!-- Simplified India map SVG -->
-                <div>
-                    <svg viewBox="0 0 280 320" xmlns="http://www.w3.org/2000/svg"
-                        style="width:100%;max-width:280px;margin:0 auto;display:block;">
-                        <rect width="280" height="320" fill="#0f3d22" rx="12" />
-                        <!-- Simplified India silhouette as region blocks -->
-                        <path
-                            d="M80 30 L200 30 L220 60 L230 100 L220 140 L200 170 L195 210 L175 260 L160 290 L145 290 L135 265 L115 220 L90 190 L70 170 L60 140 L55 100 L60 60 Z"
-                            fill="#166534" stroke="#15803d" stroke-width="1" />
-                        <!-- State regions (rough) -->
-                        <ellipse cx="148" cy="75" rx="18" ry="14" fill="#ef4444" opacity="0.6" />
-                        <text x="148" y="79" font-family="'Plus Jakarta Sans',sans-serif" font-size="7" fill="white"
-                            text-anchor="middle">Punjab</text>
-                        <ellipse cx="170" cy="110" rx="22" ry="15" fill="#f59e0b" opacity="0.6" />
-                        <text x="170" y="114" font-family="'Plus Jakarta Sans',sans-serif" font-size="7" fill="white"
-                            text-anchor="middle">UP / Bihar</text>
-                        <ellipse cx="100" cy="140" rx="18" ry="14" fill="#f59e0b" opacity="0.5" />
-                        <text x="100" y="144" font-family="'Plus Jakarta Sans',sans-serif" font-size="7" fill="white"
-                            text-anchor="middle">Rajasthan</text>
-                        <ellipse cx="155" cy="155" rx="16" ry="14" fill="#ef4444" opacity="0.55" />
-                        <text x="155" y="159" font-family="'Plus Jakarta Sans',sans-serif" font-size="7" fill="white"
-                            text-anchor="middle">Maharashtra</text>
-                        <ellipse cx="160" cy="200" rx="14" ry="12" fill="#22c55e" opacity="0.5" />
-                        <text x="160" y="204" font-family="'Plus Jakarta Sans',sans-serif" font-size="7" fill="white"
-                            text-anchor="middle">Karnataka</text>
-                        <ellipse cx="152" cy="245" rx="12" ry="10" fill="#22c55e" opacity="0.5" />
-                        <text x="152" y="249" font-family="'Plus Jakarta Sans',sans-serif" font-size="7" fill="white"
-                            text-anchor="middle">Tamil Nadu</text>
-                        <!-- Telangana highlight -->
-                        <ellipse cx="170" cy="180" rx="14" ry="11" fill="#ef4444" opacity="0.7" />
-                        <text x="170" y="184" font-family="'Plus Jakarta Sans',sans-serif" font-size="7" fill="white"
-                            text-anchor="middle" font-weight="700">Telangana</text>
-                        <!-- Title -->
-                        <text x="140" y="310" font-family="'Plus Jakarta Sans',sans-serif" font-size="8"
-                            fill="rgba(255,255,255,0.4)" text-anchor="middle">DR Prevalence — India
-                            (Illustrative)</text>
-                    </svg>
-                </div>
+
             </div>
+
+
+            <!-- 03 -->
+
+            <div class="feature-card">
+
+                <div class="feature-number">
+                    03
+                </div>
+
+                <div class="feature-content">
+
+                    <div class="feature-icon">
+                        🔥
+                    </div>
+
+                    <h3>
+                        Grad-CAM Explainability
+                    </h3>
+
+                    <p>
+                        Generates a heatmap showing image regions that
+                        contributed to the selected model prediction.
+                    </p>
+
+                    <span class="feature-pill">
+                        EXPLAINABLE AI
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- 04 -->
+
+            <div class="feature-card">
+
+                <div class="feature-number">
+                    04
+                </div>
+
+                <div class="feature-content">
+
+                    <div class="feature-icon">
+                        📊
+                    </div>
+
+                    <h3>
+                        Confidence & Risk Indicator
+                    </h3>
+
+                    <p>
+                        Displays the model's selected class confidence
+                        together with a simple screening-oriented risk
+                        indicator in the results interface.
+                    </p>
+
+                    <span class="feature-pill">
+                        RESULT ANALYSIS
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- 05 -->
+
+            <div class="feature-card">
+
+                <div class="feature-number">
+                    05
+                </div>
+
+                <div class="feature-content">
+
+                    <div class="feature-icon">
+                        📷
+                    </div>
+
+                    <h3>
+                        Live Image Screening
+                    </h3>
+
+                    <p>
+                        Upload a retinal image through the web interface
+                        and send it directly through the connected
+                        machine-learning inference pipeline.
+                    </p>
+
+                    <span class="feature-pill">
+                        LIVE DEMO
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- 06 -->
+
+            <div class="feature-card">
+
+                <div class="feature-number">
+                    06
+                </div>
+
+                <div class="feature-content">
+
+                    <div class="feature-icon">
+                        📄
+                    </div>
+
+                    <h3>
+                        Downloadable Report
+                    </h3>
+
+                    <p>
+                        Generates a downloadable screening report containing
+                        the prediction, confidence, risk level, inference
+                        information and model details.
+                    </p>
+
+                    <span class="feature-pill">
+                        REPORT
+                    </span>
+
+                </div>
+
+            </div>
+
         </div>
+
     </section>
 
-    <!-- ── REPORT PREVIEW ── -->
-    <section class="sec">
-        <div class="max-w" style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;">
-            <div class="reveal">
-                <div class="sec-tag">Patient Reports</div>
-                <h2 class="sec-title">Reports Patients<br>Can <em>Actually Read</em></h2>
-                <p class="sec-sub">Auto-generated plain-language PDF reports — no medical jargon. The patient
-                    understands their condition and next steps.</p>
-                <div class="what-points" style="margin-top:1.5rem;">
-                    <div class="wpt">
-                        <div class="wpt-icon">📋</div>
-                        <div>
-                            <h4>Diagnosis + Stage</h4>
-                            <p>Clear severity grade with a simple colour-coded risk indicator.</p>
-                        </div>
-                    </div>
-                    <div class="wpt">
-                        <div class="wpt-icon">🗓️</div>
-                        <div>
-                            <h4>Next Steps & Timeline</h4>
-                            <p>When to return, what tests to do, which specialist to see.</p>
-                        </div>
-                    </div>
-                    <div class="wpt">
-                        <div class="wpt-icon">📈</div>
-                        <div>
-                            <h4>Trend Over Time</h4>
-                            <p>Progress chart showing how the patient's condition has changed across visits.</p>
-                        </div>
-                    </div>
+
+    <!-- =====================================================
+         SCREENING EXPERIENCE
+    ====================================================== -->
+
+    <section class="features-section">
+
+        <div class="screening-layout">
+
+            <div class="screening-copy">
+
+                <div class="features-tag">
+                    Live screening
                 </div>
-            </div>
-            <div class="reveal">
-                <div class="report-card">
-                    <div class="rc-head">
-                        <div class="rc-head-title">RetinaCare AI Report</div>
-                        <div class="rc-head-logo">retinacareai.health</div>
-                    </div>
-                    <div class="rc-body">
-                        <div class="rc-patient">
-                            <div class="rc-avatar">RK</div>
-                            <div>
-                                <div class="rc-name">Ramesh Kumar</div>
-                                <div class="rc-id">Patient ID: RC-2025-0472 · Age 54</div>
-                            </div>
+
+                <h2>
+                    One scan.
+                    <em>Clear output.</em>
+                </h2>
+
+                <p>
+                    The Live Demo connects the frontend directly to the
+                    RetinaCare AI inference pipeline so users can see the
+                    complete screening workflow in action.
+                </p>
+
+
+                <div class="screening-list">
+
+                    <div class="screening-item">
+
+                        <div class="screening-check">
+                            ✓
                         </div>
-                        <div class="rc-row"><span class="rc-key">Scan Date</span><span class="rc-val">14 March
-                                2025</span></div>
-                        <div class="rc-row"><span class="rc-key">Right Eye</span><span class="rc-val"
-                                style="color:#f59e0b;">Stage 1 — Mild NPDR</span></div>
-                        <div class="rc-row"><span class="rc-key">Left Eye</span><span class="rc-val"
-                                style="color:#16a34a;">Stage 0 — No DR</span></div>
-                        <div class="rc-row"><span class="rc-key">HbA1c</span><span class="rc-val">8.2%</span></div>
-                        <div class="rc-row"><span class="rc-key">Next Visit</span><span class="rc-val">September
-                                2025</span></div>
-                        <div class="rc-result">
-                            <div class="rc-result-dot"></div>
-                            <div class="rc-result-text">Annual monitoring recommended — vision currently stable.</div>
+
+                        <div>
+                            <strong>Upload retinal image</strong>
+                            <span>
+                                Send a supported retinal image to the
+                                screening service.
+                            </span>
                         </div>
+
                     </div>
+
+
+                    <div class="screening-item">
+
+                        <div class="screening-check">
+                            ✓
+                        </div>
+
+                        <div>
+                            <strong>Receive AI prediction</strong>
+                            <span>
+                                View the predicted DR stage and model
+                                confidence.
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="screening-item">
+
+                        <div class="screening-check">
+                            ✓
+                        </div>
+
+                        <div>
+                            <strong>Inspect Grad-CAM</strong>
+                            <span>
+                                View the generated visual explanation
+                                alongside the prediction.
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="screening-item">
+
+                        <div class="screening-check">
+                            ✓
+                        </div>
+
+                        <div>
+                            <strong>Save and report</strong>
+                            <span>
+                                Store the scan in patient history and
+                                download the screening report.
+                            </span>
+                        </div>
+
+                    </div>
+
                 </div>
+
             </div>
+
+
+            <!-- Result mockup -->
+
+            <div class="result-panel">
+
+                <div class="result-top">
+
+                    <div class="result-brand">
+                        RetinaCare AI
+                    </div>
+
+                    <div class="result-status">
+                        SCREENING COMPLETE
+                    </div>
+
+                </div>
+
+
+                <div class="result-main">
+
+                    <div class="result-stage">
+
+                        <div class="result-label">
+                            Predicted Stage
+                        </div>
+
+                        <div class="result-value">
+                            Moderate
+                        </div>
+
+                    </div>
+
+
+                    <div class="result-confidence">
+
+                        <div class="result-label">
+                            Model Confidence
+                        </div>
+
+                        <div class="confidence-number">
+                            76.0%
+                        </div>
+
+                        <div class="confidence-bar">
+                            <div class="confidence-fill"></div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="result-bottom">
+
+                    <div class="result-action">
+                        🔥 Grad-CAM Available
+                    </div>
+
+                    <div class="result-action">
+                        📄 Report Generated
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
+
     </section>
 
-    <!-- ── FOOTER ── -->
+
+    <!-- =====================================================
+         GRAD-CAM
+    ====================================================== -->
+
+    <section class="features-section soft">
+
+        <div class="gradcam-section">
+
+            <div class="gradcam-copy">
+
+                <div class="features-tag"
+                     style="color:#86efac;">
+                    Explainable AI
+                </div>
+
+                <h2>
+                    See where the model
+                    <em>looks.</em>
+                </h2>
+
+                <p>
+                    Grad-CAM provides an additional visual explanation
+                    of the prediction by highlighting regions of the
+                    retinal image that contributed to the selected class.
+                </p>
+
+
+                <div class="gradcam-points">
+
+                    <div class="gradcam-point">
+                        <span></span>
+                        Prediction-linked heatmap
+                    </div>
+
+                    <div class="gradcam-point">
+                        <span></span>
+                        Generated automatically after inference
+                    </div>
+
+                    <div class="gradcam-point">
+                        <span></span>
+                        Helps users inspect model behaviour
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="heatmap-demo">
+
+                <div class="heatmap-label">
+                    GRAD-CAM · MODEL ATTENTION VISUALIZATION
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         PATIENT HISTORY + REPORT
+    ====================================================== -->
+
+    <section class="features-section">
+
+        <div class="features-heading">
+
+            <div class="features-tag">
+                Patient tools
+            </div>
+
+            <h2>
+                Results that remain
+                <em>accessible.</em>
+            </h2>
+
+            <p>
+                RetinaCare AI doesn't stop after the prediction.
+                The application also provides account-based history
+                and report functionality.
+            </p>
+
+        </div>
+
+
+        <div class="utility-grid">
+
+
+            <div class="utility-card">
+
+                <div class="utility-icon">
+                    🗂️
+                </div>
+
+                <h3>
+                    Patient History
+                </h3>
+
+                <p>
+                    Completed scans can be saved against the logged-in
+                    user's account and displayed through the Patient
+                    History page with stage, confidence and scan date.
+                </p>
+
+            </div>
+
+
+            <div class="utility-card">
+
+                <div class="utility-icon">
+                    📥
+                </div>
+
+                <h3>
+                    Screening Report
+                </h3>
+
+                <p>
+                    Users can download a generated report containing
+                    the screening result, model confidence, risk level,
+                    inference information and project model details.
+                </p>
+
+            </div>
+
+
+            <div class="utility-card">
+
+                <div class="utility-icon">
+                    🔐
+                </div>
+
+                <h3>
+                    User Authentication
+                </h3>
+
+                <p>
+                    The application includes registration, login and
+                    password-update functionality connected to the
+                    backend database.
+                </p>
+
+            </div>
+
+
+            <div class="utility-card">
+
+                <div class="utility-icon">
+                    ⚡
+                </div>
+
+                <h3>
+                    Full-Stack Integration
+                </h3>
+
+                <p>
+                    The frontend, Node.js application backend, Python
+                    ML service and MySQL database work together as one
+                    connected application.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="feature-disclaimer">
+
+            <strong>Important:</strong>
+            RetinaCare AI is an AI-assisted screening and research
+            prototype. Model confidence is not a calibrated medical
+            probability, and Grad-CAM is an explanatory visualization,
+            not definitive lesion detection. The system should not be
+            used as a substitute for evaluation by a qualified healthcare
+            professional.
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
     <footer>
+
         <div class="footer-inner">
+
             <div>
-                <div class="footer-brand-name">RetinaCare AI</div>
-                <p class="footer-brand-desc">AI-powered early detection of Diabetic Retinopathy and multi-eye disease
-                    screening — built to make specialist-grade care accessible to every patient, everywhere.</p>
+
+                <div class="footer-brand-name">
+                    RetinaCare AI
+                </div>
+
+                <p class="footer-brand-desc">
+                    AI-assisted diabetic retinopathy screening with
+                    explainable deep learning and patient-focused tools.
+                </p>
+
                 <div class="footer-tech" style="margin-top:1rem;">
+
                     <span class="ftag">Python</span>
                     <span class="ftag">TensorFlow</span>
                     <span class="ftag">ResNet-50</span>
                     <span class="ftag">Flask</span>
                     <span class="ftag">OpenCV</span>
                     <span class="ftag">Grad-CAM</span>
+
                 </div>
+
             </div>
+
+
             <div class="footer-col">
+
                 <h4>Project</h4>
-                <a href="about.html">About DR</a>
-                <a href="approach.html">Methodology</a>
-                <a href="features.html">Features</a>
-                <a href="model.html">AI Model</a>
+
+                <a href="about.html">
+                    About DR
+                </a>
+
+                <a href="approach.html">
+                    Methodology
+                </a>
+
+                <a href="features.html">
+                    Features
+                </a>
+
+                <a href="model.html">
+                    AI Model
+                </a>
+
             </div>
+
+
             <div class="footer-col">
-                <h4>Features</h4>
-                <a href="features.html">Multi-Disease</a>
-                <a href="features.html">Grad-CAM</a>
-                <a href="model.html">Risk Score</a>
-                <a href="features.html">Telemedicine</a>
+
+                <h4>Tools</h4>
+
+                <a href="demo.html">
+                    Live Screening
+                </a>
+
+                <a href="patient-history.html">
+                    Patient History
+                </a>
+
+                <a href="demo.html">
+                    Reports
+                </a>
+
             </div>
+
+
             <div class="footer-col">
-                <h4>Team</h4>
-                <a href="team.html">Developers</a>
-                <a href="demo.html">Live Demo</a>
+
+                <h4>Explore</h4>
+
+                <a href="team.html">
+                    Our Team
+                </a>
+
+                <a href="model.html">
+                    Model
+                </a>
+
+                <a href="login.html">
+                    Login
+                </a>
+
+                <a href="demo.html">
+                    Live Demo
+                </a>
+
             </div>
+
         </div>
+
+
         <div class="footer-bottom">
-            🎓 Project Expo 2025 &nbsp;·&nbsp; RetinaCare AI &nbsp;·&nbsp; Made for better, accessible eye healthcare
-            &nbsp;·&nbsp; All rights reserved
+            RetinaCare AI · AI-assisted retinal screening · All rights reserved
         </div>
+
     </footer>
+
 
     <script src="auth.js"></script>
     <script src="script.js"></script>
+
 </body>
 
 </html>

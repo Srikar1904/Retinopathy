@@ -4,157 +4,1125 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About - RetinaCare AI</title>
+
+    <title>About Diabetic Retinopathy | RetinaCare AI</title>
+
     <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
         rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* =========================================
+           PREMIUM ABOUT PAGE
+        ========================================= */
+
+        .about-hero {
+            min-height: 72vh;
+            padding: 100px 7%;
+            display: grid;
+            grid-template-columns: 1.05fr .95fr;
+            align-items: center;
+            gap: 70px;
+            background:
+                radial-gradient(circle at 85% 30%, rgba(16,185,129,.12), transparent 30%),
+                radial-gradient(circle at 10% 80%, rgba(22,163,74,.08), transparent 28%),
+                linear-gradient(135deg,#f0fdf4 0%,#ffffff 55%,#ecfdf5 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-hero::before {
+            content: "";
+            position: absolute;
+            width: 420px;
+            height: 420px;
+            border-radius: 50%;
+            border: 1px solid rgba(22,163,74,.12);
+            right: -130px;
+            top: -150px;
+        }
+
+        .about-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            padding: 8px 15px;
+            border-radius: 100px;
+            background: rgba(255,255,255,.9);
+            border: 1px solid rgba(22,163,74,.18);
+            color: var(--green-dark);
+            font-size: .8rem;
+            font-weight: 700;
+            letter-spacing: .5px;
+            box-shadow: 0 8px 25px rgba(22,163,74,.08);
+            margin-bottom: 25px;
+        }
+
+        .about-kicker-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #16a34a;
+            box-shadow: 0 0 0 5px rgba(22,163,74,.1);
+        }
+
+        .about-hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(3rem,5vw,5rem);
+            line-height: 1.02;
+            color: #064e3b;
+            margin-bottom: 25px;
+            letter-spacing: -2px;
+        }
+
+        .about-hero h1 em {
+            color: var(--green-main);
+            font-style: italic;
+        }
+
+        .about-hero-text {
+            max-width: 650px;
+            color: #64748b;
+            font-size: 1.05rem;
+            line-height: 1.85;
+            margin-bottom: 32px;
+        }
+
+        .about-hero-actions {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .about-outline-btn {
+            padding: 12px 24px;
+            border-radius: 100px;
+            border: 1px solid #86efac;
+            background: rgba(255,255,255,.75);
+            color: var(--green-dark);
+            text-decoration: none;
+            font-weight: 700;
+            transition: .3s ease;
+        }
+
+        .about-outline-btn:hover {
+            background: var(--green-soft);
+            transform: translateY(-3px);
+        }
+
+        /* HERO VISUAL */
+
+        .about-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .retina-orbit {
+            width: min(440px,90vw);
+            height: min(440px,90vw);
+            border-radius: 50%;
+            background: radial-gradient(circle,
+                rgba(220,252,231,.9) 0%,
+                rgba(240,253,244,.7) 48%,
+                rgba(255,255,255,.2) 70%);
+            border: 1px solid rgba(22,163,74,.16);
+            box-shadow:
+                0 35px 80px rgba(6,78,59,.10),
+                inset 0 0 50px rgba(22,163,74,.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .retina-orbit::before,
+        .retina-orbit::after {
+            content: "";
+            position: absolute;
+            border: 1px dashed rgba(22,163,74,.25);
+            border-radius: 50%;
+        }
+
+        .retina-orbit::before {
+            inset: 45px;
+        }
+
+        .retina-orbit::after {
+            inset: 95px;
+        }
+
+        .retina-core {
+            width: 205px;
+            height: 205px;
+            border-radius: 50%;
+            background:
+                radial-gradient(circle at 48% 45%,#fef3c7 0 7%,transparent 8%),
+                radial-gradient(circle at 50% 50%,#fecaca 0 22%,#fca5a5 23%,#ef4444 38%,#991b1b 67%,#450a0a 100%);
+            box-shadow:
+                0 0 0 18px rgba(255,255,255,.65),
+                0 0 0 35px rgba(220,252,231,.65),
+                0 25px 50px rgba(6,78,59,.2);
+            position: relative;
+            animation: retinaPulse 5s ease-in-out infinite;
+        }
+
+        .retina-core::before {
+            content: "";
+            position: absolute;
+            inset: 18px;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,.45);
+        }
+
+        .retina-core::after {
+            content: "";
+            position: absolute;
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            top: 20px;
+            left: 35px;
+            background: rgba(255,255,255,.18);
+            filter: blur(8px);
+        }
+
+        @keyframes retinaPulse {
+            0%,100% { transform: scale(1); }
+            50% { transform: scale(1.035); }
+        }
+
+        .orbit-label {
+            position: absolute;
+            padding: 9px 13px;
+            background: rgba(255,255,255,.92);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(22,163,74,.15);
+            border-radius: 12px;
+            font-size: .72rem;
+            font-weight: 700;
+            color: var(--green-dark);
+            box-shadow: 0 10px 30px rgba(0,0,0,.08);
+        }
+
+        .orbit-label.top {
+            top: 45px;
+            right: 20px;
+        }
+
+        .orbit-label.bottom {
+            bottom: 55px;
+            left: 5px;
+        }
+
+        /* SECTION */
+
+        .about-section {
+            padding: 100px 7%;
+        }
+
+        .about-section.soft {
+            background: #f8fffa;
+        }
+
+        .about-heading {
+            max-width: 700px;
+            margin-bottom: 55px;
+        }
+
+        .about-tag {
+            color: var(--green-main);
+            font-size: .78rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 12px;
+        }
+
+        .about-heading h2 {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem,4vw,3.5rem);
+            color: #064e3b;
+            line-height: 1.12;
+            margin-bottom: 15px;
+        }
+
+        .about-heading h2 em {
+            color: var(--green-main);
+        }
+
+        .about-heading p {
+            color: var(--muted);
+            line-height: 1.8;
+        }
+
+        /* INFORMATION CARDS */
+
+        .about-cards {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 22px;
+        }
+
+        .about-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 22px;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+            transition: .35s ease;
+        }
+
+        .about-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(22,163,74,.35);
+            box-shadow: 0 22px 50px rgba(6,78,59,.09);
+        }
+
+        .about-card-number {
+            font-size: .75rem;
+            font-weight: 800;
+            color: #86efac;
+            letter-spacing: 1px;
+            margin-bottom: 25px;
+        }
+
+        .about-card-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            background: var(--green-soft);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 21px;
+            margin-bottom: 20px;
+        }
+
+        .about-card h3 {
+            color: #064e3b;
+            font-size: 1.15rem;
+            margin-bottom: 10px;
+        }
+
+        .about-card p {
+            color: var(--muted);
+            font-size: .9rem;
+            line-height: 1.7;
+        }
+
+        /* ANATOMY */
+
+        .anatomy-layout {
+            display: grid;
+            grid-template-columns: .8fr 1.2fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .anatomy-copy h2 {
+            font-family: var(--font-display);
+            color: #064e3b;
+            font-size: 3rem;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .anatomy-copy h2 em {
+            color: var(--green-main);
+        }
+
+        .anatomy-copy p {
+            color: var(--muted);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .anatomy-points {
+            display: grid;
+            gap: 12px;
+        }
+
+        .anatomy-point {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 13px 15px;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            color: #334155;
+            font-size: .9rem;
+            font-weight: 600;
+        }
+
+        .anatomy-point span {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: var(--green-main);
+        }
+
+        .anatomy-visual {
+            background: white;
+            border-radius: 28px;
+            border: 1px solid var(--border);
+            padding: 25px;
+            box-shadow: 0 25px 70px rgba(6,78,59,.08);
+        }
+
+        .anatomy-visual svg {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* STAGES */
+
+        .stage-grid {
+            display: grid;
+            grid-template-columns: repeat(5,1fr);
+            gap: 14px;
+        }
+
+        .stage-card {
+            background: white;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            padding: 25px 20px;
+            transition: .3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stage-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 18px 40px rgba(0,0,0,.08);
+        }
+
+        .stage-line {
+            height: 4px;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .stage-0 .stage-line { background:#22c55e; }
+        .stage-1 .stage-line { background:#facc15; }
+        .stage-2 .stage-line { background:#f97316; }
+        .stage-3 .stage-line { background:#ef4444; }
+        .stage-4 .stage-line { background:#991b1b; }
+
+        .stage-number {
+            font-size: .7rem;
+            font-weight: 800;
+            color: #94a3b8;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        .stage-card h3 {
+            font-size: 1.05rem;
+            color: #064e3b;
+            margin-bottom: 10px;
+        }
+
+        .stage-card p {
+            color: var(--muted);
+            font-size: .82rem;
+            line-height: 1.6;
+        }
+
+        /* PURPOSE */
+
+        .purpose-box {
+            background: linear-gradient(135deg,#064e3b,#065f46);
+            border-radius: 30px;
+            padding: 65px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .purpose-box::after {
+            content: "";
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,.12);
+            right: -70px;
+            top: -100px;
+        }
+
+        .purpose-box h2 {
+            font-family: var(--font-display);
+            font-size: 2.8rem;
+            max-width: 650px;
+            margin-bottom: 18px;
+        }
+
+        .purpose-box p {
+            max-width: 700px;
+            color: rgba(255,255,255,.78);
+            line-height: 1.8;
+        }
+
+        /* DISCLAIMER */
+
+        .medical-note {
+            margin-top: 30px;
+            padding: 20px 22px;
+            border-radius: 16px;
+            background: #fffbeb;
+            border: 1px solid #fde68a;
+            color: #92400e;
+            font-size: .82rem;
+            line-height: 1.7;
+        }
+
+        /* RESPONSIVE */
+
+        @media(max-width:1000px) {
+            .about-hero,
+            .anatomy-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .about-visual {
+                order: -1;
+            }
+
+            .about-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .stage-grid {
+                grid-template-columns: repeat(2,1fr);
+            }
+        }
+
+        @media(max-width:600px) {
+            .about-hero,
+            .about-section {
+                padding: 70px 5%;
+            }
+
+            .about-hero h1 {
+                font-size: 3rem;
+            }
+
+            .stage-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .purpose-box {
+                padding: 35px 25px;
+            }
+
+            .purpose-box h2 {
+                font-size: 2.1rem;
+            }
+
+            .retina-orbit {
+                width: 320px;
+                height: 320px;
+            }
+
+            .retina-core {
+                width: 145px;
+                height: 145px;
+            }
+        }
+/* =====================================================
+   ABOUT PAGE — DARK THEME
+===================================================== */
+
+body.dark-theme {
+    background: #07110d;
+}
+
+body.dark-theme .about-hero,
+body.dark-theme .about-section,
+body.dark-theme .about-content,
+body.dark-theme .about-main {
+    background: #07110d !important;
+}
+
+body.dark-theme .about-hero h1,
+body.dark-theme .about-hero h2,
+body.dark-theme .about-section h2,
+body.dark-theme .about-section h3 {
+    color: #f8fafc;
+}
+
+body.dark-theme .about-hero p,
+body.dark-theme .about-section p {
+    color: #94a3b8;
+}
+
+body.dark-theme .about-card,
+body.dark-theme .stage-card,
+body.dark-theme .anatomy-card {
+    background: #0d1b14 !important;
+    border-color: #1d3a2b !important;
+    color: #e2e8f0;
+}
+
+body.dark-theme .about-card h3,
+body.dark-theme .stage-card h3,
+body.dark-theme .anatomy-card h3 {
+    color: #f8fafc;
+}
+
+body.dark-theme .about-card p,
+body.dark-theme .stage-card p,
+body.dark-theme .anatomy-card p {
+    color: #94a3b8;
+}
+/* =====================================================
+   ABOUT PAGE — CARD ICON VISIBILITY
+===================================================== */
+
+/* Light theme */
+.card svg,
+.about-card svg,
+.stage-card svg,
+.anatomy-card svg,
+.info-card svg {
+    color: #064e3b !important;
+    stroke: #064e3b !important;
+}
+
+/* Dark theme */
+body.dark-theme .card svg,
+body.dark-theme .about-card svg,
+body.dark-theme .stage-card svg,
+body.dark-theme .anatomy-card svg,
+body.dark-theme .info-card svg {
+    color: #064e3b !important;
+    stroke: #064e3b !important;
+}
+    </style>
 </head>
 
 <body>
 
-    <!-- ── NAV ── -->
+    <!-- NAVBAR -->
+
     <nav>
-        <div class="nav-logo">
-            <div class="nav-logo-icon">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                    <circle cx="10" cy="10" r="8" stroke="white" stroke-width="1.5" />
-                    <circle cx="10" cy="10" r="4" fill="white" opacity="0.9" />
-                    <circle cx="10" cy="10" r="1.5" fill="#16a34a" />
-                </svg>
-            </div>
-            <a href="index.html" style="text-decoration: none; color: inherit;"><span class="nav-logo-text">Retina<span>Care</span> AI</span></a>
-        </div>
+        <a href="index.html" class="nav-logo">
+            <img class="nav-logo-svg" src="retinacare-logo.svg" alt="">
+            <span class="nav-logo-text">Retina<span>Care</span> AI</span>
+        </a>
+
         <div class="nav-links">
-            <a href="about.html">About</a>
+            <a href="about.html" style="color:var(--green-main);font-weight:700;">About</a>
             <a href="approach.html">Approach</a>
             <a href="features.html">Features</a>
             <a href="model.html">Model</a>
             <a href="team.html">Team</a>
-            <a href="login.html" style="color: var(--green-main); font-weight: 700;">Login</a>
+            <a href="patient-history.html">Patient History</a>
+            <a href="login.html">Login</a>
         </div>
-        <button class="nav-pill" onclick="window.location.href='demo.html'">Live
-            Demo</button>
+<button
+    class="theme-toggle"
+    id="theme-toggle"
+    type="button"
+    aria-label="Toggle dark mode"
+    title="Toggle dark mode">
+    🌙
+</button>
+        <button class="nav-pill" onclick="window.location.href='demo.html'">
+            Live Demo
+        </button>
     </nav>
 
-    <!-- ── WHAT IS DR ── -->
-    <section class="sec" id="about">
-        <div class="max-w what-grid">
-            <div class="reveal">
-                <div class="sec-tag">About Diabetic Retinopathy</div>
-                <h2 class="sec-title">Why the <em>eye</em><br>reveals so much</h2>
-                <p class="sec-sub">Diabetic Retinopathy is damage to retinal blood vessels caused by high blood sugar —
-                    the leading cause of preventable blindness worldwide.</p>
-                <div class="what-points">
-                    <div class="wpt">
-                        <div class="wpt-icon">👁️</div>
-                        <div>
-                            <h4>100M+ people affected</h4>
-                            <p>DR impacts over 100 million diabetics globally. India alone has 77 million diabetic
-                                patients.</p>
-                        </div>
-                    </div>
-                    <div class="wpt">
-                        <div class="wpt-icon">⚡</div>
-                        <div>
-                            <h4>Early detection prevents 90% of vision loss</h4>
-                            <p>Caught early, most DR-related blindness is entirely preventable with timely treatment.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="wpt">
-                        <div class="wpt-icon">🏥</div>
-                        <div>
-                            <h4>Critical shortage of specialists</h4>
-                            <p>Only 1 ophthalmologist per 100,000 patients in rural India — AI bridges this gap.</p>
-                        </div>
-                    </div>
-                </div>
+
+    <!-- HERO -->
+
+    <section class="about-hero">
+
+        <div>
+            <div class="about-kicker">
+                <span class="about-kicker-dot"></span>
+                Understanding Diabetic Retinopathy
             </div>
-            <!-- Eye anatomy diagram -->
-            <div class="reveal">
-                <svg class="eye-anatomy-svg" viewBox="0 0 400 340" xmlns="http://www.w3.org/2000/svg"
-                    style="padding:1.5rem;">
-                    <rect width="400" height="340" fill="white" rx="16" />
-                    <!-- Incoming Light Rays -->
-                    <g class="light-rays">
-                        <!-- Entering cornea -->
-                        <path d="M 10 165 L 140 165" stroke="#fbbf24" stroke-width="3" class="ray-beam" />
-                        <path d="M 20 135 L 138 155" stroke="#fbbf24" stroke-width="2" class="ray-beam" />
-                        <path d="M 20 195 L 138 175" stroke="#fbbf24" stroke-width="2" class="ray-beam" />
-                    </g>
-                    <!-- Eye cross-section -->
-                    <ellipse cx="200" cy="165" rx="130" ry="95" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5" />
-                    <!-- Refracted Rays inside the eye towards Macula -->
-                    <g class="light-rays-inner">
-                        <path d="M 175 165 L 255 165" stroke="#fbbf24" stroke-width="2" class="ray-beam-inner" />
-                        <path d="M 175 155 L 255 165" stroke="#fbbf24" stroke-width="1.5" class="ray-beam-inner" />
-                        <path d="M 175 175 L 255 165" stroke="#fbbf24" stroke-width="1.5" class="ray-beam-inner" />
-                    </g>
-                    <!-- Lens -->
-                    <ellipse cx="172" cy="165" rx="12" ry="22" fill="#d1fae5" stroke="#6ee7b7" stroke-width="1" />
-                    <!-- Cornea outer -->
-                    <path d="M148 155 Q136 165 148 175" fill="none" stroke="#6ee7b7" stroke-width="2" />
-                    <!-- Retina layer -->
-                    <path d="M290 130 Q320 165 290 200" fill="none" stroke="#16a34a" stroke-width="3"
-                        stroke-linecap="round" />
-                    <!-- Optic nerve -->
-                    <rect x="304" y="158" width="24" height="14" rx="4" fill="#fbbf24" stroke="#f59e0b"
-                        stroke-width="1" />
-                    <!-- Vitreous -->
-                    <ellipse cx="230" cy="165" rx="65" ry="55" fill="#ecfdf5" opacity="0.5" />
-                    <!-- Macula -->
-                    <ellipse cx="255" cy="165" rx="14" ry="14" fill="none" stroke="#f97316" stroke-width="1.5"
-                        stroke-dasharray="4 3" />
-                    <circle cx="255" cy="165" r="4" fill="#fed7aa" />
-                    <!-- Fovea label -->
-                    <circle cx="255" cy="165" r="2" fill="#f97316" />
-                    <!-- Blood vessels on retina -->
-                    <path d="M312 165 Q290 155 268 148 Q248 142 238 138" fill="none" stroke="#ef4444" stroke-width="1.5"
-                        opacity="0.6" stroke-linecap="round" />
-                    <path d="M312 165 Q292 172 272 180 Q252 188 240 193" fill="none" stroke="#ef4444" stroke-width="1.5"
-                        opacity="0.6" stroke-linecap="round" />
-                    <path d="M268 148 Q260 140 250 135" fill="none" stroke="#ef4444" stroke-width="1" opacity="0.5"
-                        stroke-linecap="round" />
-                    <path d="M272 180 Q264 190 256 196" fill="none" stroke="#ef4444" stroke-width="1" opacity="0.5"
-                        stroke-linecap="round" />
-                    <!-- Labels -->
-                    <text x="28" y="98" font-family="'Plus Jakarta Sans',sans-serif" font-size="10"
-                        fill="#6b7280">Cornea</text>
-                    <line x1="72" y1="95" x2="150" y2="156" stroke="#d1d5db" stroke-width="0.8"
-                        stroke-dasharray="3 2" />
-                    <text x="28" y="164" font-family="'Plus Jakarta Sans',sans-serif" font-size="10"
-                        fill="#6b7280">Lens</text>
-                    <line x1="55" y1="162" x2="160" y2="165" stroke="#d1d5db" stroke-width="0.8"
-                        stroke-dasharray="3 2" />
-                    <text x="28" y="238" font-family="'Plus Jakarta Sans',sans-serif" font-size="10"
-                        fill="#6b7280">Vitreous</text>
-                    <line x1="80" y1="235" x2="170" y2="200" stroke="#d1d5db" stroke-width="0.8"
-                        stroke-dasharray="3 2" />
-                    <text x="313" y="84" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" fill="#15803d"
-                        font-weight="600">Retina</text>
-                    <line x1="335" y1="88" x2="298" y2="130" stroke="#86efac" stroke-width="0.8"
-                        stroke-dasharray="3 2" />
-                    <text x="320" y="148" font-family="'Plus Jakarta Sans',sans-serif" font-size="10"
-                        fill="#92400e">Optic disc</text>
-                    <line x1="318" y1="152" x2="316" y2="158" stroke="#fbbf24" stroke-width="0.8" />
-                    <text x="258" y="130" font-family="'Plus Jakarta Sans',sans-serif" font-size="10"
-                        fill="#c2410c">Macula</text>
-                    <line x1="263" y1="134" x2="260" y2="152" stroke="#fdba74" stroke-width="0.8" />
-                    <text x="186" y="290" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" fill="#6b7280"
-                        text-anchor="middle">Cross-section of the Human Eye</text>
-                </svg>
+
+            <h1>
+                The eye can reveal
+                <em>what diabetes hides.</em>
+            </h1>
+
+            <p class="about-hero-text">
+                Diabetic Retinopathy affects the blood vessels of the retina.
+                RetinaCare AI is designed to support early screening by analysing
+                retinal fundus images and classifying the severity of diabetic
+                retinopathy across five stages.
+            </p>
+
+            <div class="about-hero-actions">
+                <a href="approach.html" class="btn-primary">
+                    Explore Our Approach
+                </a>
+
+                <a href="demo.html" class="about-outline-btn">
+                    Try AI Screening
+                </a>
             </div>
         </div>
+
+
+        <div class="about-visual">
+
+            <div class="retina-orbit">
+
+                <div class="orbit-label top">
+                    RETINAL ANALYSIS
+                </div>
+
+                <div class="retina-core"></div>
+
+                <div class="orbit-label bottom">
+                    EARLY SCREENING
+                </div>
+
+            </div>
+
+        </div>
+
     </section>
 
-    <!-- ── FOOTER ── -->
+
+    <!-- WHY IT MATTERS -->
+
+    <section class="about-section soft">
+
+        <div class="about-heading">
+
+            <div class="about-tag">
+                Why it matters
+            </div>
+
+            <h2>
+                Understanding the condition is the
+                <em>first step.</em>
+            </h2>
+
+            <p>
+                Diabetic retinopathy can progress gradually, making regular
+                retinal screening important for identifying changes before
+                significant vision problems occur.
+            </p>
+
+        </div>
+
+
+        <div class="about-cards">
+
+            <div class="about-card">
+
+                <div class="about-card-number">01 / RETINA</div>
+
+                <div class="about-card-icon">◉</div>
+
+                <h3>Changes in retinal vessels</h3>
+
+                <p>
+                    Diabetes can damage small blood vessels supplying the retina,
+                    leading to retinal changes that can be observed in fundus images.
+                </p>
+
+            </div>
+
+
+            <div class="about-card">
+
+                <div class="about-card-number">02 / SCREENING</div>
+
+                <div class="about-card-icon">⌁</div>
+
+                <h3>Early screening matters</h3>
+
+                <p>
+                    Screening can help identify retinal abnormalities and support
+                    timely referral for appropriate clinical evaluation.
+                </p>
+
+            </div>
+
+
+            <div class="about-card">
+
+                <div class="about-card-number">03 / AI ASSISTANCE</div>
+
+                <div class="about-card-icon">✦</div>
+
+                <h3>AI-assisted assessment</h3>
+
+                <p>
+                    RetinaCare AI uses deep learning to classify retinal images
+                    into five diabetic retinopathy severity categories.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- EYE ANATOMY -->
+
+    <section class="about-section">
+
+        <div class="anatomy-layout">
+
+            <div class="anatomy-copy">
+
+                <div class="about-tag">
+                    The human eye
+                </div>
+
+                <h2>
+                    Where the
+                    <em>signal begins.</em>
+                </h2>
+
+                <p>
+                    The retina is a light-sensitive layer at the back of the eye.
+                    Retinal fundus photographs provide the visual information
+                    analysed by the RetinaCare AI model.
+                </p>
+
+                <div class="anatomy-points">
+
+                    <div class="anatomy-point">
+                        <span></span>
+                        Retina — light-sensitive tissue
+                    </div>
+
+                    <div class="anatomy-point">
+                        <span></span>
+                        Macula — central vision region
+                    </div>
+
+                    <div class="anatomy-point">
+                        <span></span>
+                        Optic disc — optic nerve exit
+                    </div>
+
+                    <div class="anatomy-point">
+                        <span></span>
+                        Retinal vessels — visible vascular structures
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="anatomy-visual">
+
+                <!-- Existing eye anatomy illustration -->
+
+                <svg viewBox="0 0 400 340"
+                    xmlns="http://www.w3.org/2000/svg">
+
+                    <rect width="400" height="340"
+                        fill="white"
+                        rx="16"/>
+
+                    <g class="light-rays">
+
+                        <path d="M10 165 L140 165"
+                            stroke="#fbbf24"
+                            stroke-width="3"
+                            class="ray-beam"/>
+
+                        <path d="M20 135 L138 155"
+                            stroke="#fbbf24"
+                            stroke-width="2"
+                            class="ray-beam"/>
+
+                        <path d="M20 195 L138 175"
+                            stroke="#fbbf24"
+                            stroke-width="2"
+                            class="ray-beam"/>
+
+                    </g>
+
+                    <ellipse cx="200" cy="165"
+                        rx="130"
+                        ry="95"
+                        fill="#f0fdf4"
+                        stroke="#bbf7d0"
+                        stroke-width="1.5"/>
+
+                    <g class="light-rays-inner">
+
+                        <path d="M175 165 L255 165"
+                            stroke="#fbbf24"
+                            stroke-width="2"
+                            class="ray-beam-inner"/>
+
+                        <path d="M175 155 L255 165"
+                            stroke="#fbbf24"
+                            stroke-width="1.5"
+                            class="ray-beam-inner"/>
+
+                        <path d="M175 175 L255 165"
+                            stroke="#fbbf24"
+                            stroke-width="1.5"
+                            class="ray-beam-inner"/>
+
+                    </g>
+
+                    <ellipse cx="172" cy="165"
+                        rx="12"
+                        ry="22"
+                        fill="#d1fae5"
+                        stroke="#6ee7b7"/>
+
+                    <path d="M148 155 Q136 165 148 175"
+                        fill="none"
+                        stroke="#6ee7b7"
+                        stroke-width="2"/>
+
+                    <path d="M290 130 Q320 165 290 200"
+                        fill="none"
+                        stroke="#16a34a"
+                        stroke-width="3"
+                        stroke-linecap="round"/>
+
+                    <rect x="304" y="158"
+                        width="24"
+                        height="14"
+                        rx="4"
+                        fill="#fbbf24"
+                        stroke="#f59e0b"/>
+
+                    <ellipse cx="230" cy="165"
+                        rx="65"
+                        ry="55"
+                        fill="#ecfdf5"
+                        opacity=".5"/>
+
+                    <ellipse cx="255" cy="165"
+                        rx="14"
+                        ry="14"
+                        fill="none"
+                        stroke="#f97316"
+                        stroke-width="1.5"
+                        stroke-dasharray="4 3"/>
+
+                    <circle cx="255" cy="165"
+                        r="4"
+                        fill="#fed7aa"/>
+
+                    <path d="M312 165 Q290 155 268 148 Q248 142 238 138"
+                        fill="none"
+                        stroke="#ef4444"
+                        stroke-width="1.5"
+                        opacity=".6"/>
+
+                    <path d="M312 165 Q292 172 272 180 Q252 188 240 193"
+                        fill="none"
+                        stroke="#ef4444"
+                        stroke-width="1.5"
+                        opacity=".6"/>
+
+                    <text x="28" y="98"
+                        font-family="'Plus Jakarta Sans'"
+                        font-size="10"
+                        fill="#6b7280">
+                        Cornea
+                    </text>
+
+                    <text x="28" y="164"
+                        font-family="'Plus Jakarta Sans'"
+                        font-size="10"
+                        fill="#6b7280">
+                        Lens
+                    </text>
+
+                    <text x="28" y="238"
+                        font-family="'Plus Jakarta Sans'"
+                        font-size="10"
+                        fill="#6b7280">
+                        Vitreous
+                    </text>
+
+                    <text x="313" y="84"
+                        font-family="'Plus Jakarta Sans'"
+                        font-size="10"
+                        fill="#15803d"
+                        font-weight="600">
+                        Retina
+                    </text>
+
+                    <text x="320" y="148"
+                        font-family="'Plus Jakarta Sans'"
+                        font-size="10"
+                        fill="#92400e">
+                        Optic disc
+                    </text>
+
+                    <text x="258" y="130"
+                        font-family="'Plus Jakarta Sans'"
+                        font-size="10"
+                        fill="#c2410c">
+                        Macula
+                    </text>
+
+                    <text x="186" y="290"
+                        font-family="'Plus Jakarta Sans'"
+                        font-size="10"
+                        fill="#6b7280"
+                        text-anchor="middle">
+                        Cross-section of the Human Eye
+                    </text>
+
+                </svg>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FIVE STAGES -->
+
+    <section class="about-section soft">
+
+        <div class="about-heading">
+
+            <div class="about-tag">
+                Disease progression
+            </div>
+
+            <h2>
+                Five stages.
+                <em>One screening workflow.</em>
+            </h2>
+
+            <p>
+                The RetinaCare AI model classifies retinal images into five
+                diabetic retinopathy severity categories.
+            </p>
+
+        </div>
+
+
+        <div class="stage-grid">
+
+            <div class="stage-card stage-0">
+                <div class="stage-line"></div>
+                <div class="stage-number">STAGE 00</div>
+                <h3>No DR</h3>
+                <p>
+                    No diabetic retinopathy detected by the model.
+                </p>
+            </div>
+
+            <div class="stage-card stage-1">
+                <div class="stage-line"></div>
+                <div class="stage-number">STAGE 01</div>
+                <h3>Mild</h3>
+                <p>
+                    Mild non-proliferative diabetic retinopathy.
+                </p>
+            </div>
+
+            <div class="stage-card stage-2">
+                <div class="stage-line"></div>
+                <div class="stage-number">STAGE 02</div>
+                <h3>Moderate</h3>
+                <p>
+                    Moderate non-proliferative diabetic retinopathy.
+                </p>
+            </div>
+
+            <div class="stage-card stage-3">
+                <div class="stage-line"></div>
+                <div class="stage-number">STAGE 03</div>
+                <h3>Severe</h3>
+                <p>
+                    Severe non-proliferative diabetic retinopathy.
+                </p>
+            </div>
+
+            <div class="stage-card stage-4">
+                <div class="stage-line"></div>
+                <div class="stage-number">STAGE 04</div>
+                <h3>Proliferative</h3>
+                <p>
+                    Proliferative diabetic retinopathy.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PURPOSE -->
+
+    <section class="about-section">
+
+        <div class="purpose-box">
+
+            <div class="about-tag" style="color:#86efac;">
+                Why RetinaCare AI
+            </div>
+
+            <h2>
+                Turning retinal images into
+                meaningful screening insights.
+            </h2>
+
+            <p>
+                RetinaCare AI combines a ResNet-50 deep learning model,
+                automated image preprocessing and Grad-CAM explainability
+                to create an AI-assisted diabetic retinopathy screening
+                workflow.
+            </p>
+
+            <div class="medical-note">
+                <strong>Important:</strong>
+                RetinaCare AI is a research and screening prototype.
+                Its predictions are not a medical diagnosis and should not
+                replace evaluation by a qualified healthcare professional.
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
     <footer>
+
         <div class="footer-inner">
+
             <div>
-                <div class="footer-brand-name">RetinaCare AI</div>
-                <p class="footer-brand-desc">AI-powered early detection of Diabetic Retinopathy and multi-eye disease
-                    screening — built to make specialist-grade care accessible to every patient, everywhere.</p>
+
+                <div class="footer-brand-name">
+                    RetinaCare AI
+                </div>
+
+                <p class="footer-brand-desc">
+                    AI-powered diabetic retinopathy screening designed
+                    to support accessible and explainable retinal analysis.
+                </p>
+
                 <div class="footer-tech" style="margin-top:1rem;">
                     <span class="ftag">Python</span>
                     <span class="ftag">TensorFlow</span>
@@ -163,35 +1131,53 @@
                     <span class="ftag">OpenCV</span>
                     <span class="ftag">Grad-CAM</span>
                 </div>
+
             </div>
+
             <div class="footer-col">
+
                 <h4>Project</h4>
+
                 <a href="about.html">About DR</a>
                 <a href="approach.html">Methodology</a>
                 <a href="features.html">Features</a>
                 <a href="model.html">AI Model</a>
+
             </div>
+
             <div class="footer-col">
+
                 <h4>Features</h4>
+
                 <a href="features.html">Multi-Disease</a>
-                <a href="features.html">Grad-CAM</a>
-                <a href="model.html">Risk Score</a>
-                <a href="features.html">Telemedicine</a>
+                <a href="model.html">Grad-CAM</a>
+                <a href="model.html">AI Model</a>
+                <a href="demo.html">Live Screening</a>
+
             </div>
+
             <div class="footer-col">
-                <h4>Team</h4>
-                <a href="team.html">Developers</a>
+
+                <h4>Explore</h4>
+
+                <a href="team.html">Our Team</a>
+                <a href="patient-history.html">Patient History</a>
+                <a href="login.html">Login</a>
                 <a href="demo.html">Live Demo</a>
+
             </div>
+
         </div>
+
         <div class="footer-bottom">
-            🎓 Project Expo 2025 &nbsp;·&nbsp; RetinaCare AI &nbsp;·&nbsp; Made for better, accessible eye healthcare
-            &nbsp;·&nbsp; All rights reserved
+            RetinaCare AI · AI-assisted retinal screening · All rights reserved
         </div>
+
     </footer>
+
 
     <script src="auth.js"></script>
     <script src="script.js"></script>
-</body>
 
+</body>
 </html>

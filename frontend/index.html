@@ -10,27 +10,113 @@
         rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <style>
+/* =====================================================
+   HOMEPAGE — HERO REVEAL
+===================================================== */
+
+.hero .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    animation: heroReveal .7s ease forwards;
+}
+
+.hero .reveal:nth-child(1) {
+    animation-delay: .1s;
+}
+
+.hero .reveal:nth-child(2) {
+    animation-delay: .25s;
+}
+
+.hero .reveal:nth-child(3) {
+    animation-delay: .4s;
+}
+
+.hero .reveal:nth-child(4) {
+    animation-delay: .55s;
+}
+
+@keyframes heroReveal {
+
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* Stats appear slightly later */
+
+.hero .stat {
+    opacity: 0;
+    transform: translateY(15px);
+    animation: heroStatReveal .6s ease forwards;
+}
+
+.hero .stat:nth-child(1) {
+    animation-delay: .7s;
+}
+
+.hero .stat:nth-child(2) {
+    animation-delay: .85s;
+}
+
+.hero .stat:nth-child(3) {
+    animation-delay: 1s;
+}
+
+@keyframes heroStatReveal {
+
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+
+    .hero .reveal,
+    .hero .stat {
+        animation: none;
+        opacity: 1;
+        transform: none;
+    }
+
+}
         .nav-logo {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 2px;
+            gap: 0;
             text-decoration: none;
             cursor: pointer;
         }
 
         .nav-logo-svg {
-            width: 52px;
-            height: 52px;
+            width: 72px;
+            height: 72px;
         }
 
         .nav-logo-text {
-            font-family: var(--font-display);
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--green-dark);
-            text-align: center;
-        }
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--green-dark);
+    text-align: center;
+}
 
         .nav-logo-text span {
             color: var(--green-main);
@@ -38,80 +124,14 @@
     </style>
 </head>
 
-<body>
+<body class="home-page">
 
     <!-- ── NAV ── -->
     <nav>
         <a href="index.html" style="text-decoration:none;">
-            <div class="nav-logo">
+            <div class="nav-logo nav-logo--index">
 
-                <!-- SVG LOGO ABOVE TEXT -->
-                <svg class="nav-logo-svg" viewBox="0 0 680 390" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <clipPath id="ec2">
-                            <ellipse cx="340" cy="185" rx="143" ry="83" />
-                        </clipPath>
-                    </defs>
-                    <rect width="680" height="390" fill="transparent" rx="20" />
-                    <ellipse cx="340" cy="185" rx="145" ry="85" fill="#ffffff" stroke="#00897b" stroke-width="2.5" />
-                    <g clip-path="url(#ec2)">
-                        <circle cx="340" cy="185" r="62" fill="#e8f8f5" />
-                        <circle cx="340" cy="185" r="62" stroke="#00897b" stroke-width="0.8" fill="none"
-                            opacity="0.4" />
-                        <circle cx="340" cy="185" r="48" stroke="#00897b" stroke-width="0.6" fill="none"
-                            opacity="0.3" />
-                        <circle cx="340" cy="185" r="34" stroke="#00897b" stroke-width="0.5" fill="none"
-                            opacity="0.2" />
-                        <!-- Blood vessels -->
-                        <line x1="340" y1="123" x2="352" y2="165" stroke="#00897b" stroke-width="1.8"
-                            stroke-linecap="round" />
-                        <line x1="352" y1="165" x2="380" y2="178" stroke="#00897b" stroke-width="1.4"
-                            stroke-linecap="round" />
-                        <line x1="380" y1="178" x2="400" y2="172" stroke="#00695c" stroke-width="1.0"
-                            stroke-linecap="round" />
-                        <line x1="380" y1="178" x2="392" y2="192" stroke="#00695c" stroke-width="0.9"
-                            stroke-linecap="round" />
-                        <line x1="352" y1="165" x2="360" y2="152" stroke="#004d40" stroke-width="0.8"
-                            stroke-linecap="round" />
-                        <line x1="340" y1="123" x2="328" y2="160" stroke="#00897b" stroke-width="1.5"
-                            stroke-linecap="round" />
-                        <line x1="328" y1="160" x2="305" y2="175" stroke="#00897b" stroke-width="1.2"
-                            stroke-linecap="round" />
-                        <line x1="305" y1="175" x2="288" y2="168" stroke="#00695c" stroke-width="0.9"
-                            stroke-linecap="round" />
-                        <line x1="305" y1="175" x2="296" y2="192" stroke="#00695c" stroke-width="0.8"
-                            stroke-linecap="round" />
-                        <line x1="328" y1="160" x2="320" y2="148" stroke="#004d40" stroke-width="0.7"
-                            stroke-linecap="round" />
-                        <line x1="340" y1="123" x2="341" y2="150" stroke="#004d40" stroke-width="0.7"
-                            stroke-linecap="round" />
-                    </g>
-                    <!-- Pupil -->
-                    <circle cx="340" cy="185" r="24" fill="#0d1a18" />
-                    <circle cx="340" cy="185" r="24" stroke="#00897b" stroke-width="1" fill="none" opacity="0.6" />
-                    <ellipse cx="332" cy="177" rx="6" ry="5" fill="#ffffff" opacity="0.9" />
-                    <ellipse cx="348" cy="191" rx="3" ry="2.5" fill="#e0f4f0" opacity="0.6" />
-                    <!-- Scan line -->
-                    <line x1="196" y1="185" x2="484" y2="185" stroke="#00bfa5" stroke-width="0.7" opacity="0.5"
-                        stroke-dasharray="4 4" />
-                    <!-- Brackets -->
-                    <g stroke="#00897b" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="196,155 196,135 218,135" />
-                        <polyline points="484,155 484,135 462,135" />
-                        <polyline points="196,215 196,235 218,235" />
-                        <polyline points="484,215 484,235 462,235" />
-                    </g>
-                    <!-- Corner dots -->
-                    <circle cx="232" cy="135" r="3" fill="#00897b" opacity="0.9" />
-                    <circle cx="448" cy="135" r="3" fill="#00897b" opacity="0.9" />
-                    <circle cx="232" cy="235" r="3" fill="#00897b" opacity="0.9" />
-                    <circle cx="448" cy="235" r="3" fill="#00897b" opacity="0.9" />
-                    <!-- Pulse wave -->
-                    <path d="M260 270 L275 258 L285 268 L300 245 L315 268 L325 258 L340 270" stroke="#00897b"
-                        stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.5" />
-                    <path d="M340 270 L355 258 L365 268 L380 245 L395 268 L405 258 L420 270" stroke="#00897b"
-                        stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.5" />
-                </svg>
+                <img class="nav-logo-svg" src="retinacare-logo.svg" alt="">
 
                 <!-- TEXT BELOW LOGO -->
                 <span class="nav-logo-text">Retina<span>Care</span> AI</span>
@@ -125,9 +145,17 @@
             <a href="features.html">Features</a>
             <a href="model.html">Model</a>
             <a href="team.html">Team</a>
-            <a href="patient-history.html">Patient History</a>
+            <a href="patient-history.html">Patient History</a> 
             <a href="login.html" style="color: var(--green-main); font-weight: 700;">Login</a>
         </div>
+<button
+    class="theme-toggle"
+    id="theme-toggle"
+    type="button"
+    aria-label="Toggle dark mode"
+    title="Toggle dark mode">
+    🌙
+</button>
         <button class="nav-pill" onclick="window.location.href='demo.html'">Live Demo</button>
     </nav>
 
@@ -135,7 +163,7 @@
     <section class="hero" style="min-height: calc(100vh - 80px);">
         <div>
             <div class="hero-badge">
-                <div class="badge-dot"></div>Project Expo 2025 · AI in Healthcare
+                <div class="badge-dot"></div> AI in Healthcare
             </div>
             <h1>Early Detection<br>Saves <em>Sight.</em></h1>
             <p>An AI-powered retinal screening platform that detects diabetic retinopathy, predicts risk, and empowers
@@ -146,8 +174,8 @@
             </div>
             <div class="hero-stats">
                 <div class="h-stat">
-                    <div class="h-stat-num">93.7%</div>
-                    <div class="h-stat-lbl">Model Accuracy</div>
+                    <div class="h-stat-num">76.0%</div>
+                    <div class="h-stat-lbl">Test Accuracy</div>
                 </div>
                 <div class="h-stat">
                     <div class="h-stat-num">5</div>
@@ -258,13 +286,64 @@
             </div>
         </div>
         <div class="footer-bottom">
-            🎓 Project Expo 2025 &nbsp;·&nbsp; RetinaCare AI &nbsp;·&nbsp; Made for better, accessible eye healthcare
+             RetinaCare AI &nbsp;·&nbsp; Made for better, accessible eye healthcare
             &nbsp;·&nbsp; All rights reserved
         </div>
     </footer>
 
     <script src="auth.js"></script>
     <script src="script.js"></script>
+<!-- =====================================================
+     LOGIN / REGISTER WELCOME POPUP
+     ===================================================== -->
+
+<div class="auth-popup-overlay" id="auth-popup">
+
+    <div class="auth-popup" style="position:relative;">
+
+        <button
+            class="auth-popup-close"
+            id="auth-popup-close"
+            type="button"
+            aria-label="Close">
+            ×
+        </button>
+
+        <div class="auth-popup-icon">
+            👁️
+        </div>
+
+        <h2>
+            Welcome to <span>RetinaCare</span> AI
+        </h2>
+
+        <p>
+            Sign in or create an account to access
+            AI-assisted retinal screening and your
+            patient scan history.
+        </p>
+
+        <div class="auth-popup-buttons">
+
+            <button
+                class="auth-popup-btn auth-popup-login"
+                id="auth-popup-login"
+                type="button">
+                Login
+            </button>
+
+            <button
+                class="auth-popup-btn auth-popup-register"
+                id="auth-popup-register"
+                type="button">
+                Register
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
 </body>
 
 </html>

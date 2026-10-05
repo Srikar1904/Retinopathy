@@ -129,7 +129,154 @@ transition:.3s;
 .download-btn:hover{
 background:var(--green-dark);
 }
+/* =========================================================
+   PATIENT HISTORY — PREMIUM DARK THEME
+   ========================================================= */
 
+body.dark-theme {
+    background: #07110d !important;
+    color: #e2e8f0 !important;
+}
+
+body.dark-theme .history-container {
+    background: #07110d !important;
+}
+
+body.dark-theme .history-header {
+    background: transparent !important;
+}
+
+body.dark-theme .history-title {
+    color: #f8fafc !important;
+}
+
+body.dark-theme .history-search {
+    background: #0d1b14 !important;
+    color: #f8fafc !important;
+    border: 1px solid #29513b !important;
+}
+
+body.dark-theme .history-search::placeholder {
+    color: #64748b !important;
+}
+
+body.dark-theme .history-search:focus {
+    border-color: #4ade80 !important;
+    box-shadow: 0 0 0 3px rgba(34,197,94,.10) !important;
+    outline: none;
+}
+
+/* History cards */
+
+body.dark-theme .history-card {
+    background: linear-gradient(
+        145deg,
+        #10251a,
+        #091710
+    ) !important;
+
+    border: 1px solid rgba(74,222,128,.18) !important;
+
+    color: #e2e8f0 !important;
+
+    box-shadow:
+        0 18px 45px rgba(0,0,0,.28),
+        inset 0 1px 0 rgba(255,255,255,.025) !important;
+
+    transition:
+        transform .35s ease,
+        border-color .35s ease,
+        box-shadow .35s ease;
+}
+
+body.dark-theme .history-card:hover {
+    transform: translateY(-5px);
+
+    border-color: rgba(74,222,128,.45) !important;
+
+    box-shadow:
+        0 24px 55px rgba(0,0,0,.35),
+        0 0 0 1px rgba(34,197,94,.08) !important;
+}
+
+body.dark-theme .patient-name {
+    color: #f8fafc !important;
+}
+
+body.dark-theme .patient-meta {
+    color: #94a3b8 !important;
+}
+
+/* Loading state */
+
+body.dark-theme .history-loading {
+    color: #94a3b8 !important;
+    background: #0d1b14 !important;
+    border: 1px solid #1d3a2b !important;
+}
+
+/* Buttons inside history cards */
+
+body.dark-theme .history-card button {
+    background: #16a34a !important;
+    color: white !important;
+    border: none !important;
+}
+
+body.dark-theme .history-card button:hover {
+    background: #22c55e !important;
+}
+
+/* Scroll / page consistency */
+
+body.dark-theme .history-grid {
+    background: transparent !important;
+}
+/* =========================================================
+   PATIENT HISTORY — CARD REVEAL ANIMATION
+   ========================================================= */
+
+.history-card {
+    animation: historyCardReveal 0.6s ease both;
+}
+
+.history-card:nth-child(1) {
+    animation-delay: 0.05s;
+}
+
+.history-card:nth-child(2) {
+    animation-delay: 0.15s;
+}
+
+.history-card:nth-child(3) {
+    animation-delay: 0.25s;
+}
+
+.history-card:nth-child(4) {
+    animation-delay: 0.35s;
+}
+
+.history-card:nth-child(5) {
+    animation-delay: 0.45s;
+}
+
+@keyframes historyCardReveal {
+    from {
+        opacity: 0;
+        transform: translateY(22px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .history-card {
+        animation: none;
+    }
+}
 </style>
 
 </head>
@@ -138,18 +285,28 @@ background:var(--green-dark);
 
 <nav>
 
-<div class="nav-logo">
-<div class="nav-logo-icon"></div>
-<a href="index.html"><span class="nav-logo-text">Retina<span>Care</span> AI</span></a>
-</div>
+<a href="index.html" class="nav-logo">
+<img class="nav-logo-svg" src="retinacare-logo.svg" alt="">
+<span class="nav-logo-text">Retina<span>Care</span> AI</span>
+</a>
 
 <div class="nav-links">
 <a href="about.html">About</a>
+<a href="approach.html">Approach</a>
 <a href="features.html">Features</a>
-<a href="patient-history.html">Patient History</a>
+<a href="model.html">Model</a>
+<a href="patient-history.html" style="color:var(--green-main);font-weight:700;">Patient History</a>
 <a href="team.html">Team</a>
-</div>
 
+</div>
+<button
+    class="theme-toggle"
+    id="theme-toggle"
+    type="button"
+    aria-label="Toggle dark mode"
+    title="Toggle dark mode">
+    🌙
+</button>
 <button class="nav-pill" onclick="location.href='demo.html'">Live Demo</button>
 
 </nav>
@@ -160,89 +317,61 @@ background:var(--green-dark);
 
 <h2 class="history-title">Patient Scan History</h2>
 
-<input class="history-search" placeholder="Search patient">
+<input class="history-search" id="history-search" placeholder="Search patient">
 
 </div>
 
-<div class="history-grid">
+<div class="history-grid" id="history-grid">
 
-<!-- CARD -->
-
-<div class="history-card">
-
-<div class="patient-name">Ravi Kumar</div>
-<div class="patient-meta">ID: PT-1023 • 12 Mar 2026</div>
-
-<span class="stage stage-normal">Normal</span>
-
-<div class="result-row">
-<span>Confidence</span>
-<span>97%</span>
-</div>
-
-<div class="result-row">
-<span>Disease</span>
-<span>None</span>
-</div>
-
-<button class="download-btn" onclick="downloadReport('Ravi Kumar','Normal','97%','12 Mar 2026')">
-Download Report
-</button>
+    <div class="history-loading">
+        Loading your scan history...
+    </div>
 
 </div>
-
-<!-- CARD -->
-
-<div class="history-card">
-
-<div class="patient-name">Anita Sharma</div>
-<div class="patient-meta">ID: PT-1024 • 11 Mar 2026</div>
-
-<span class="stage stage-moderate">Moderate DR</span>
-
-<div class="result-row">
-<span>Confidence</span>
-<span>92%</span>
-</div>
-
-<div class="result-row">
-<span>Disease</span>
-<span>Diabetic Retinopathy</span>
-</div>
-
-<button class="download-btn" onclick="downloadReport('Anita Sharma','Moderate DR','92%','11 Mar 2026')">
-Download Report
-</button>
-
-</div>
-
-<!-- CARD -->
-
-<div class="history-card">
-
-<div class="patient-name">Suresh Reddy</div>
-<div class="patient-meta">ID: PT-1025 • 10 Mar 2026</div>
-
-<span class="stage stage-severe">Severe DR</span>
-
-<div class="result-row">
-<span>Confidence</span>
-<span>96%</span>
-</div>
-
-<div class="result-row">
-<span>Disease</span>
-<span>Proliferative DR</span>
-</div>
-
-<button class="download-btn" onclick="downloadReport('Suresh Reddy','Severe DR','96%','10 Mar 2026')">
-Download Report
-</button>
-</div>
-
-</div>
-
 </section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-inner">
+        <div>
+            <div class="footer-brand-name">RetinaCare AI</div>
+            <p class="footer-brand-desc">AI-powered early detection of Diabetic Retinopathy and multi-eye disease
+                screening — built to make specialist-grade care accessible to every patient, everywhere.</p>
+            <div class="footer-tech" style="margin-top:1rem;">
+                <span class="ftag">Python</span>
+                <span class="ftag">TensorFlow</span>
+                <span class="ftag">ResNet-50</span>
+                <span class="ftag">Flask</span>
+                <span class="ftag">OpenCV</span>
+                <span class="ftag">Grad-CAM</span>
+            </div>
+        </div>
+        <div class="footer-col">
+            <h4>Project</h4>
+            <a href="about.html">About DR</a>
+            <a href="approach.html">Methodology</a>
+            <a href="features.html">Features</a>
+            <a href="model.html">AI Model</a>
+        </div>
+        <div class="footer-col">
+            <h4>Features</h4>
+            <a href="features.html">Multi-Disease</a>
+            <a href="features.html">Grad-CAM</a>
+            <a href="model.html">Risk Score</a>
+            <a href="features.html">Telemedicine</a>
+        </div>
+        <div class="footer-col">
+            <h4>Team</h4>
+            <a href="team.html">Developers</a>
+            <a href="demo.html">Live Demo</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        🎓 Project Expo 2025 &nbsp;·&nbsp; RetinaCare AI &nbsp;·&nbsp; Made for better, accessible eye healthcare
+        &nbsp;·&nbsp; All rights reserved
+    </div>
+</footer>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script>
 
@@ -273,7 +402,283 @@ doc.save(name+"_RetinaCare_Report.pdf");
 }
 
 </script>
+<script>
 
+async function loadPatientHistory() {
+
+    const historyGrid = document.getElementById("history-grid");
+
+    if (!historyGrid) return;
+
+    const user = JSON.parse(
+        sessionStorage.getItem("rc_user") || "null"
+    );
+
+    if (!user || !user.email) {
+
+        historyGrid.innerHTML = `
+            <div class="history-card">
+                <div class="patient-name">Please Login</div>
+                <div class="patient-meta">
+                    Login to view your personal scan history.
+                </div>
+            </div>
+        `;
+
+        return;
+    }
+
+    try {
+
+        const response = await fetch(
+            "http://localhost:5000/history/" +
+            encodeURIComponent(user.email)
+        );
+
+        const reports = await response.json();
+
+        if (!response.ok) {
+            throw new Error("Unable to load history");
+        }
+
+        if (!reports || reports.length === 0) {
+
+            historyGrid.innerHTML = `
+                <div class="history-card">
+                    <div class="patient-name">
+                        No Scan History
+                    </div>
+
+                    <div class="patient-meta">
+                        You have not completed any AI scans yet.
+                    </div>
+
+                    <button
+                        class="download-btn"
+                        onclick="location.href='demo.html'"
+                    >
+                        Start New Scan
+                    </button>
+                </div>
+            `;
+
+            return;
+        }
+
+        historyGrid.innerHTML = "";
+
+        reports.forEach(report => {
+
+            const card = document.createElement("div");
+
+            card.className = "history-card";
+
+            const stage = report.stage || "Unknown";
+            const confidence = Number(report.confidence || 0);
+
+            let stageClass = "stage-normal";
+
+            if (
+                stage.toLowerCase().includes("mild") ||
+                stage.toLowerCase().includes("moderate")
+            ) {
+                stageClass = "stage-moderate";
+            }
+
+            if (
+                stage.toLowerCase().includes("severe") ||
+                stage.toLowerCase().includes("proliferative")
+            ) {
+                stageClass = "stage-severe";
+            }
+
+            const scanDate = new Date(
+                report.scan_date
+            ).toLocaleString();
+
+            const disease =
+                stage === "No DR"
+                    ? "None"
+                    : "Diabetic Retinopathy";
+
+            card.innerHTML = `
+
+                <div class="patient-name">
+                    ${user.name || user.email}
+                </div>
+
+                <div class="patient-meta">
+                    ${user.email} • ${scanDate}
+                </div>
+
+                <span class="stage ${stageClass}">
+                    ${stage}
+                </span>
+
+                <div class="result-row">
+                    <span>Confidence</span>
+                    <span>${confidence.toFixed(2)}%</span>
+                </div>
+
+                <div class="result-row">
+                    <span>Disease</span>
+                    <span>${disease}</span>
+                </div>
+
+                <button
+                    class="download-btn"
+                    onclick="downloadHistoryReport(
+                        '${stage.replace(/'/g, "\\'")}',
+                        '${confidence.toFixed(2)}%',
+                        '${scanDate.replace(/'/g, "\\'")}'
+                    )"
+                >
+                    Download Report
+                </button>
+
+            `;
+
+            historyGrid.appendChild(card);
+
+        });
+
+    } catch (error) {
+
+        console.error(
+            "Patient history error:",
+            error
+        );
+
+        historyGrid.innerHTML = `
+            <div class="history-card">
+                <div class="patient-name">
+                    Unable to Load History
+                </div>
+
+                <div class="patient-meta">
+                    Please make sure the RetinaCare backend
+                    is running.
+                </div>
+            </div>
+        `;
+    }
+}
+
+
+/* Download individual history report */
+
+window.downloadHistoryReport = function(
+    stage,
+    confidence,
+    date
+) {
+
+    const user = JSON.parse(
+        sessionStorage.getItem("rc_user") || "null"
+    );
+
+    const email =
+        user && user.email
+            ? user.email
+            : "Guest User";
+
+    const report = `
+RETINACARE AI
+PATIENT SCAN REPORT
+========================================
+
+Patient/User:
+${email}
+
+Scan Date:
+${date}
+
+----------------------------------------
+AI ANALYSIS
+----------------------------------------
+
+Predicted Stage:
+${stage}
+
+Model Confidence:
+${confidence}
+
+----------------------------------------
+MODEL INFORMATION
+----------------------------------------
+
+Model:
+RetinaCare AI - ResNet-50
+
+Dataset:
+APTOS 2019 Blindness Detection
+
+----------------------------------------
+DISCLAIMER
+----------------------------------------
+
+This report is generated by an AI-based screening
+prototype and is intended for research and
+educational purposes. It should not be considered
+a medical diagnosis or a replacement for evaluation
+by a qualified eye-care professional.
+
+========================================
+RetinaCare AI
+`;
+
+    const blob = new Blob(
+        [report],
+        { type: "text/plain;charset=utf-8" }
+    );
+
+    const url = URL.createObjectURL(blob);
+
+    const link = document.createElement("a");
+
+    link.href = url;
+    link.download = "RetinaCare_Scan_Report.txt";
+
+    document.body.appendChild(link);
+
+    link.click();
+
+    document.body.removeChild(link);
+
+    URL.revokeObjectURL(url);
+};
+
+
+/* Load history when page opens */
+
+loadPatientHistory();
+
+</script>
+<script>
+(function () {
+    const themeToggle = document.getElementById("theme-toggle");
+    const savedTheme = localStorage.getItem("retinacare-theme");
+
+    if (savedTheme === "dark") {
+        document.body.classList.add("dark-theme");
+    }
+
+    function updateThemeControl() {
+        const isDark = document.body.classList.contains("dark-theme");
+        themeToggle.textContent = isDark ? "☀️" : "🌙";
+        themeToggle.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
+        themeToggle.setAttribute("title", isDark ? "Switch to light mode" : "Switch to dark mode");
+    }
+
+    updateThemeControl();
+
+    themeToggle.addEventListener("click", function () {
+        const isDark = document.body.classList.toggle("dark-theme");
+        localStorage.setItem("retinacare-theme", isDark ? "dark" : "light");
+        updateThemeControl();
+    });
+})();
+</script>
 </body>
 
 </html>

@@ -9,6 +9,41 @@
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+<style>
+/* ── TEAM PAGE DARK MODE ── */
+
+.dark-theme .team-card {
+    background: #111b17 !important;
+    border-color: rgba(255,255,255,0.10) !important;
+    color: #f1f5f9 !important;
+}
+
+.dark-theme .team-card h3 {
+    color: #f8fafc !important;
+}
+
+.dark-theme .team-card p {
+    color: #a8b5b0 !important;
+}
+
+.dark-theme .team-role {
+    color: #86efac !important;
+}
+
+.dark-theme .team-info-card {
+    background: #111b17 !important;
+    border-color: rgba(255,255,255,0.10) !important;
+    color: #cbd5e1 !important;
+}
+
+.dark-theme .team-info-card strong {
+    color: #f8fafc !important;
+}
+
+.dark-theme .sec-sub {
+    color: #9aa9a3 !important;
+}
+</style>
 </head>
 
 <body>
@@ -16,13 +51,7 @@
     <!-- ── NAV ── -->
     <nav>
         <div class="nav-logo">
-            <div class="nav-logo-icon">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                    <circle cx="10" cy="10" r="8" stroke="white" stroke-width="1.5" />
-                    <circle cx="10" cy="10" r="4" fill="white" opacity="0.9" />
-                    <circle cx="10" cy="10" r="1.5" fill="#16a34a" />
-                </svg>
-            </div>
+            <img class="nav-logo-svg" src="retinacare-logo.svg" alt="">
             <a href="index.html" style="text-decoration: none; color: inherit;"><span class="nav-logo-text">Retina<span>Care</span> AI</span></a>
         </div>
         <div class="nav-links">
@@ -30,9 +59,18 @@
             <a href="approach.html">Approach</a>
             <a href="features.html">Features</a>
             <a href="model.html">Model</a>
+            <a href="patient-history.html">Patient History</a>
             <a href="team.html">Team</a>
             <a href="login.html" style="color: var(--green-main); font-weight: 700;">Login</a>
         </div>
+<button
+    class="theme-toggle"
+    id="theme-toggle"
+    type="button"
+    aria-label="Toggle dark mode"
+    title="Toggle dark mode">
+    🌙
+</button>
         <button class="nav-pill" onclick="window.location.href='demo.html'">Live
             Demo</button>
     </nav>
@@ -47,12 +85,7 @@
                     accessible healthcare.</p>
             </div>
             <div class="team-grid reveal">
-                <div class="team-card">
-                    <div class="t-avatar av-g">👤</div>
-                    <h3>Asmitha</h3>
-                    <div class="team-role">CS Engineer · Lead</div>
-                    
-                </div>
+                
                 <div class="team-card">
                     <div class="t-avatar av-g">👤</div>
                     <h3>Vennela</h3>

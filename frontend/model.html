@@ -2,233 +2,2741 @@
 <html lang="en">
 
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Model • RetinaCare AI</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <title>AI Model | RetinaCare AI</title>
 
-<link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        /* =====================================================
+           MODEL PAGE
+        ===================================================== */
+
+        .model-hero {
+            padding: 105px 7% 85px;
+            background:
+                radial-gradient(circle at 15% 25%, rgba(34,197,94,.10), transparent 28%),
+                radial-gradient(circle at 90% 20%, rgba(16,185,129,.10), transparent 30%),
+                linear-gradient(135deg, #f0fdf4, #ffffff 60%, #ecfdf5);
+        }
+
+        .model-hero-inner {
+            max-width: 1200px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 65px;
+            align-items: center;
+        }
+
+        .model-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 15px;
+            border-radius: 100px;
+            background: white;
+            border: 1px solid #bbf7d0;
+            color: #15803d;
+            font-size: .74rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 22px;
+        }
+
+        .model-kicker span {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #22c55e;
+            box-shadow: 0 0 0 5px rgba(34,197,94,.10);
+        }
+
+        .model-hero h1 {
+            font-family: var(--font-display);
+            color: #064e3b;
+            font-size: clamp(3rem, 5vw, 4.8rem);
+            line-height: 1.03;
+            letter-spacing: -2px;
+            margin-bottom: 22px;
+        }
+
+        .model-hero h1 em {
+            color: var(--green-main);
+        }
+
+        .model-hero p {
+            color: #64748b;
+            line-height: 1.8;
+            font-size: .98rem;
+            max-width: 600px;
+            margin-bottom: 28px;
+        }
+
+        .model-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .model-outline {
+            padding: 12px 22px;
+            border-radius: 100px;
+            border: 1px solid #86efac;
+            color: #166534;
+            background: white;
+            text-decoration: none;
+            font-size: .82rem;
+            font-weight: 700;
+            transition: .3s ease;
+        }
+
+        .model-outline:hover {
+            background: #dcfce7;
+            transform: translateY(-3px);
+        }
+
+        /* MODEL VISUAL */
+
+        .architecture-card {
+            background: rgba(255,255,255,.86);
+            border: 1px solid rgba(22,163,74,.16);
+            border-radius: 28px;
+            padding: 25px;
+            box-shadow: 0 30px 75px rgba(6,78,59,.10);
+            backdrop-filter: blur(12px);
+        }
+
+        .architecture-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 22px;
+        }
+
+        .architecture-title {
+            color: #064e3b;
+            font-size: .76rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .architecture-status {
+            color: #15803d;
+            font-size: .66rem;
+            font-weight: 800;
+        }
+
+        .architecture-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .architecture-node {
+            display: grid;
+            grid-template-columns: 38px 1fr auto;
+            gap: 12px;
+            align-items: center;
+            padding: 13px;
+            border-radius: 13px;
+            background: #f8fffa;
+            border: 1px solid #e5f5e9;
+        }
+
+        .node-number {
+            width: 33px;
+            height: 33px;
+            border-radius: 10px;
+            background: white;
+            border: 1px solid #bbf7d0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #166534;
+            font-size: .65rem;
+            font-weight: 800;
+        }
+
+        .node-name {
+            color: #334155;
+            font-size: .79rem;
+            font-weight: 800;
+        }
+
+        .node-detail {
+            color: #94a3b8;
+            font-size: .66rem;
+            margin-top: 2px;
+        }
+
+        .node-value {
+            color: #15803d;
+            font-size: .66rem;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        .architecture-arrow {
+            text-align: center;
+            color: #16a34a;
+            font-size: .75rem;
+            line-height: 7px;
+        }
+
+        /* =====================================================
+           SECTIONS
+        ===================================================== */
+
+        .model-section {
+            padding: 95px 7%;
+        }
+
+        .model-section.soft {
+            background: #f8fffa;
+        }
+
+        .model-container {
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .model-heading {
+            max-width: 720px;
+            margin-bottom: 48px;
+        }
+
+        .model-tag {
+            color: #16a34a;
+            font-size: .74rem;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 11px;
+        }
+
+        .model-heading h2 {
+            font-family: var(--font-display);
+            color: #064e3b;
+            font-size: clamp(2.2rem, 4vw, 3.4rem);
+            line-height: 1.1;
+            margin-bottom: 14px;
+        }
+
+        .model-heading h2 em {
+            color: #16a34a;
+        }
+
+        .model-heading p {
+            color: #64748b;
+            line-height: 1.8;
+        }
+
+        /* =====================================================
+           ARCHITECTURE DETAILS
+        ===================================================== */
+
+        .architecture-details {
+            display: grid;
+            grid-template-columns: .85fr 1.15fr;
+            gap: 25px;
+        }
+
+        .arch-info-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 23px;
+            padding: 28px;
+        }
+
+        .arch-info-card h3 {
+            color: #064e3b;
+            margin-bottom: 20px;
+        }
+
+        .layer-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            padding: 13px 0;
+            border-bottom: 1px solid #edf2f7;
+            font-size: .79rem;
+        }
+
+        .layer-row:last-child {
+            border-bottom: 0;
+        }
+
+        .layer-name {
+            color: #64748b;
+        }
+
+        .layer-value {
+            color: #334155;
+            font-weight: 700;
+            text-align: right;
+        }
+
+        .architecture-diagram {
+            background: #064e3b;
+            border-radius: 23px;
+            padding: 28px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .diagram-flow {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .diagram-box {
+            min-width: 115px;
+            padding: 16px 12px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,.16);
+            border-radius: 14px;
+            background: rgba(255,255,255,.06);
+        }
+
+        .diagram-box strong {
+            display: block;
+            font-size: .73rem;
+            margin-bottom: 5px;
+        }
+
+        .diagram-box span {
+            color: rgba(255,255,255,.62);
+            font-size: .6rem;
+        }
+
+        .diagram-arrow {
+            color: #86efac;
+            font-weight: 800;
+        }
+
+        /* =====================================================
+           DATASET
+        ===================================================== */
+
+        .dataset-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 22px;
+        }
+
+        .dataset-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 23px;
+            padding: 30px;
+        }
+
+        .dataset-card h3 {
+            color: #064e3b;
+            margin-bottom: 10px;
+        }
+
+        .dataset-card p {
+            color: #64748b;
+            font-size: .84rem;
+            line-height: 1.7;
+        }
+
+        .dataset-number {
+            font-family: var(--font-display);
+            font-size: 2.8rem;
+            color: #16a34a;
+            font-weight: 700;
+            margin-bottom: 3px;
+        }
+
+        .dataset-label {
+            color: #64748b;
+            font-size: .73rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .7px;
+        }
+
+        .class-bars {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 11px;
+        }
+
+        .class-row {
+            display: grid;
+            grid-template-columns: 95px 1fr 45px;
+            gap: 10px;
+            align-items: center;
+            font-size: .68rem;
+        }
+
+        .class-name {
+            color: #64748b;
+        }
+
+        .class-track {
+            height: 7px;
+            background: #ecfdf5;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .class-fill {
+            height: 100%;
+            border-radius: inherit;
+            background: #22c55e;
+        }
+
+        .class-value {
+            color: #334155;
+            font-weight: 800;
+            text-align: right;
+        }
+
+        /* =====================================================
+           TRAINING
+        ===================================================== */
+
+        .training-grid {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 20px;
+        }
+
+        .training-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 22px;
+            padding: 27px;
+            transition: .3s ease;
+        }
+
+        .training-card:hover {
+            transform: translateY(-6px);
+            border-color: #86efac;
+            box-shadow: 0 18px 42px rgba(6,78,59,.08);
+        }
+
+        .training-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 16px;
+            background: #dcfce7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            margin-bottom: 19px;
+        }
+
+        .training-card h3 {
+            color: #064e3b;
+            margin-bottom: 8px;
+        }
+
+        .training-card p {
+            color: #64748b;
+            font-size: .82rem;
+            line-height: 1.7;
+        }
+
+        /* =====================================================
+           RESULTS
+        ===================================================== */
+
+        .result-highlight {
+            max-width: 1200px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: .8fr 1.2fr;
+            gap: 22px;
+        }
+
+        .accuracy-card {
+            background: linear-gradient(135deg,#064e3b,#065f46);
+            border-radius: 25px;
+            padding: 35px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .accuracy-label {
+            color: rgba(255,255,255,.62);
+            font-size: .7rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .accuracy-value {
+            font-family: var(--font-display);
+            font-size: 4.2rem;
+            line-height: 1;
+            margin: 13px 0;
+            color: #86efac;
+        }
+
+        .accuracy-card p {
+            color: rgba(255,255,255,.72);
+            font-size: .78rem;
+            line-height: 1.6;
+        }
+
+        .metric-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .metric-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 20px;
+            padding: 23px;
+        }
+
+        .metric-value {
+            color: #16a34a;
+            font-size: 1.7rem;
+            font-weight: 800;
+        }
+
+        .metric-name {
+            color: #334155;
+            font-size: .77rem;
+            font-weight: 700;
+            margin-top: 4px;
+        }
+
+        .metric-note {
+            color: #94a3b8;
+            font-size: .64rem;
+            margin-top: 4px;
+        }
+
+        /* =====================================================
+           CLASSIFICATION TABLE
+        ===================================================== */
+
+        .results-table-wrap {
+            margin-top: 30px;
+            overflow-x: auto;
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 22px;
+        }
+
+        .results-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 650px;
+        }
+
+        .results-table th {
+            background: #f8fffa;
+            color: #166534;
+            font-size: .7rem;
+            text-transform: uppercase;
+            letter-spacing: .7px;
+            padding: 16px;
+            text-align: left;
+        }
+
+        .results-table td {
+            padding: 16px;
+            border-top: 1px solid #edf2f7;
+            color: #64748b;
+            font-size: .78rem;
+        }
+
+        .results-table td:first-child {
+            color: #334155;
+            font-weight: 700;
+        }
+
+        .results-table .summary td {
+            background: #f8fffa;
+            color: #166534;
+            font-weight: 800;
+        }
+
+        /* =====================================================
+           CONFUSION MATRIX
+        ===================================================== */
+
+        .matrix-card {
+            max-width: 760px;
+            margin: auto;
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 23px;
+            padding: 30px;
+            overflow-x: auto;
+        }
+
+        .matrix-card h3 {
+            color: #064e3b;
+            margin-bottom: 20px;
+        }
+
+        .matrix-table {
+            border-collapse: collapse;
+            margin: auto;
+        }
+
+        .matrix-table th,
+        .matrix-table td {
+            width: 72px;
+            height: 55px;
+            text-align: center;
+            border: 1px solid white;
+            font-size: .72rem;
+        }
+
+        .matrix-table th {
+            background: #f0fdf4;
+            color: #166534;
+            font-weight: 800;
+        }
+
+        .matrix-table td {
+            background: #dcfce7;
+            color: #166534;
+            font-weight: 700;
+        }
+
+        .matrix-table td.high {
+            background: #86efac;
+        }
+
+        .matrix-note {
+            text-align: center;
+            color: #94a3b8;
+            font-size: .67rem;
+            margin-top: 15px;
+        }
+
+        /* =====================================================
+           GRAD CAM
+        ===================================================== */
+
+        .explainability-box {
+            max-width: 1200px;
+            margin: auto;
+            background: linear-gradient(135deg,#064e3b,#065f46);
+            border-radius: 30px;
+            padding: 55px;
+            color: white;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 55px;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .explainability-box h2 {
+            font-family: var(--font-display);
+            font-size: 2.8rem;
+            line-height: 1.1;
+            margin-bottom: 17px;
+        }
+
+        .explainability-box h2 em {
+            color: #86efac;
+        }
+
+        .explainability-box p {
+            color: rgba(255,255,255,.74);
+            line-height: 1.8;
+            font-size: .87rem;
+        }
+
+        .gradcam-visual {
+            height: 280px;
+            border-radius: 23px;
+            position: relative;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at 50% 50%, #fef3c7 0 4%, transparent 5%),
+                radial-gradient(circle at 50% 50%, #ef4444 0 18%, #991b1b 45%, #450a0a 75%);
+            box-shadow: inset 0 0 80px rgba(0,0,0,.45);
+        }
+
+        .gradcam-visual::before,
+        .gradcam-visual::after {
+            content: "";
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: radial-gradient(
+                circle,
+                rgba(250,204,21,.9),
+                rgba(239,68,68,.3),
+                transparent 70%
+            );
+            animation: modelHeat 3s ease-in-out infinite;
+        }
+
+        .gradcam-visual::before {
+            left: 18%;
+            top: 25%;
+        }
+
+        .gradcam-visual::after {
+            right: 18%;
+            bottom: 20%;
+            animation-delay: 1s;
+        }
+
+        @keyframes modelHeat {
+            0%,100% {
+                transform: scale(.85);
+                opacity: .6;
+            }
+
+            50% {
+                transform: scale(1.15);
+                opacity: 1;
+            }
+        }
+
+        .gradcam-label {
+            position: absolute;
+            left: 16px;
+            bottom: 14px;
+            color: rgba(255,255,255,.68);
+            font-size: .63rem;
+            letter-spacing: .6px;
+        }
+
+        /* =====================================================
+           LIMITATIONS
+        ===================================================== */
+
+        .limitations {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .limitation-card {
+            padding: 27px;
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 22px;
+        }
+
+        .limitation-card h3 {
+            color: #064e3b;
+            margin-bottom: 10px;
+        }
+
+        .limitation-card p {
+            color: #64748b;
+            font-size: .82rem;
+            line-height: 1.7;
+        }
+
+        .model-disclaimer {
+            max-width: 1200px;
+            margin: 30px auto 0;
+            padding: 18px 20px;
+            background: #fffbeb;
+            border: 1px solid #fde68a;
+            border-radius: 15px;
+            color: #92400e;
+            font-size: .78rem;
+            line-height: 1.7;
+        }
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media(max-width:1000px) {
+
+            .model-hero-inner,
+            .architecture-details,
+            .result-highlight,
+            .explainability-box {
+                grid-template-columns: 1fr;
+            }
+
+            .training-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media(max-width:700px) {
+
+            .model-hero,
+            .model-section {
+                padding-left: 5%;
+                padding-right: 5%;
+            }
+
+            .training-grid,
+            .dataset-grid,
+            .limitations {
+                grid-template-columns: 1fr;
+            }
+
+            .metric-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .explainability-box {
+                padding: 32px 24px;
+            }
+
+            .explainability-box h2 {
+                font-size: 2.2rem;
+            }
+
+            .diagram-flow {
+                flex-direction: column;
+            }
+
+            .diagram-arrow {
+                transform: rotate(90deg);
+            }
+        }
+/* =====================================================
+   MODEL PAGE — ARCHITECTURE FLOW ANIMATION
+===================================================== */
+
+.architecture-node {
+    position: relative;
+    overflow: hidden;
+    animation: architectureNodePulse 5s ease-in-out infinite;
+}
+
+/* Sequential timing */
+
+.architecture-node:nth-of-type(1) {
+    animation-delay: 0s;
+}
+
+.architecture-node:nth-of-type(3) {
+    animation-delay: 1s;
+}
+
+.architecture-node:nth-of-type(5) {
+    animation-delay: 2s;
+}
+
+.architecture-node:nth-of-type(7) {
+    animation-delay: 3s;
+}
+
+.architecture-node:nth-of-type(9) {
+    animation-delay: 4s;
+}
+
+
+/* Green scanning highlight */
+
+.architecture-node::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 45%;
+    height: 100%;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(34,197,94,.13),
+        transparent
+    );
+
+    animation: architectureSweep 5s ease-in-out infinite;
+}
+
+
+/* Highlight movement */
+
+@keyframes architectureSweep {
+
+    0% {
+        left: -100%;
+    }
+
+    30% {
+        left: 120%;
+    }
+
+    100% {
+        left: 120%;
+    }
+
+}
+
+
+/* Active node pulse */
+
+@keyframes architectureNodePulse {
+
+    0%,
+    70%,
+    100% {
+        transform: translateX(0);
+        border-color: #e5f5e9;
+        box-shadow: none;
+    }
+
+    75% {
+        transform: translateX(4px);
+        border-color: #86efac;
+        box-shadow:
+            0 0 0 4px rgba(34,197,94,.07),
+            0 10px 25px rgba(22,163,74,.08);
+    }
+
+    82% {
+        transform: translateX(0);
+        border-color: #e5f5e9;
+        box-shadow: none;
+    }
+
+}
+
+
+/* Arrow flow */
+
+.architecture-arrow {
+    animation: architectureArrowPulse 5s ease-in-out infinite;
+}
+
+.architecture-arrow:nth-of-type(2) {
+    animation-delay: 1s;
+}
+
+.architecture-arrow:nth-of-type(4) {
+    animation-delay: 2s;
+}
+
+.architecture-arrow:nth-of-type(6) {
+    animation-delay: 3s;
+}
+
+.architecture-arrow:nth-of-type(8) {
+    animation-delay: 4s;
+}
+
+@keyframes architectureArrowPulse {
+
+    0%,
+    70%,
+    100% {
+        opacity: .45;
+        transform: translateY(0);
+    }
+
+    76% {
+        opacity: 1;
+        transform: translateY(3px);
+    }
+
+    82% {
+        opacity: .45;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .architecture-node,
+    .architecture-node::after,
+    .architecture-arrow {
+        animation: none;
+    }
+
+}
+/* =========================================================
+   MODEL PAGE — PREMIUM DARK THEME
+   ========================================================= */
+
+body.dark-theme .model-hero,
+body.dark-theme .model-section,
+body.dark-theme .architecture-section,
+body.dark-theme .dataset-section,
+body.dark-theme .training-section,
+body.dark-theme .results-section,
+body.dark-theme .gradcam-section {
+    background: #07110d !important;
+    color: #e2e8f0 !important;
+}
+
+body.dark-theme .model-hero h1,
+body.dark-theme .model-section h1,
+body.dark-theme .model-section h2,
+body.dark-theme .model-section h3,
+body.dark-theme .architecture-section h2,
+body.dark-theme .dataset-section h2,
+body.dark-theme .training-section h2,
+body.dark-theme .results-section h2,
+body.dark-theme .gradcam-section h2 {
+    color: #f8fafc !important;
+}
+
+body.dark-theme .model-hero p,
+body.dark-theme .model-section p,
+body.dark-theme .architecture-section p,
+body.dark-theme .dataset-section p,
+body.dark-theme .training-section p,
+body.dark-theme .results-section p,
+body.dark-theme .gradcam-section p {
+    color: #94a3b8 !important;
+}
+
+body.dark-theme .model-hero h1 em,
+body.dark-theme .model-section h2 em,
+body.dark-theme .architecture-section h2 em,
+body.dark-theme .dataset-section h2 em,
+body.dark-theme .training-section h2 em,
+body.dark-theme .results-section h2 em,
+body.dark-theme .gradcam-section h2 em {
+    color: #22c55e !important;
+}
+
+/* Cards */
+
+body.dark-theme .model-card,
+body.dark-theme .architecture-card,
+body.dark-theme .dataset-card,
+body.dark-theme .training-card,
+body.dark-theme .metric-card,
+body.dark-theme .result-card,
+body.dark-theme .gradcam-card {
+    background: linear-gradient(
+        145deg,
+        #10251a,
+        #091710
+    ) !important;
+
+    border-color: rgba(74, 222, 128, 0.18) !important;
+    color: #e2e8f0 !important;
+
+    box-shadow:
+        0 18px 45px rgba(0,0,0,.28),
+        inset 0 1px 0 rgba(255,255,255,.025);
+}
+
+/* Architecture nodes */
+
+body.dark-theme .architecture-node {
+    background: linear-gradient(
+        145deg,
+        #10251a,
+        #091710
+    ) !important;
+
+    border-color: #29513b !important;
+    color: #e2e8f0 !important;
+}
+
+body.dark-theme .architecture-node h3 {
+    color: #f8fafc !important;
+}
+
+body.dark-theme .architecture-node p {
+    color: #94a3b8 !important;
+}
+
+body.dark-theme .architecture-arrow {
+    color: #4ade80 !important;
+}
+
+/* Tags / labels */
+
+body.dark-theme .model-tag,
+body.dark-theme .section-tag,
+body.dark-theme .architecture-tag,
+body.dark-theme .dataset-tag {
+    background: rgba(34,197,94,.10) !important;
+    color: #86efac !important;
+    border-color: rgba(74,222,128,.20) !important;
+}
+
+/* Metrics */
+
+body.dark-theme .metric-card strong,
+body.dark-theme .metric-card .metric-value {
+    color: #f8fafc !important;
+}
+
+body.dark-theme .metric-card span,
+body.dark-theme .metric-card small {
+    color: #94a3b8 !important;
+}
+
+/* Tables */
+
+body.dark-theme table {
+    background: #0b1711 !important;
+    color: #e2e8f0 !important;
+}
+
+body.dark-theme th {
+    background: #10251a !important;
+    color: #86efac !important;
+    border-color: #1d3a2b !important;
+}
+
+body.dark-theme td {
+    background: #0b1711 !important;
+    color: #cbd5e1 !important;
+    border-color: #1d3a2b !important;
+}
+
+body.dark-theme tr:hover td {
+    background: #10251a !important;
+}
+
+/* Confusion matrix */
+
+body.dark-theme .confusion-matrix,
+body.dark-theme .matrix-container {
+    background: #0b1711 !important;
+    border-color: #1d3a2b !important;
+}
+
+/* Grad-CAM */
+
+body.dark-theme .gradcam-card img {
+    border-color: #29513b !important;
+}
+
+body.dark-theme .gradcam-note {
+    color: #94a3b8 !important;
+}
+
+/* Disclaimer */
+
+body.dark-theme .model-disclaimer,
+body.dark-theme .disclaimer {
+    background: #0d1b14 !important;
+    border-color: #29513b !important;
+    color: #94a3b8 !important;
+}
+
+body.dark-theme .model-disclaimer strong,
+body.dark-theme .disclaimer strong {
+    color: #86efac !important;
+}
+/* =========================================================
+   RESNET-50 ARCHITECTURE FLOW ANIMATION
+   ========================================================= */
+
+.architecture-node {
+    position: relative;
+    overflow: hidden;
+    animation: architectureNodePulse 5s ease-in-out infinite;
+}
+
+.architecture-node:nth-of-type(1) {
+    animation-delay: 0s;
+}
+
+.architecture-node:nth-of-type(3) {
+    animation-delay: 1s;
+}
+
+.architecture-node:nth-of-type(5) {
+    animation-delay: 2s;
+}
+
+.architecture-node:nth-of-type(7) {
+    animation-delay: 3s;
+}
+
+.architecture-node:nth-of-type(9) {
+    animation-delay: 4s;
+}
+
+/* Green scanning sweep */
+
+.architecture-node::after {
+    content: "";
+    position: absolute;
+
+    top: 0;
+    left: -100%;
+
+    width: 45%;
+    height: 100%;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(34, 197, 94, 0.13),
+        transparent
+    );
+
+    animation: architectureSweep 5s ease-in-out infinite;
+}
+
+@keyframes architectureSweep {
+
+    0% {
+        left: -100%;
+    }
+
+    30% {
+        left: 120%;
+    }
+
+    100% {
+        left: 120%;
+    }
+}
+
+/* Node pulse */
+
+@keyframes architectureNodePulse {
+
+    0%,
+    70%,
+    100% {
+        transform: translateX(0);
+
+        border-color: #e5f5e9;
+
+        box-shadow: none;
+    }
+
+    75% {
+        transform: translateX(4px);
+
+        border-color: #86efac;
+
+        box-shadow:
+            0 0 0 4px rgba(34, 197, 94, 0.07),
+            0 10px 25px rgba(22, 163, 74, 0.08);
+    }
+
+    82% {
+        transform: translateX(0);
+
+        border-color: #e5f5e9;
+
+        box-shadow: none;
+    }
+}
+
+/* Connecting arrows */
+
+.architecture-arrow {
+    animation: architectureArrowPulse 5s ease-in-out infinite;
+}
+
+.architecture-arrow:nth-of-type(2) {
+    animation-delay: 1s;
+}
+
+.architecture-arrow:nth-of-type(4) {
+    animation-delay: 2s;
+}
+
+.architecture-arrow:nth-of-type(6) {
+    animation-delay: 3s;
+}
+
+.architecture-arrow:nth-of-type(8) {
+    animation-delay: 4s;
+}
+
+@keyframes architectureArrowPulse {
+
+    0%,
+    70%,
+    100% {
+        opacity: 0.45;
+        transform: translateY(0);
+    }
+
+    76% {
+        opacity: 1;
+        transform: translateY(3px);
+    }
+
+    82% {
+        opacity: 0.45;
+        transform: translateY(0);
+    }
+}
+
+/* Dark theme animation border */
+
+body.dark-theme .architecture-node {
+    border-color: #29513b;
+}
+
+body.dark-theme .architecture-node:hover {
+    border-color: #4ade80;
+}
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .architecture-node,
+    .architecture-node::after,
+    .architecture-arrow {
+        animation: none;
+    }
+}
+/* =========================================================
+   MODEL PAGE — LIMITATION CARDS DARK THEME
+   ========================================================= */
+
+body.dark-theme .limitations {
+    background: transparent !important;
+}
+
+body.dark-theme .limitation-card {
+    background: linear-gradient(
+        145deg,
+        #10251a,
+        #091710
+    ) !important;
+
+    border: 1px solid rgba(74, 222, 128, 0.18) !important;
+
+    color: #e2e8f0 !important;
+
+    box-shadow:
+        0 18px 45px rgba(0, 0, 0, 0.28),
+        inset 0 1px 0 rgba(255, 255, 255, 0.025) !important;
+
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+body.dark-theme .limitation-card:hover {
+    transform: translateY(-5px);
+
+    border-color: rgba(74, 222, 128, 0.45) !important;
+
+    box-shadow:
+        0 24px 55px rgba(0, 0, 0, 0.35),
+        0 0 0 1px rgba(34, 197, 94, 0.08);
+}
+
+body.dark-theme .limitation-card h3 {
+    color: #f8fafc !important;
+}
+
+body.dark-theme .limitation-card p {
+    color: #94a3b8 !important;
+}
+    </style>
 </head>
+
 
 <body>
 
-<!-- NAVBAR -->
-<nav>
+    <!-- =====================================================
+         NAVBAR
+    ====================================================== -->
 
-<div class="nav-logo">
-<div class="nav-logo-icon">
+    <nav>
 
-<svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-<circle cx="10" cy="10" r="8" stroke="white" stroke-width="1.5"/>
-<circle cx="10" cy="10" r="4" fill="white"/>
-<circle cx="10" cy="10" r="1.5" fill="#16a34a"/>
-</svg>
+        <a href="index.html" style="text-decoration:none;">
 
-</div>
+            <div class="nav-logo nav-logo--index">
 
-<a href="index.html" style="text-decoration:none;color:inherit">
-<span class="nav-logo-text">Retina<span>Care</span> AI</span>
-</a>
+                <img class="nav-logo-svg" src="retinacare-logo.svg" alt="">
 
-</div>
+                <span class="nav-logo-text">
+                    Retina<span>Care</span> AI
+                </span>
 
-<div class="nav-links">
-<a href="about.html">About</a>
-<a href="approach.html">Approach</a>
-<a href="features.html">Features</a>
-<a href="patient-history.html">Patient History</a>
-<a href="team.html">Team</a>
-<a href="login.html" style="color:var(--green-main);font-weight:700;">Login</a>
-</div>
+            </div>
 
-<button class="nav-pill" onclick="window.location.href='demo.html'">Live Demo</button>
+        </a>
 
-</nav>
 
-<!-- MODEL SECTION -->
+        <div class="nav-links">
 
-<section class="sec model-section">
+            <a href="about.html">
+                About
+            </a>
 
-<div class="model-grid">
+            <a href="approach.html">
+                Approach
+            </a>
 
-<!-- LEFT SIDE -->
-<div>
+            <a href="features.html">
+                Features
+            </a>
 
-<div class="gradcam-label">Grad-CAM · Explainable AI</div>
+            <a href="model.html"
+               style="color:var(--green-main);font-weight:700;">
+                Model
+            </a>
 
-<div class="heatmap-container">
+            <a href="patient-history.html">
+                Patient History
+            </a>
 
-<svg class="heatmap-svg" viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="heat1" cx="45%" cy="50%" r="35%">
-<stop offset="0%" stop-color="#ef4444" stop-opacity="0.85"/>
-<stop offset="40%" stop-color="#f97316" stop-opacity="0.6"/>
-<stop offset="100%" stop-color="#22c55e" stop-opacity="0"/>
-</radialGradient><radialGradient id="heat2" cx="60%" cy="55%" r="25%">
-<stop offset="0%" stop-color="#f59e0b" stop-opacity="0.7"/>
-<stop offset="100%" stop-color="#22c55e" stop-opacity="0"/>
-</radialGradient></defs><!-- retina base --><rect width="320" height="200" rx="12" fill="#0a2e1a"/><ellipse cx="160" cy="100" rx="85" ry="70" fill="#0f3d22"/>
-<ellipse cx="160" cy="100" rx="60" ry="48" fill="#1a5c32"/><!-- optic disc --><ellipse cx="185" cy="100" rx="10" ry="12" fill="#4ade80" opacity="0.25"/><!-- vessels --><path d="M185 95 Q170 88 155 96 Q140 104 132 118"
-stroke="#4ade80" stroke-width="1" opacity="0.35" fill="none"/>
+            <a href="team.html">
+                Team
+            </a>
 
-<path d="M185 108 Q170 120 158 128"
-stroke="#4ade80" stroke-width="1" opacity="0.35" fill="none"/>
+            <a href="login.html">
+                Login
+            </a>
 
-<!-- ===== STAGE 0 ===== --><g class="anim-stage anim-stage-0"><rect x="60" y="160" width="200" height="20" rx="6"
-fill="rgba(34,197,94,0.15)"
-stroke="#22c55e"/>
+        </div>
+<button
+    class="theme-toggle"
+    id="theme-toggle"
+    type="button"
+    aria-label="Toggle dark mode"
+    title="Toggle dark mode">
+    🌙
+</button>
 
-<text x="160" y="174"
-font-family="Plus Jakarta Sans"
-font-size="9"
-fill="#4ade80"
-text-anchor="middle"
-font-weight="600">
+        <button class="nav-pill"
+            onclick="window.location.href='demo.html'">
+            Live Demo
+        </button>
 
-Stage 0 · Normal · 98%
+    </nav>
 
-</text></g><!-- ===== STAGE 2 ===== --><g class="anim-stage anim-stage-2"><ellipse cx="150" cy="100" rx="35" ry="30" fill="url(#heat1)"/>
-<ellipse cx="180" cy="110" rx="22" ry="18" fill="url(#heat2)"/><rect x="130" y="80"
-width="45"
-height="45"
-fill="none"
-stroke="#f59e0b"
-stroke-width="1.5"
-stroke-dasharray="4 3"/>
 
-</g><!-- ===== STAGE 4 ===== --><g class="anim-stage anim-stage-4"><ellipse cx="160" cy="100" rx="55" ry="45" fill="url(#heat1)"/>
-<ellipse cx="190" cy="85" rx="30" ry="25" fill="url(#heat2)"/>
-<ellipse cx="135" cy="120" rx="25" ry="20" fill="url(#heat1)"/><rect x="110" y="60"
-width="100"
-height="75"
-fill="none"
-stroke="#ef4444"
-stroke-width="1.5"
-stroke-dasharray="4 3"/>
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
 
-</g></svg>
-</div>
+    <section class="model-hero">
 
-<p class="heatmap-desc">
-Visual explanation of AI prediction highlighting damaged retinal regions detected by Grad-CAM.
-</p>
+        <div class="model-hero-inner">
 
-</div>
+            <div>
 
-<!-- RIGHT SIDE -->
+                <div class="model-kicker">
+                    <span></span>
+                    Machine Learning Architecture
+                </div>
 
-<div>
 
-<div class="sec-tag">AI Model</div>
+                <h1>
+                    ResNet-50
+                    <em>for retinal analysis.</em>
+                </h1>
 
-<h2 class="sec-title">
-ResNet-50 <br><em>Architecture</em>
-</h2>
 
-<p class="sec-sub">
-Transfer-learned using the APTOS Blindness Detection dataset to classify diabetic retinopathy severity.
-</p>
+                <p>
+                    RetinaCare AI uses an ImageNet-pretrained ResNet-50
+                    backbone, fine-tuned for five-class diabetic
+                    retinopathy severity classification using the
+                    APTOS 2019 dataset.
+                </p>
 
-<div class="arch-card">
 
-<div class="arch-head">Network Layers</div>
+                <div class="model-actions">
 
-<div class="arch-layer">
-<span>Input</span>
-<span>224 × 224 × 3</span>
-</div>
+                    <a href="demo.html"
+                       class="btn-primary">
+                        Try the Model
+                    </a>
 
-<div class="arch-layer">
-<span>ResNet-50 Backbone</span>
-<span>ImageNet</span>
-</div>
+                    <a href="#results"
+                       class="model-outline">
+                        View Results
+                    </a>
 
-<div class="arch-layer">
-<span>Global Avg Pooling</span>
-<span>2048 features</span>
-</div>
+                </div>
 
-<div class="arch-layer">
-<span>Dense Layer</span>
-<span>512 neurons</span>
-</div>
+            </div>
 
-<div class="arch-layer">
-<span>Softmax</span>
-<span>5 Classes</span>
-</div>
 
-</div>
+            <!-- Architecture visual -->
 
-<div class="metrics-grid">
+            <div class="architecture-card">
 
-<div class="metric">
-<div class="metric-num">93.7%</div>
-<div class="metric-lbl">Accuracy</div>
-</div>
+                <div class="architecture-top">
 
-<div class="metric">
-<div class="metric-num">0.91</div>
-<div class="metric-lbl">F1 Score</div>
-</div>
+                    <div class="architecture-title">
+                        Model Pipeline
+                    </div>
 
-<div class="metric">
-<div class="metric-num">0.89</div>
-<div class="metric-lbl">Precision</div>
-</div>
+                    <div class="architecture-status">
+                        TRAINED MODEL
+                    </div>
 
-<div class="metric">
-<div class="metric-num">0.93</div>
-<div class="metric-lbl">Recall</div>
-</div>
+                </div>
 
-</div>
 
-</div>
+                <div class="architecture-flow">
 
-</div>
+                    <div class="architecture-node">
 
-</section>
+                        <div class="node-number">
+                            01
+                        </div>
 
-<!-- FOOTER -->
+                        <div>
+                            <div class="node-name">
+                                Input Image
+                            </div>
 
-<footer>
+                            <div class="node-detail">
+                                Retinal fundus photograph
+                            </div>
+                        </div>
 
-<div class="footer-inner">
+                        <div class="node-value">
+                            224×224×3
+                        </div>
 
-<div>
-<div class="footer-brand-name">RetinaCare AI</div>
-<p class="footer-brand-desc">
-AI powered diabetic retinopathy screening platform enabling early detection and accessible eye care.
-</p>
-</div>
+                    </div>
 
-<div class="footer-col">
-<h4>Project</h4>
-<a href="about.html">About</a>
-<a href="approach.html">Methodology</a>
-<a href="features.html">Features</a>
-</div>
 
-<div class="footer-col">
-<h4>Technology</h4>
-<a>TensorFlow</a>
-<a>ResNet-50</a>
-<a>Grad-CAM</a>
-</div>
+                    <div class="architecture-arrow">↓</div>
 
-<div class="footer-col">
-<h4>Demo</h4>
-<a href="demo.html">Live Demo</a>
-<a href="team.html">Team</a>
-</div>
 
-</div>
+                    <div class="architecture-node">
 
-<div class="footer-bottom">
-RetinaCare AI · Project Expo
-</div>
+                        <div class="node-number">
+                            02
+                        </div>
 
-</footer>
+                        <div>
+                            <div class="node-name">
+                                ResNet-50
+                            </div>
+
+                            <div class="node-detail">
+                                ImageNet pretrained backbone
+                            </div>
+                        </div>
+
+                        <div class="node-value">
+                            CNN
+                        </div>
+
+                    </div>
+
+
+                    <div class="architecture-arrow">↓</div>
+
+
+                    <div class="architecture-node">
+
+                        <div class="node-number">
+                            03
+                        </div>
+
+                        <div>
+                            <div class="node-name">
+                                Global Average Pooling
+                            </div>
+
+                            <div class="node-detail">
+                                Deep feature representation
+                            </div>
+                        </div>
+
+                        <div class="node-value">
+                            2048
+                        </div>
+
+                    </div>
+
+
+                    <div class="architecture-arrow">↓</div>
+
+
+                    <div class="architecture-node">
+
+                        <div class="node-number">
+                            04
+                        </div>
+
+                        <div>
+                            <div class="node-name">
+                                Dense + Dropout
+                            </div>
+
+                            <div class="node-detail">
+                                Fully connected representation
+                            </div>
+                        </div>
+
+                        <div class="node-value">
+                            512
+                        </div>
+
+                    </div>
+
+
+                    <div class="architecture-arrow">↓</div>
+
+
+                    <div class="architecture-node">
+
+                        <div class="node-number">
+                            05
+                        </div>
+
+                        <div>
+                            <div class="node-name">
+                                Softmax Output
+                            </div>
+
+                            <div class="node-detail">
+                                DR severity prediction
+                            </div>
+                        </div>
+
+                        <div class="node-value">
+                            5 classes
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         ARCHITECTURE
+    ====================================================== -->
+
+    <section class="model-section">
+
+        <div class="model-container">
+
+            <div class="model-heading">
+
+                <div class="model-tag">
+                    Architecture
+                </div>
+
+                <h2>
+                    Inside the
+                    <em>model.</em>
+                </h2>
+
+                <p>
+                    The final RetinaCare AI classifier combines the
+                    ResNet-50 feature extractor with a compact
+                    classification head designed for five DR severity
+                    categories.
+                </p>
+
+            </div>
+
+
+            <div class="architecture-details">
+
+
+                <div class="arch-info-card">
+
+                    <h3>
+                        Network Layers
+                    </h3>
+
+
+                    <div class="layer-row">
+                        <span class="layer-name">
+                            Input
+                        </span>
+                        <span class="layer-value">
+                            224 × 224 × 3
+                        </span>
+                    </div>
+
+
+                    <div class="layer-row">
+                        <span class="layer-name">
+                            ResNet-50 Backbone
+                        </span>
+                        <span class="layer-value">
+                            ImageNet pretrained
+                        </span>
+                    </div>
+
+
+                    <div class="layer-row">
+                        <span class="layer-name">
+                            Global Average Pooling
+                        </span>
+                        <span class="layer-value">
+                            2048 features
+                        </span>
+                    </div>
+
+
+                    <div class="layer-row">
+                        <span class="layer-name">
+                            Dense
+                        </span>
+                        <span class="layer-value">
+                            512 neurons
+                        </span>
+                    </div>
+
+
+                    <div class="layer-row">
+                        <span class="layer-name">
+                            Dropout
+                        </span>
+                        <span class="layer-value">
+                            0.5
+                        </span>
+                    </div>
+
+
+                    <div class="layer-row">
+                        <span class="layer-name">
+                            Output
+                        </span>
+                        <span class="layer-value">
+                            5-class Softmax
+                        </span>
+                    </div>
+
+                </div>
+
+
+                <div class="architecture-diagram">
+
+                    <div class="diagram-flow">
+
+                        <div class="diagram-box">
+                            <strong>Input</strong>
+                            <span>224×224×3</span>
+                        </div>
+
+                        <div class="diagram-arrow">
+                            →
+                        </div>
+
+                        <div class="diagram-box">
+                            <strong>ResNet-50</strong>
+                            <span>Feature extraction</span>
+                        </div>
+
+                        <div class="diagram-arrow">
+                            →
+                        </div>
+
+                        <div class="diagram-box">
+                            <strong>GAP</strong>
+                            <span>2048 features</span>
+                        </div>
+
+                        <div class="diagram-arrow">
+                            →
+                        </div>
+
+                        <div class="diagram-box">
+                            <strong>Dense</strong>
+                            <span>512 neurons</span>
+                        </div>
+
+                        <div class="diagram-arrow">
+                            →
+                        </div>
+
+                        <div class="diagram-box">
+                            <strong>Softmax</strong>
+                            <span>5 stages</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         DATASET
+    ====================================================== -->
+
+    <section class="model-section soft">
+
+        <div class="model-container">
+
+            <div class="model-heading">
+
+                <div class="model-tag">
+                    Dataset
+                </div>
+
+                <h2>
+                    Trained on
+                    <em>APTOS 2019.</em>
+                </h2>
+
+                <p>
+                    The model was developed using the APTOS 2019 Blindness
+                    Detection dataset containing retinal fundus images
+                    labelled across five diabetic retinopathy severity
+                    stages.
+                </p>
+
+            </div>
+
+
+            <div class="dataset-grid">
+
+
+                <div class="dataset-card">
+
+                    <div class="dataset-number">
+                        3,662
+                    </div>
+
+                    <div class="dataset-label">
+                        Retinal Images
+                    </div>
+
+                    <p style="margin-top:20px;">
+                        The dataset was divided using a stratified
+                        70 / 15 / 15 train, validation and test split.
+                    </p>
+
+                    <div class="class-bars">
+
+                        <div class="class-row">
+
+                            <span class="class-name">
+                                No DR
+                            </span>
+
+                            <div class="class-track">
+                                <div class="class-fill"
+                                     style="width:49.29%;">
+                                </div>
+                            </div>
+
+                            <span class="class-value">
+                                49.3%
+                            </span>
+
+                        </div>
+
+
+                        <div class="class-row">
+
+                            <span class="class-name">
+                                Mild
+                            </span>
+
+                            <div class="class-track">
+                                <div class="class-fill"
+                                     style="width:10.10%;">
+                                </div>
+                            </div>
+
+                            <span class="class-value">
+                                10.1%
+                            </span>
+
+                        </div>
+
+
+                        <div class="class-row">
+
+                            <span class="class-name">
+                                Moderate
+                            </span>
+
+                            <div class="class-track">
+                                <div class="class-fill"
+                                     style="width:27.28%;">
+                                </div>
+                            </div>
+
+                            <span class="class-value">
+                                27.3%
+                            </span>
+
+                        </div>
+
+
+                        <div class="class-row">
+
+                            <span class="class-name">
+                                Severe
+                            </span>
+
+                            <div class="class-track">
+                                <div class="class-fill"
+                                     style="width:5.27%;">
+                                </div>
+                            </div>
+
+                            <span class="class-value">
+                                5.3%
+                            </span>
+
+                        </div>
+
+
+                        <div class="class-row">
+
+                            <span class="class-name">
+                                Proliferative
+                            </span>
+
+                            <div class="class-track">
+                                <div class="class-fill"
+                                     style="width:8.06%;">
+                                </div>
+                            </div>
+
+                            <span class="class-value">
+                                8.1%
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="dataset-card">
+
+                    <h3>
+                        Dataset Split
+                    </h3>
+
+                    <div class="layer-row">
+                        <span class="layer-name">
+                            Training
+                        </span>
+
+                        <span class="layer-value">
+                            2,563
+                        </span>
+                    </div>
+
+                    <div class="layer-row">
+                        <span class="layer-name">
+                            Validation
+                        </span>
+
+                        <span class="layer-value">
+                            549
+                        </span>
+                    </div>
+
+                    <div class="layer-row">
+                        <span class="layer-name">
+                            Test
+                        </span>
+
+                        <span class="layer-value">
+                            550
+                        </span>
+                    </div>
+
+                    <div class="layer-row">
+                        <span class="layer-name">
+                            Split Ratio
+                        </span>
+
+                        <span class="layer-value">
+                            70 / 15 / 15
+                        </span>
+                    </div>
+
+                    <div class="layer-row">
+                        <span class="layer-name">
+                            Random State
+                        </span>
+
+                        <span class="layer-value">
+                            42
+                        </span>
+                    </div>
+
+                    <p style="margin-top:20px;">
+                        Stratification was used to preserve the class
+                        distribution across the three subsets.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         TRAINING
+    ====================================================== -->
+
+    <section class="model-section">
+
+        <div class="model-container">
+
+            <div class="model-heading">
+
+                <div class="model-tag">
+                    Training configuration
+                </div>
+
+                <h2>
+                    How the model
+                    <em>was trained.</em>
+                </h2>
+
+                <p>
+                    The training pipeline combines transfer learning,
+                    image augmentation, class weighting and selective
+                    fine-tuning to address the imbalanced DR classes.
+                </p>
+
+            </div>
+
+
+            <div class="training-grid">
+
+
+                <div class="training-card">
+
+                    <div class="training-icon">
+                        🧠
+                    </div>
+
+                    <h3>
+                        Transfer Learning
+                    </h3>
+
+                    <p>
+                        ResNet-50 was initialized with ImageNet pretrained
+                        weights and adapted for retinal image
+                        classification.
+                    </p>
+
+                </div>
+
+
+                <div class="training-card">
+
+                    <div class="training-icon">
+                        🖼️
+                    </div>
+
+                    <h3>
+                        Image Augmentation
+                    </h3>
+
+                    <p>
+                        Training images used random horizontal flipping,
+                        small rotations and zoom augmentation to improve
+                        robustness.
+                    </p>
+
+                </div>
+
+
+                <div class="training-card">
+
+                    <div class="training-icon">
+                        ⚖️
+                    </div>
+
+                    <h3>
+                        Class Weighting
+                    </h3>
+
+                    <p>
+                        Higher weights were assigned to underrepresented
+                        severity classes so that rare stages contributed
+                        more strongly during training.
+                    </p>
+
+                </div>
+
+
+                <div class="training-card">
+
+                    <div class="training-icon">
+                        🔧
+                    </div>
+
+                    <h3>
+                        Fine-Tuning
+                    </h3>
+
+                    <p>
+                        The final 30 ResNet layers were fine-tuned while
+                        Batch Normalization layers remained frozen.
+                    </p>
+
+                </div>
+
+
+                <div class="training-card">
+
+                    <div class="training-icon">
+                        📐
+                    </div>
+
+                    <h3>
+                        Image Size
+                    </h3>
+
+                    <p>
+                        Every input image is resized to 224 × 224 pixels
+                        before being passed through the ResNet-50
+                        preprocessing pipeline.
+                    </p>
+
+                </div>
+
+
+                <div class="training-card">
+
+                    <div class="training-icon">
+                        🎯
+                    </div>
+
+                    <h3>
+                        Five-Class Output
+                    </h3>
+
+                    <p>
+                        The final Softmax layer produces scores for
+                        No DR, Mild, Moderate, Severe and Proliferative
+                        DR.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         RESULTS
+    ====================================================== -->
+
+    <section class="model-section soft" id="results">
+
+        <div class="model-container">
+
+            <div class="model-heading">
+
+                <div class="model-tag">
+                    Experimental results
+                </div>
+
+                <h2>
+                    Performance on the
+                    <em>held-out test set.</em>
+                </h2>
+
+                <p>
+                    These results come from the 550-image test split
+                    that was kept separate from training and validation.
+                </p>
+
+            </div>
+
+
+            <div class="result-highlight">
+
+                <div class="accuracy-card">
+
+                    <div class="accuracy-label">
+                        Test Accuracy
+                    </div>
+
+                    <div class="accuracy-value">
+                        76.00%
+                    </div>
+
+                    <p>
+                        Overall percentage of test images correctly
+                        classified by the final RetinaCare AI model.
+                    </p>
+
+                </div>
+
+
+                <div class="metric-grid">
+
+                    <div class="metric-card">
+
+                        <div class="metric-value">
+                            0.59
+                        </div>
+
+                        <div class="metric-name">
+                            Macro F1
+                        </div>
+
+                        <div class="metric-note">
+                            Average across all five classes
+                        </div>
+
+                    </div>
+
+
+                    <div class="metric-card">
+
+                        <div class="metric-value">
+                            0.76
+                        </div>
+
+                        <div class="metric-name">
+                            Weighted F1
+                        </div>
+
+                        <div class="metric-note">
+                            Weighted by class support
+                        </div>
+
+                    </div>
+
+
+                    <div class="metric-card">
+
+                        <div class="metric-value">
+                            0.58
+                        </div>
+
+                        <div class="metric-name">
+                            Macro Precision
+                        </div>
+
+                        <div class="metric-note">
+                            Average class precision
+                        </div>
+
+                    </div>
+
+
+                    <div class="metric-card">
+
+                        <div class="metric-value">
+                            0.60
+                        </div>
+
+                        <div class="metric-name">
+                            Macro Recall
+                        </div>
+
+                        <div class="metric-note">
+                            Average class recall
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Classification table -->
+
+            <div class="results-table-wrap">
+
+                <table class="results-table">
+
+                    <thead>
+
+                        <tr>
+                            <th>DR Stage</th>
+                            <th>Precision</th>
+                            <th>Recall</th>
+                            <th>F1 Score</th>
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+                        <tr>
+                            <td>No DR</td>
+                            <td>0.96</td>
+                            <td>0.97</td>
+                            <td>0.96</td>
+                        </tr>
+
+                        <tr>
+                            <td>Mild</td>
+                            <td>0.49</td>
+                            <td>0.52</td>
+                            <td>0.50</td>
+                        </tr>
+
+                        <tr>
+                            <td>Moderate</td>
+                            <td>0.72</td>
+                            <td>0.63</td>
+                            <td>0.67</td>
+                        </tr>
+
+                        <tr>
+                            <td>Severe</td>
+                            <td>0.30</td>
+                            <td>0.41</td>
+                            <td>0.35</td>
+                        </tr>
+
+                        <tr>
+                            <td>Proliferative</td>
+                            <td>0.43</td>
+                            <td>0.45</td>
+                            <td>0.44</td>
+                        </tr>
+
+                        <tr class="summary">
+                            <td>Macro Average</td>
+                            <td>0.58</td>
+                            <td>0.60</td>
+                            <td>0.59</td>
+                        </tr>
+
+                        <tr class="summary">
+                            <td>Weighted Average</td>
+                            <td>0.76</td>
+                            <td>0.76</td>
+                            <td>0.76</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         CONFUSION MATRIX
+    ====================================================== -->
+
+    <section class="model-section">
+
+        <div class="model-container">
+
+            <div class="model-heading">
+
+                <div class="model-tag">
+                    Error analysis
+                </div>
+
+                <h2>
+                    Confusion
+                    <em>matrix.</em>
+                </h2>
+
+                <p>
+                    Rows represent the actual test class and columns
+                    represent the predicted class. The matrix helps
+                    reveal where the model confuses neighbouring
+                    severity levels.
+                </p>
+
+            </div>
+
+
+            <div class="matrix-card">
+
+                <h3>
+                    Test Set Confusion Matrix
+                </h3>
+
+
+                <table class="matrix-table">
+
+                    <tr>
+                        <th>Actual ↓ / Pred. →</th>
+                        <th>No DR</th>
+                        <th>Mild</th>
+                        <th>Moderate</th>
+                        <th>Severe</th>
+                        <th>PDR</th>
+                    </tr>
+
+                    <tr>
+                        <th>No DR</th>
+                        <td class="high">263</td>
+                        <td>8</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+
+                    <tr>
+                        <th>Mild</th>
+                        <td>5</td>
+                        <td class="high">29</td>
+                        <td>18</td>
+                        <td>2</td>
+                        <td>2</td>
+                    </tr>
+
+                    <tr>
+                        <th>Moderate</th>
+                        <td>6</td>
+                        <td>17</td>
+                        <td class="high">94</td>
+                        <td>18</td>
+                        <td>15</td>
+                    </tr>
+
+                    <tr>
+                        <th>Severe</th>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>6</td>
+                        <td class="high">12</td>
+                        <td>9</td>
+                    </tr>
+
+                    <tr>
+                        <th>PDR</th>
+                        <td>0</td>
+                        <td>4</td>
+                        <td>12</td>
+                        <td>8</td>
+                        <td class="high">20</td>
+                    </tr>
+
+                </table>
+
+
+                <div class="matrix-note">
+                    Values represent the number of test images in each
+                    actual/predicted class combination.
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         GRAD-CAM
+    ====================================================== -->
+
+    <section class="model-section soft">
+
+        <div class="explainability-box">
+
+            <div>
+
+                <div class="model-tag"
+                     style="color:#86efac;">
+                    Explainable AI
+                </div>
+
+                <h2>
+                    Understanding the
+                    <em>prediction.</em>
+                </h2>
+
+                <p>
+                    RetinaCare AI uses Grad-CAM to produce a heatmap
+                    from the final convolutional layer. The visualization
+                    highlights image regions that contributed to the
+                    selected model prediction.
+                </p>
+
+                <p style="margin-top:15px;">
+                    The current implementation uses the
+                    <strong>conv5_block3_3_conv</strong> layer of the
+                    ResNet-50 backbone.
+                </p>
+
+            </div>
+
+
+            <div class="gradcam-visual">
+
+                <div class="gradcam-label">
+                    GRAD-CAM · MODEL ATTENTION VISUALIZATION
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         LIMITATIONS
+    ====================================================== -->
+
+    <section class="model-section">
+
+        <div class="model-container">
+
+            <div class="model-heading">
+
+                <div class="model-tag">
+                    Responsible AI
+                </div>
+
+                <h2>
+                    What the model
+                    <em>doesn't tell you.</em>
+                </h2>
+
+                <p>
+                    Reporting limitations clearly is an important part
+                    of evaluating an AI-assisted medical screening
+                    prototype.
+                </p>
+
+            </div>
+
+
+            <div class="limitations">
+
+                <div class="limitation-card">
+
+                    <h3>
+                        Class Imbalance
+                    </h3>
+
+                    <p>
+                        The APTOS dataset contains substantially more
+                        No DR images than Severe and Proliferative cases.
+                        This contributes to differences in per-class
+                        performance.
+                    </p>
+
+                </div>
+
+
+                <div class="limitation-card">
+
+                    <h3>
+                        Lower Rare-Class Performance
+                    </h3>
+
+                    <p>
+                        Severe and Proliferative DR have lower precision,
+                        recall and F1 scores than the No DR and Moderate
+                        categories in the held-out test results.
+                    </p>
+
+                </div>
+
+
+                <div class="limitation-card">
+
+                    <h3>
+                        Confidence Is Not Probability
+                    </h3>
+
+                    <p>
+                        The displayed confidence comes from the model's
+                        Softmax output. It should not be interpreted as
+                        a calibrated medical probability.
+                    </p>
+
+                </div>
+
+
+                <div class="limitation-card">
+
+                    <h3>
+                        Grad-CAM Is Explanatory
+                    </h3>
+
+                    <p>
+                        Grad-CAM indicates image regions associated with
+                        the model prediction. It does not constitute
+                        definitive lesion detection or a medical
+                        explanation.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="model-disclaimer">
+
+                <strong>Important:</strong>
+                RetinaCare AI is an AI-assisted screening and research
+                prototype. Its predictions should not replace examination
+                or diagnosis by a qualified healthcare professional.
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer>
+
+        <div class="footer-inner">
+
+            <div>
+
+                <div class="footer-brand-name">
+                    RetinaCare AI
+                </div>
+
+                <p class="footer-brand-desc">
+                    AI-assisted diabetic retinopathy screening using
+                    explainable deep learning.
+                </p>
+
+                <div class="footer-tech" style="margin-top:1rem;">
+
+                    <span class="ftag">Python</span>
+                    <span class="ftag">TensorFlow</span>
+                    <span class="ftag">ResNet-50</span>
+                    <span class="ftag">Flask</span>
+                    <span class="ftag">OpenCV</span>
+                    <span class="ftag">Grad-CAM</span>
+
+                </div>
+
+            </div>
+
+
+            <div class="footer-col">
+
+                <h4>Project</h4>
+
+                <a href="about.html">
+                    About DR
+                </a>
+
+                <a href="approach.html">
+                    Methodology
+                </a>
+
+                <a href="features.html">
+                    Features
+                </a>
+
+                <a href="model.html">
+                    AI Model
+                </a>
+
+            </div>
+
+
+            <div class="footer-col">
+
+                <h4>Results</h4>
+
+                <a href="#results">
+                    Performance
+                </a>
+
+                <a href="#results">
+                    Classification
+                </a>
+
+                <a href="demo.html">
+                    Live Demo
+                </a>
+
+            </div>
+
+
+            <div class="footer-col">
+
+                <h4>Explore</h4>
+
+                <a href="team.html">
+                    Our Team
+                </a>
+
+                <a href="patient-history.html">
+                    Patient History
+                </a>
+
+                <a href="login.html">
+                    Login
+                </a>
+
+                <a href="demo.html">
+                    Live Demo
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+            RetinaCare AI · AI-assisted retinal screening · All rights reserved
+        </div>
+
+    </footer>
+
+
+    <script src="auth.js"></script>
+    <script src="script.js"></script>
 
 </body>
+
 </html>

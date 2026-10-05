@@ -4,130 +4,1910 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Approach - RetinaCare AI</title>
+
+    <title>Our Approach | RetinaCare AI</title>
+
     <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
         rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
+
+    <style>
+/* =====================================================
+   APPROACH PAGE — WORKFLOW ANIMATION
+===================================================== */
+
+.workflow-step {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: workflowReveal 0.7s ease forwards;
+}
+
+.workflow-step:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.workflow-step:nth-child(2) {
+    animation-delay: 0.25s;
+}
+
+.workflow-step:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+.workflow-step:nth-child(4) {
+    animation-delay: 0.55s;
+}
+
+.workflow-step:nth-child(5) {
+    animation-delay: 0.7s;
+}
+
+.workflow-step:nth-child(6) {
+    animation-delay: 0.85s;
+}
+
+@keyframes workflowReveal {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+
+    .workflow-step {
+        opacity: 1;
+        transform: none;
+        animation: none;
+    }
+
+}
+/* =====================================================
+   APPROACH PAGE — PIPELINE PULSE
+===================================================== */
+
+.pv-step {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Moving highlight */
+
+.pv-step::after {
+    content: "";
+    position: absolute;
+    left: -100%;
+    top: 0;
+    width: 45%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(34, 197, 94, 0.10),
+        transparent
+    );
+    animation: pipelineSweep 4.8s ease-in-out infinite;
+}
+
+/* Different timing for each stage */
+
+.pv-step:nth-child(1)::after {
+    animation-delay: 0s;
+}
+
+.pv-step:nth-child(2)::after {
+    animation-delay: .8s;
+}
+
+.pv-step:nth-child(3)::after {
+    animation-delay: 1.6s;
+}
+
+.pv-step:nth-child(4)::after {
+    animation-delay: 2.4s;
+}
+
+.pv-step:nth-child(5)::after {
+    animation-delay: 3.2s;
+}
+
+.pv-step:nth-child(6)::after {
+    animation-delay: 4s;
+}
+
+@keyframes pipelineSweep {
+
+    0% {
+        left: -100%;
+    }
+
+    35% {
+        left: 120%;
+    }
+
+    100% {
+        left: 120%;
+    }
+
+}
+
+/* Subtle number pulse */
+
+.pv-number {
+    animation: pipelineNumberPulse 4.8s ease-in-out infinite;
+}
+
+.pv-step:nth-child(1) .pv-number {
+    animation-delay: 0s;
+}
+
+.pv-step:nth-child(2) .pv-number {
+    animation-delay: .8s;
+}
+
+.pv-step:nth-child(3) .pv-number {
+    animation-delay: 1.6s;
+}
+
+.pv-step:nth-child(4) .pv-number {
+    animation-delay: 2.4s;
+}
+
+.pv-step:nth-child(5) .pv-number {
+    animation-delay: 3.2s;
+}
+
+.pv-step:nth-child(6) .pv-number {
+    animation-delay: 4s;
+}
+
+@keyframes pipelineNumberPulse {
+
+    0%,
+    65%,
+    100% {
+        transform: scale(1);
+    }
+
+    72% {
+        transform: scale(1.08);
+        box-shadow: 0 0 0 6px rgba(34, 197, 94, 0.10);
+    }
+
+    80% {
+        transform: scale(1);
+        box-shadow: none;
+    }
+
+}
+
+/* Respect reduced-motion preference */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .pv-step::after,
+    .pv-number {
+        animation: none;
+    }
+
+}
+        /* =====================================================
+           PREMIUM APPROACH PAGE
+        ===================================================== */
+
+        .approach-hero {
+            min-height: 72vh;
+            padding: 100px 7%;
+            display: grid;
+            grid-template-columns: 1.05fr .95fr;
+            align-items: center;
+            gap: 70px;
+            background:
+                radial-gradient(circle at 80% 20%, rgba(16,185,129,.12), transparent 30%),
+                linear-gradient(135deg, #f0fdf4 0%, #ffffff 55%, #ecfdf5 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .approach-hero::before {
+            content: "";
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border: 1px solid rgba(22,163,74,.10);
+            border-radius: 50%;
+            right: -180px;
+            top: -200px;
+        }
+
+        .approach-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            padding: 8px 15px;
+            border-radius: 100px;
+            background: rgba(255,255,255,.9);
+            border: 1px solid rgba(22,163,74,.18);
+            color: var(--green-dark);
+            font-size: .78rem;
+            font-weight: 800;
+            letter-spacing: .6px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 25px rgba(22,163,74,.08);
+        }
+
+        .approach-kicker-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--green-main);
+            box-shadow: 0 0 0 5px rgba(22,163,74,.10);
+        }
+
+        .approach-hero h1 {
+            font-family: var(--font-display);
+            color: #064e3b;
+            font-size: clamp(3rem,5vw,5rem);
+            line-height: 1.02;
+            letter-spacing: -2px;
+            margin-bottom: 25px;
+        }
+
+        .approach-hero h1 em {
+            color: var(--green-main);
+            font-style: italic;
+        }
+
+        .approach-hero p {
+            max-width: 650px;
+            color: #64748b;
+            font-size: 1.03rem;
+            line-height: 1.85;
+            margin-bottom: 30px;
+        }
+
+        .approach-actions {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .approach-outline {
+            padding: 12px 24px;
+            border-radius: 100px;
+            border: 1px solid #86efac;
+            background: rgba(255,255,255,.75);
+            color: var(--green-dark);
+            text-decoration: none;
+            font-weight: 700;
+            transition: .3s ease;
+        }
+
+        .approach-outline:hover {
+            background: var(--green-soft);
+            transform: translateY(-3px);
+        }
+
+        /* HERO PIPELINE VISUAL */
+
+        .pipeline-visual {
+            background: rgba(255,255,255,.82);
+            border: 1px solid rgba(22,163,74,.15);
+            border-radius: 28px;
+            padding: 28px;
+            box-shadow:
+                0 30px 80px rgba(6,78,59,.10),
+                inset 0 1px rgba(255,255,255,.9);
+            backdrop-filter: blur(16px);
+        }
+
+        .pv-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .pv-title {
+            font-size: .82rem;
+            font-weight: 800;
+            color: #064e3b;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .pv-status {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            color: #15803d;
+            font-size: .72rem;
+            font-weight: 700;
+        }
+
+        .pv-status span {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #22c55e;
+            box-shadow: 0 0 0 5px rgba(34,197,94,.10);
+        }
+
+        .pv-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .pv-step {
+            display: grid;
+            grid-template-columns: 38px 1fr auto;
+            align-items: center;
+            gap: 13px;
+            padding: 13px;
+            border-radius: 14px;
+            background: #f8fffa;
+            border: 1px solid #e5f5e9;
+            transition: .3s ease;
+        }
+
+        .pv-step:hover {
+            transform: translateX(5px);
+            border-color: #86efac;
+            background: #f0fdf4;
+        }
+
+        .pv-number {
+            width: 34px;
+            height: 34px;
+            border-radius: 10px;
+            background: white;
+            border: 1px solid #bbf7d0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--green-dark);
+            font-size: .7rem;
+            font-weight: 800;
+        }
+
+        .pv-name {
+            font-size: .82rem;
+            font-weight: 700;
+            color: #334155;
+        }
+
+        .pv-detail {
+            font-size: .68rem;
+            color: #94a3b8;
+            margin-top: 2px;
+        }
+
+        .pv-arrow {
+            color: #16a34a;
+            font-weight: 800;
+        }
+
+        /* GENERAL */
+
+        .approach-section {
+            padding: 100px 7%;
+        }
+
+        .approach-section.soft {
+            background: #f8fffa;
+        }
+
+        .approach-heading {
+            max-width: 720px;
+            margin-bottom: 55px;
+        }
+
+        .approach-tag {
+            color: var(--green-main);
+            font-size: .76rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 12px;
+        }
+
+        .approach-heading h2 {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem,4vw,3.5rem);
+            color: #064e3b;
+            line-height: 1.12;
+            margin-bottom: 15px;
+        }
+
+        .approach-heading h2 em {
+            color: var(--green-main);
+        }
+
+        .approach-heading p {
+            color: var(--muted);
+            line-height: 1.8;
+        }
+
+        /* PIPELINE */
+
+        .workflow {
+            max-width: 1150px;
+            margin: auto;
+            position: relative;
+        }
+
+        .workflow::before {
+            content: "";
+            position: absolute;
+            left: 35px;
+            top: 40px;
+            bottom: 40px;
+            width: 2px;
+            background: linear-gradient(
+                180deg,
+                #bbf7d0,
+                #16a34a,
+                #bbf7d0
+            );
+        }
+
+        .workflow-step {
+            display: grid;
+            grid-template-columns: 72px 1fr;
+            gap: 28px;
+            position: relative;
+            margin-bottom: 24px;
+        }
+
+        .workflow-step:last-child {
+            margin-bottom: 0;
+        }
+
+        .workflow-number {
+            width: 72px;
+            height: 72px;
+            border-radius: 22px;
+            background: white;
+            border: 2px solid #bbf7d0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--green-dark);
+            font-size: .82rem;
+            font-weight: 800;
+            box-shadow: 0 8px 25px rgba(22,163,74,.10);
+            z-index: 2;
+        }
+
+        .workflow-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 22px;
+            padding: 27px 30px;
+            display: grid;
+            grid-template-columns: 58px 1fr auto;
+            gap: 20px;
+            align-items: center;
+            transition: .35s ease;
+        }
+
+        .workflow-card:hover {
+            transform: translateX(7px);
+            border-color: rgba(22,163,74,.35);
+            box-shadow: 0 18px 45px rgba(6,78,59,.08);
+        }
+
+        .workflow-icon {
+            width: 55px;
+            height: 55px;
+            border-radius: 16px;
+            background: var(--green-soft);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 23px;
+        }
+
+        .workflow-card h3 {
+            color: #064e3b;
+            font-size: 1.08rem;
+            margin-bottom: 6px;
+        }
+
+        .workflow-card p {
+            color: var(--muted);
+            font-size: .88rem;
+            line-height: 1.65;
+        }
+
+        .workflow-tech {
+            padding: 6px 11px;
+            border-radius: 100px;
+            background: #f0fdf4;
+            color: #15803d;
+            font-size: .68rem;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        /* TECHNICAL FLOW */
+
+        .technical-grid {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 20px;
+        }
+
+        .technical-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 22px;
+            padding: 28px;
+            transition: .3s ease;
+        }
+
+        .technical-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 18px 40px rgba(6,78,59,.08);
+            border-color: #bbf7d0;
+        }
+
+        .technical-index {
+            font-size: .7rem;
+            color: #86efac;
+            font-weight: 800;
+            letter-spacing: 1px;
+            margin-bottom: 18px;
+        }
+
+        .technical-card h3 {
+            color: #064e3b;
+            margin-bottom: 10px;
+        }
+
+        .technical-card p {
+            color: var(--muted);
+            font-size: .86rem;
+            line-height: 1.7;
+        }
+
+        .tech-tags {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .tech-tag {
+            padding: 5px 9px;
+            border-radius: 7px;
+            background: #f8fafc;
+            border: 1px solid #e5e7eb;
+            color: #64748b;
+            font-size: .68rem;
+            font-weight: 700;
+        }
+
+        /* EXPLAINABILITY */
+
+        .explain-box {
+            max-width: 1150px;
+            margin: auto;
+            border-radius: 30px;
+            background: linear-gradient(135deg,#064e3b,#065f46);
+            padding: 60px;
+            color: white;
+            display: grid;
+            grid-template-columns: 1.1fr .9fr;
+            gap: 55px;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .explain-box::after {
+            content: "";
+            position: absolute;
+            width: 360px;
+            height: 360px;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,.12);
+            right: -120px;
+            top: -150px;
+        }
+
+        .explain-box h2 {
+            font-family: var(--font-display);
+            font-size: 2.8rem;
+            line-height: 1.12;
+            margin-bottom: 18px;
+        }
+
+        .explain-box h2 em {
+            color: #86efac;
+        }
+
+        .explain-box p {
+            color: rgba(255,255,255,.76);
+            line-height: 1.8;
+            font-size: .93rem;
+        }
+
+        .explain-visual {
+            height: 270px;
+            border-radius: 22px;
+            background:
+                radial-gradient(circle at 58% 45%, rgba(239,68,68,.65), transparent 18%),
+                radial-gradient(circle at 42% 60%, rgba(250,204,21,.45), transparent 25%),
+                radial-gradient(circle at 55% 52%, rgba(239,68,68,.30), transparent 40%),
+                #101c19;
+            border: 1px solid rgba(255,255,255,.12);
+            position: relative;
+            overflow: hidden;
+            box-shadow: inset 0 0 60px rgba(0,0,0,.35);
+        }
+
+        .explain-eye {
+            position: absolute;
+            width: 155px;
+            height: 155px;
+            border-radius: 50%;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            background:
+                radial-gradient(circle at 48% 48%,#fef3c7 0 5%,transparent 6%),
+                radial-gradient(circle,#ef4444 0 25%,#991b1b 55%,#450a0a 100%);
+            box-shadow: 0 0 60px rgba(239,68,68,.3);
+        }
+
+        .heat-point {
+            position: absolute;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: radial-gradient(circle,rgba(250,204,21,.85),rgba(239,68,68,.1),transparent);
+            filter: blur(2px);
+            animation: heatPulse 3s ease-in-out infinite;
+        }
+
+        .heat-point.one {
+            left: 25%;
+            top: 35%;
+        }
+
+        .heat-point.two {
+            right: 23%;
+            bottom: 25%;
+            animation-delay: 1s;
+        }
+
+        @keyframes heatPulse {
+            0%,100% { transform:scale(.9);opacity:.6; }
+            50% { transform:scale(1.15);opacity:1; }
+        }
+
+        .explain-caption {
+            position: absolute;
+            left: 16px;
+            bottom: 14px;
+            font-size: .68rem;
+            color: rgba(255,255,255,.7);
+            letter-spacing: .5px;
+        }
+
+        /* OUTPUT */
+
+        .output-grid {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 20px;
+        }
+
+        .output-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 22px;
+            padding: 30px;
+            text-align: center;
+            transition: .3s ease;
+        }
+
+        .output-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 18px 40px rgba(0,0,0,.07);
+        }
+
+        .output-icon {
+            width: 58px;
+            height: 58px;
+            margin: 0 auto 18px;
+            border-radius: 18px;
+            background: var(--green-soft);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .output-card h3 {
+            color: #064e3b;
+            margin-bottom: 8px;
+        }
+
+        .output-card p {
+            color: var(--muted);
+            font-size: .84rem;
+            line-height: 1.65;
+        }
+
+        /* DISCLAIMER */
+
+        .approach-disclaimer {
+            max-width: 1150px;
+            margin: 35px auto 0;
+            padding: 18px 20px;
+            background: #fffbeb;
+            border: 1px solid #fde68a;
+            border-radius: 15px;
+            color: #92400e;
+            font-size: .8rem;
+            line-height: 1.7;
+        }
+
+        /* RESPONSIVE */
+
+        @media(max-width:1000px) {
+            .approach-hero,
+            .explain-box {
+                grid-template-columns: 1fr;
+            }
+
+            .technical-grid,
+            .output-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media(max-width:700px) {
+            .approach-hero,
+            .approach-section {
+                padding: 70px 5%;
+            }
+
+            .approach-hero h1 {
+                font-size: 3rem;
+            }
+
+            .workflow::before {
+                display: none;
+            }
+
+            .workflow-step {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .workflow-number {
+                width: 50px;
+                height: 50px;
+                border-radius: 15px;
+            }
+
+            .workflow-card {
+                grid-template-columns: 1fr;
+            }
+
+            .workflow-tech {
+                width: fit-content;
+            }
+
+            .technical-grid,
+            .output-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .explain-box {
+                padding: 35px 25px;
+            }
+
+            .explain-box h2 {
+                font-size: 2.2rem;
+            }
+        }
+/* =====================================================
+   APPROACH — DARK MODE HERO
+===================================================== */
+
+body.dark-theme .approach-hero {
+    background:
+        radial-gradient(
+            circle at 80% 20%,
+            rgba(34,197,94,.08),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #07110d 0%,
+            #0b1711 55%,
+            #07110d 100%
+        ) !important;
+}
+
+body.dark-theme .approach-hero h1 {
+    color: #f8fafc !important;
+}
+
+body.dark-theme .approach-hero h1 em {
+    color: #22c55e !important;
+}
+
+body.dark-theme .approach-hero p {
+    color: #94a3b8 !important;
+}
+
+body.dark-theme .approach-kicker {
+    background: #0d1b14 !important;
+    color: #86efac !important;
+    border-color: #29513b !important;
+}
+
+body.dark-theme .approach-outline {
+    background: #0d1b14 !important;
+    color: #86efac !important;
+    border-color: #29513b !important;
+}
+
+body.dark-theme .pipeline-visual {
+    background: rgba(13,27,20,.92) !important;
+    border-color: #1d3a2b !important;
+}
+
+body.dark-theme .pv-title {
+    color: #86efac !important;
+}
+
+body.dark-theme .pv-step {
+    background: #0d1b14 !important;
+    border-color: #1d3a2b !important;
+}
+
+body.dark-theme .pv-name {
+    color: #e2e8f0 !important;
+}
+
+body.dark-theme .pv-detail {
+    color: #94a3b8 !important;
+}
+
+body.dark-theme .pv-number {
+    background: #102219 !important;
+    color: #86efac !important;
+    border-color: #29513b !important;
+}
+/* =====================================================
+   APPROACH PAGE — PREMIUM DARK MODE CARDS
+===================================================== */
+
+
+/* ---------- WORKFLOW SECTION ---------- */
+
+body.dark-theme .approach-section.soft {
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(34,197,94,.035),
+            transparent 30%
+        ),
+        #07110d !important;
+}
+
+
+/* 6 workflow cards */
+
+body.dark-theme .workflow-card {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(16,32,24,.96),
+            rgba(9,24,17,.96)
+        ) !important;
+
+    border: 1px solid rgba(74,222,128,.16) !important;
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.20),
+        inset 0 1px 0 rgba(255,255,255,.025);
+
+    color: #e2e8f0;
+}
+
+
+body.dark-theme .workflow-card:hover {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(19,42,29,.98),
+            rgba(10,29,19,.98)
+        ) !important;
+
+    border-color: rgba(74,222,128,.35) !important;
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,.28),
+        0 0 25px rgba(34,197,94,.05);
+}
+
+
+/* Workflow numbers */
+
+body.dark-theme .workflow-number {
+    background:
+        linear-gradient(
+            145deg,
+            #10271b,
+            #0b1c14
+        ) !important;
+
+    border-color: rgba(74,222,128,.35) !important;
+
+    color: #86efac !important;
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.20),
+        inset 0 0 15px rgba(34,197,94,.04);
+}
+
+
+/* Workflow icons */
+
+body.dark-theme .workflow-icon {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(34,197,94,.16),
+            rgba(16,185,129,.08)
+        ) !important;
+
+    border: 1px solid rgba(74,222,128,.12);
+
+    color: #86efac !important;
+}
+
+
+/* Workflow text */
+
+body.dark-theme .workflow-card h3 {
+    color: #f1f5f9 !important;
+}
+
+body.dark-theme .workflow-card p {
+    color: #94a3b8 !important;
+}
+
+body.dark-theme .workflow-tech {
+    background: rgba(34,197,94,.08) !important;
+
+    border: 1px solid rgba(74,222,128,.14);
+
+    color: #86efac !important;
+}
+
+
+/* ---------- TECHNICAL ARCHITECTURE ---------- */
+
+body.dark-theme .technical-card {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(16,32,24,.96),
+            rgba(9,24,17,.96)
+        ) !important;
+
+    border: 1px solid rgba(74,222,128,.16) !important;
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.20),
+        inset 0 1px 0 rgba(255,255,255,.025);
+}
+
+
+body.dark-theme .technical-card:hover {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(19,42,29,.98),
+            rgba(10,29,19,.98)
+        ) !important;
+
+    border-color: rgba(74,222,128,.35) !important;
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,.28),
+        0 0 25px rgba(34,197,94,.05);
+}
+
+
+body.dark-theme .technical-card h3 {
+    color: #f1f5f9 !important;
+}
+
+body.dark-theme .technical-card p {
+    color: #94a3b8 !important;
+}
+
+body.dark-theme .technical-index {
+    color: #86efac !important;
+}
+
+
+/* Technology tags */
+
+body.dark-theme .tech-tag {
+    background: rgba(255,255,255,.035) !important;
+
+    border: 1px solid rgba(148,163,184,.16) !important;
+
+    color: #cbd5e1 !important;
+}
+
+
+/* ---------- OUTPUT SECTION ---------- */
+
+body.dark-theme .output-card {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(16,32,24,.96),
+            rgba(9,24,17,.96)
+        ) !important;
+
+    border: 1px solid rgba(74,222,128,.16) !important;
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.20),
+        inset 0 1px 0 rgba(255,255,255,.025);
+}
+
+
+body.dark-theme .output-card:hover {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(19,42,29,.98),
+            rgba(10,29,19,.98)
+        ) !important;
+
+    border-color: rgba(74,222,128,.35) !important;
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,.28),
+        0 0 25px rgba(34,197,94,.05);
+}
+
+
+/* Output icons */
+
+body.dark-theme .output-icon {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(34,197,94,.16),
+            rgba(16,185,129,.08)
+        ) !important;
+
+    border: 1px solid rgba(74,222,128,.12);
+
+    color: #86efac !important;
+}
+
+
+/* Output text */
+
+body.dark-theme .output-card h3 {
+    color: #f1f5f9 !important;
+}
+
+body.dark-theme .output-card p {
+    color: #94a3b8 !important;
+}
+
+
+/* ---------- SECTION HEADINGS ---------- */
+
+body.dark-theme .approach-heading h2 {
+    color: #f8fafc !important;
+}
+
+body.dark-theme .approach-heading p {
+    color: #94a3b8 !important;
+}
+
+body.dark-theme .approach-tag {
+    color: #4ade80 !important;
+}
+
+
+/* ---------- WORKFLOW LINE ---------- */
+
+body.dark-theme .workflow::before {
+    background:
+        linear-gradient(
+            180deg,
+            rgba(34,197,94,.12),
+            #16a34a,
+            rgba(34,197,94,.12)
+        ) !important;
+}
+
+
+/* ---------- DISCLAIMER ---------- */
+
+body.dark-theme .approach-disclaimer {
+    background: rgba(120,83,10,.12) !important;
+
+    border-color: rgba(250,204,21,.20) !important;
+
+    color: #fcd34d !important;
+}
+    </style>
 </head>
 
 <body>
 
-    <!-- ── NAV ── -->
+    <!-- =====================================================
+         NAVBAR
+    ====================================================== -->
+
     <nav>
-        <div class="nav-logo">
-            <div class="nav-logo-icon">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                    <circle cx="10" cy="10" r="8" stroke="white" stroke-width="1.5" />
-                    <circle cx="10" cy="10" r="4" fill="white" opacity="0.9" />
-                    <circle cx="10" cy="10" r="1.5" fill="#16a34a" />
-                </svg>
+
+        <a href="index.html" style="text-decoration:none;">
+            <div class="nav-logo nav-logo--index">
+
+                <img class="nav-logo-svg" src="retinacare-logo.svg" alt="">
+
+                <span class="nav-logo-text">
+                    Retina<span>Care</span> AI
+                </span>
+
             </div>
-            <a href="index.html" style="text-decoration: none; color: inherit;"><span class="nav-logo-text">Retina<span>Care</span> AI</span></a>
-        </div>
+        </a>
+
+
         <div class="nav-links">
-            <a href="about.html">About</a>
-            <a href="approach.html">Approach</a>
-            <a href="features.html">Features</a>
-            <a href="model.html">Model</a>
-            <a href="team.html">Team</a>
-            <a href="login.html" style="color: var(--green-main); font-weight: 700;">Login</a>
+
+            <a href="about.html">
+                About
+            </a>
+
+            <a href="approach.html"
+               style="color:var(--green-main);font-weight:700;">
+                Approach
+            </a>
+
+            <a href="features.html">
+                Features
+            </a>
+
+            <a href="model.html">
+                Model
+            </a>
+
+            <a href="team.html">
+                Team
+            </a>
+
+            <a href="patient-history.html">
+                Patient History
+            </a>
+
+            <a href="login.html">
+                Login
+            </a>
+
         </div>
-        <button class="nav-pill" onclick="window.location.href='demo.html'">Live
-            Demo</button>
+
+<button
+    class="theme-toggle"
+    id="theme-toggle"
+    type="button"
+    aria-label="Toggle dark mode"
+    title="Toggle dark mode">
+    🌙
+</button>
+        <button class="nav-pill"
+            onclick="window.location.href='demo.html'">
+            Live Demo
+        </button>
+
     </nav>
 
-    <!-- ── HOW IT WORKS ── -->
-    <section class="sec sec-alt" id="pipeline" style="padding-top: 120px;">
-        <div class="max-w">
-            <div class="sec-center reveal">
-                <div class="sec-tag">Methodology</div>
-                <h2 class="sec-title">How Our <em>Pipeline</em> Works</h2>
-                <p class="sec-sub" style="margin:0 auto;">From a single retinal photo to a clinical-grade report — in
-                    under 2 seconds.</p>
+
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
+
+    <section class="approach-hero">
+
+        <div>
+
+            <div class="approach-kicker">
+                <span class="approach-kicker-dot"></span>
+                AI Screening Methodology
             </div>
-            <div class="pipeline reveal">
-                <div class="pipe-step">
-                    <div class="pipe-num">01</div>
-                    <div class="pipe-icon">📸</div>
-                    <h3>Image Upload</h3>
-                    <p>Fundus photo captured via camera or uploaded via phone.</p>
-                </div>
-                <div class="pipe-step">
-                    <div class="pipe-num">02</div>
-                    <div class="pipe-icon">🔧</div>
-                    <h3>Preprocessing</h3>
-                    <p>CLAHE enhancement, resize to 224×224, normalise pixel values.</p>
-                </div>
-                <div class="pipe-step">
-                    <div class="pipe-num">03</div>
-                    <div class="pipe-icon">🧠</div>
-                    <h3>CNN Inference</h3>
-                    <p>ResNet-50 model classifies DR stage with confidence score.</p>
-                </div>
-                <div class="pipe-step">
-                    <div class="pipe-num">04</div>
-                    <div class="pipe-icon">📄</div>
-                    <h3>Report Generated</h3>
-                    <p>Plain-language PDF report + Grad-CAM heatmap for the doctor.</p>
-                </div>
+
+
+            <h1>
+                From retina
+                <em>to insight.</em>
+            </h1>
+
+
+            <p>
+                RetinaCare AI transforms a retinal fundus image into an
+                AI-assisted screening result through a structured pipeline
+                combining image preparation, deep learning classification,
+                explainability and automated reporting.
+            </p>
+
+
+            <div class="approach-actions">
+
+                <a href="demo.html"
+                   class="btn-primary">
+                    Try Live Screening
+                </a>
+
+                <a href="model.html"
+                   class="approach-outline">
+                    Explore the Model
+                </a>
+
             </div>
+
         </div>
+
+
+        <!-- Pipeline visual -->
+
+        <div class="pipeline-visual">
+
+            <div class="pv-top">
+
+                <div class="pv-title">
+                    RetinaCare AI Pipeline
+                </div>
+
+                <div class="pv-status">
+                    <span></span>
+                    SYSTEM READY
+                </div>
+
+            </div>
+
+
+            <div class="pv-flow">
+
+                <div class="pv-step">
+                    <div class="pv-number">01</div>
+                    <div>
+                        <div class="pv-name">
+                            Retinal Image
+                        </div>
+                        <div class="pv-detail">
+                            Fundus photograph
+                        </div>
+                    </div>
+                    <div class="pv-arrow">↓</div>
+                </div>
+
+
+                <div class="pv-step">
+                    <div class="pv-number">02</div>
+                    <div>
+                        <div class="pv-name">
+                            Preprocessing
+                        </div>
+                        <div class="pv-detail">
+                            Resize + ResNet preprocessing
+                        </div>
+                    </div>
+                    <div class="pv-arrow">↓</div>
+                </div>
+
+
+                <div class="pv-step">
+                    <div class="pv-number">03</div>
+                    <div>
+                        <div class="pv-name">
+                            ResNet-50
+                        </div>
+                        <div class="pv-detail">
+                            Deep feature extraction
+                        </div>
+                    </div>
+                    <div class="pv-arrow">↓</div>
+                </div>
+
+
+                <div class="pv-step">
+                    <div class="pv-number">04</div>
+                    <div>
+                        <div class="pv-name">
+                            DR Classification
+                        </div>
+                        <div class="pv-detail">
+                            Five-stage prediction
+                        </div>
+                    </div>
+                    <div class="pv-arrow">↓</div>
+                </div>
+
+
+                <div class="pv-step">
+                    <div class="pv-number">05</div>
+                    <div>
+                        <div class="pv-name">
+                            Grad-CAM
+                        </div>
+                        <div class="pv-detail">
+                            Visual explanation
+                        </div>
+                    </div>
+                    <div class="pv-arrow">↓</div>
+                </div>
+
+
+                <div class="pv-step">
+                    <div class="pv-number">06</div>
+                    <div>
+                        <div class="pv-name">
+                            Screening Report
+                        </div>
+                        <div class="pv-detail">
+                            Result + confidence + explanation
+                        </div>
+                    </div>
+                    <div class="pv-arrow">✓</div>
+                </div>
+
+            </div>
+
+        </div>
+
     </section>
 
-    <!-- ── DR STAGES ── -->
-    <section class="sec" id="stages">
-        <div class="max-w">
-            <div class="reveal">
-                <div class="sec-tag">Disease Grading · ETDRS Scale</div>
-                <h2 class="sec-title">5 Stages of <em>Diabetic Retinopathy</em></h2>
-                <p class="sec-sub">Our model classifies each retinal image into one of these internationally recognised
-                    severity grades.</p>
+
+    <!-- =====================================================
+         MAIN WORKFLOW
+    ====================================================== -->
+
+    <section class="approach-section soft">
+
+        <div class="approach-heading">
+
+            <div class="approach-tag">
+                End-to-end workflow
             </div>
-            <div class="stages-horizontal-wrapper reveal">
-                <div class="stages-row-horizontal">
-                    <div class="stage-h-card stage-h-0">
-                        <div class="stage-em">🟢</div>
-                        <h4>Stage 0</h4>
-                        <p>No DR — normal retinal vasculature, no lesions detected.</p>
-                        <span class="st-badge badge-0">No Risk</span>
-                    </div>
-                    <div class="stage-h-card stage-h-1">
-                        <div class="stage-em">🟡</div>
-                        <h4>Stage 1 · Mild</h4>
-                        <p>Microaneurysms only — tiny balloon-like vessel swellings.</p>
-                        <span class="st-badge badge-1">Low Risk</span>
-                    </div>
-                    <div class="stage-h-card stage-h-2">
-                        <div class="stage-em">🟠</div>
-                        <h4>Stage 2 · Moderate</h4>
-                        <p>Haemorrhages, exudates, cotton-wool spots visible.</p>
-                        <span class="st-badge badge-2">Moderate</span>
-                    </div>
-                    <div class="stage-h-card stage-h-3">
-                        <div class="stage-em">🔴</div>
-                        <h4>Stage 3 · Severe</h4>
-                        <p>Many blocked vessels, early new vessel growth triggered.</p>
-                        <span class="st-badge badge-3">High Risk</span>
-                    </div>
-                    <div class="stage-h-card stage-h-4">
-                        <div class="stage-em">⛔</div>
-                        <h4>Stage 4 · PDR</h4>
-                        <p>Proliferative DR — vitreous bleed, retinal detachment risk.</p>
-                        <span class="st-badge badge-4">Critical</span>
-                    </div>
-                </div>
-            </div>
+
+            <h2>
+                Six steps from
+                <em>image to explanation.</em>
+            </h2>
+
+            <p>
+                Each stage has a specific role in the RetinaCare AI
+                screening workflow, keeping the system modular,
+                traceable and explainable.
+            </p>
+
         </div>
+
+
+        <div class="workflow">
+
+            <!-- 01 -->
+
+            <div class="workflow-step">
+
+                <div class="workflow-number">
+                    01
+                </div>
+
+                <div class="workflow-card">
+
+                    <div class="workflow-icon">
+                        📷
+                    </div>
+
+                    <div>
+                        <h3>
+                            Image Acquisition
+                        </h3>
+
+                        <p>
+                            A retinal fundus image is uploaded through the
+                            Live Demo interface. The system accepts common
+                            image formats such as JPEG and PNG.
+                        </p>
+                    </div>
+
+                    <div class="workflow-tech">
+                        IMAGE INPUT
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- 02 -->
+
+            <div class="workflow-step">
+
+                <div class="workflow-number">
+                    02
+                </div>
+
+                <div class="workflow-card">
+
+                    <div class="workflow-icon">
+                        ⚙
+                    </div>
+
+                    <div>
+                        <h3>
+                            Image Preparation
+                        </h3>
+
+                        <p>
+                            The uploaded image is converted into the format
+                            required by the model and resized to
+                            224 × 224 pixels before ResNet-50 preprocessing.
+                        </p>
+                    </div>
+
+                    <div class="workflow-tech">
+                        224 × 224
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- 03 -->
+
+            <div class="workflow-step">
+
+                <div class="workflow-number">
+                    03
+                </div>
+
+                <div class="workflow-card">
+
+                    <div class="workflow-icon">
+                        🧠
+                    </div>
+
+                    <div>
+                        <h3>
+                            ResNet-50 Inference
+                        </h3>
+
+                        <p>
+                            The processed retinal image is passed through
+                            the trained ResNet-50 architecture to extract
+                            deep visual features and generate class scores.
+                        </p>
+                    </div>
+
+                    <div class="workflow-tech">
+                        TENSORFLOW
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- 04 -->
+
+            <div class="workflow-step">
+
+                <div class="workflow-number">
+                    04
+                </div>
+
+                <div class="workflow-card">
+
+                    <div class="workflow-icon">
+                        ◉
+                    </div>
+
+                    <div>
+                        <h3>
+                            Five-Stage Classification
+                        </h3>
+
+                        <p>
+                            The model selects the highest-scoring class
+                            from five categories: No DR, Mild, Moderate,
+                            Severe and Proliferative.
+                        </p>
+                    </div>
+
+                    <div class="workflow-tech">
+                        5 CLASSES
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- 05 -->
+
+            <div class="workflow-step">
+
+                <div class="workflow-number">
+                    05
+                </div>
+
+                <div class="workflow-card">
+
+                    <div class="workflow-icon">
+                        🔥
+                    </div>
+
+                    <div>
+                        <h3>
+                            Grad-CAM Explanation
+                        </h3>
+
+                        <p>
+                            Grad-CAM generates a visual heatmap showing
+                            image regions that contributed to the model's
+                            selected prediction.
+                        </p>
+                    </div>
+
+                    <div class="workflow-tech">
+                        XAI
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- 06 -->
+
+            <div class="workflow-step">
+
+                <div class="workflow-number">
+                    06
+                </div>
+
+                <div class="workflow-card">
+
+                    <div class="workflow-icon">
+                        📄
+                    </div>
+
+                    <div>
+                        <h3>
+                            Screening Report
+                        </h3>
+
+                        <p>
+                            The interface presents the predicted stage,
+                            model confidence, risk-level indicator,
+                            recommendations and downloadable report.
+                        </p>
+                    </div>
+
+                    <div class="workflow-tech">
+                        OUTPUT
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
     </section>
 
-    <!-- ── FOOTER ── -->
-    <footer>
-        <div class="footer-inner">
+
+    <!-- =====================================================
+         TECHNICAL COMPONENTS
+    ====================================================== -->
+
+    <section class="approach-section">
+
+        <div class="approach-heading">
+
+            <div class="approach-tag">
+                Technical architecture
+            </div>
+
+            <h2>
+                The technology behind
+                <em>the workflow.</em>
+            </h2>
+
+            <p>
+                RetinaCare AI separates the user interface, application
+                server and machine-learning inference layer.
+            </p>
+
+        </div>
+
+
+        <div class="technical-grid">
+
+            <div class="technical-card">
+
+                <div class="technical-index">
+                    LAYER 01
+                </div>
+
+                <h3>
+                    Frontend
+                </h3>
+
+                <p>
+                    Provides image upload, live camera interaction,
+                    prediction results, report controls and patient-facing
+                    interfaces.
+                </p>
+
+                <div class="tech-tags">
+                    <span class="tech-tag">HTML</span>
+                    <span class="tech-tag">CSS</span>
+                    <span class="tech-tag">JavaScript</span>
+                </div>
+
+            </div>
+
+
+            <div class="technical-card">
+
+                <div class="technical-index">
+                    LAYER 02
+                </div>
+
+                <h3>
+                    Application Backend
+                </h3>
+
+                <p>
+                    Handles application requests, authentication,
+                    patient history and communication between the
+                    website and machine-learning service.
+                </p>
+
+                <div class="tech-tags">
+                    <span class="tech-tag">Node.js</span>
+                    <span class="tech-tag">Express</span>
+                    <span class="tech-tag">MySQL</span>
+                </div>
+
+            </div>
+
+
+            <div class="technical-card">
+
+                <div class="technical-index">
+                    LAYER 03
+                </div>
+
+                <h3>
+                    ML Inference
+                </h3>
+
+                <p>
+                    Loads the trained RetinaCare AI model, preprocesses
+                    the image, performs classification and generates
+                    Grad-CAM explanations.
+                </p>
+
+                <div class="tech-tags">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">TensorFlow</span>
+                    <span class="tech-tag">Flask</span>
+                    <span class="tech-tag">OpenCV</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         GRAD-CAM
+    ====================================================== -->
+
+    <section class="approach-section soft">
+
+        <div class="explain-box">
+
             <div>
-                <div class="footer-brand-name">RetinaCare AI</div>
-                <p class="footer-brand-desc">AI-powered early detection of Diabetic Retinopathy and multi-eye disease
-                    screening — built to make specialist-grade care accessible to every patient, everywhere.</p>
+
+                <div class="approach-tag"
+                     style="color:#86efac;">
+                    Explainable AI
+                </div>
+
+                <h2>
+                    Don't just show the
+                    <em>answer.</em>
+                    Show the reasoning.
+                </h2>
+
+                <p>
+                    RetinaCare AI uses Grad-CAM to generate a visual
+                    explanation of the model prediction. The heatmap
+                    highlights image regions that contributed to the
+                    selected class.
+                </p>
+
+                <p style="margin-top:15px;">
+                    This makes the screening prototype easier to inspect
+                    and provides an additional visual layer alongside
+                    the model's classification result.
+                </p>
+
+            </div>
+
+
+            <div class="explain-visual">
+
+                <div class="explain-eye"></div>
+
+                <div class="heat-point one"></div>
+                <div class="heat-point two"></div>
+
+                <div class="explain-caption">
+                    GRAD-CAM · MODEL ATTENTION VISUALIZATION
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         OUTPUTS
+    ====================================================== -->
+
+    <section class="approach-section">
+
+        <div class="approach-heading">
+
+            <div class="approach-tag">
+                System output
+            </div>
+
+            <h2>
+                What the user
+                <em>receives.</em>
+            </h2>
+
+            <p>
+                The final interface combines the model result with
+                supporting information so that the prediction can be
+                reviewed within the screening workflow.
+            </p>
+
+        </div>
+
+
+        <div class="output-grid">
+
+            <div class="output-card">
+
+                <div class="output-icon">
+                    ◉
+                </div>
+
+                <h3>
+                    Predicted Stage
+                </h3>
+
+                <p>
+                    One of five diabetic retinopathy severity classes
+                    selected by the trained model.
+                </p>
+
+            </div>
+
+
+            <div class="output-card">
+
+                <div class="output-icon">
+                    %
+                </div>
+
+                <h3>
+                    Model Confidence
+                </h3>
+
+                <p>
+                    The softmax score associated with the selected
+                    prediction, presented as model confidence.
+                </p>
+
+            </div>
+
+
+            <div class="output-card">
+
+                <div class="output-icon">
+                    🔥
+                </div>
+
+                <h3>
+                    Grad-CAM
+                </h3>
+
+                <p>
+                    A heatmap visualization showing regions contributing
+                    to the selected prediction.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="approach-disclaimer">
+
+            <strong>Important:</strong>
+            RetinaCare AI is an AI-assisted screening and research
+            prototype. Model confidence is not a calibrated medical
+            probability, and Grad-CAM is an explanatory visualization,
+            not definitive lesion detection. Results should not replace
+            evaluation by a qualified healthcare professional.
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer>
+
+        <div class="footer-inner">
+
+            <div>
+
+                <div class="footer-brand-name">
+                    RetinaCare AI
+                </div>
+
+                <p class="footer-brand-desc">
+                    AI-powered diabetic retinopathy screening designed
+                    to support accessible and explainable retinal analysis.
+                </p>
+
                 <div class="footer-tech" style="margin-top:1rem;">
                     <span class="ftag">Python</span>
                     <span class="ftag">TensorFlow</span>
@@ -136,35 +1916,58 @@
                     <span class="ftag">OpenCV</span>
                     <span class="ftag">Grad-CAM</span>
                 </div>
+
             </div>
+
+
             <div class="footer-col">
+
                 <h4>Project</h4>
+
                 <a href="about.html">About DR</a>
                 <a href="approach.html">Methodology</a>
                 <a href="features.html">Features</a>
                 <a href="model.html">AI Model</a>
+
             </div>
+
+
             <div class="footer-col">
+
                 <h4>Features</h4>
-                <a href="features.html">Multi-Disease</a>
-                <a href="features.html">Grad-CAM</a>
-                <a href="model.html">Risk Score</a>
-                <a href="features.html">Telemedicine</a>
-            </div>
-            <div class="footer-col">
-                <h4>Team</h4>
-                <a href="team.html">Developers</a>
+
+                <a href="features.html">Screening</a>
+                <a href="model.html">Grad-CAM</a>
+                <a href="model.html">AI Model</a>
                 <a href="demo.html">Live Demo</a>
+
             </div>
+
+
+            <div class="footer-col">
+
+                <h4>Explore</h4>
+
+                <a href="team.html">Our Team</a>
+                <a href="patient-history.html">Patient History</a>
+                <a href="login.html">Login</a>
+                <a href="demo.html">Live Demo</a>
+
+            </div>
+
         </div>
+
+
         <div class="footer-bottom">
-            🎓 Project Expo 2025 &nbsp;·&nbsp; RetinaCare AI &nbsp;·&nbsp; Made for better, accessible eye healthcare
-            &nbsp;·&nbsp; All rights reserved
+            RetinaCare AI · AI-assisted retinal screening · All rights reserved
         </div>
+
     </footer>
+
 
     <script src="auth.js"></script>
     <script src="script.js"></script>
+
 </body>
 
 </html>

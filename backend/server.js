@@ -7,6 +7,57 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
+/* RetinaCare AI prediction proxy */
+app.post(
+    "/predict",
+    express.raw({
+        type: ["image/*", "application/octet-stream"],
+        limit: "10mb"
+    }),
+    async (req, res) => {
+
+        try {
+
+            const response = await fetch(
+                "http://127.0.0.1:8000/predict",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": req.headers["content-type"] || "application/octet-stream"
+                    },
+                    body: req.body
+                }
+            )
+
+            const result = await response.json()
+
+            if (!response.ok) {
+                return res.status(response.status).json(result)
+            }
+
+            /*
+             * Convert RetinaCare Python response
+             * into the format expected by the existing frontend.
+             */
+            const prediction = [{
+    label: result.predicted_stage,
+    score: result.confidence / 100,
+    gradcam_image: result.gradcam_image
+}]
+
+            res.json(prediction)
+
+        } catch (err) {
+
+            console.error("RetinaCare ML API request failed:", err)
+
+            res.status(502).json({
+                error: "Unable to reach RetinaCare AI ML API"
+            })
+        }
+    }
+)
+
 const db = mysql.createConnection({
 host:"localhost",
 user:"root",
